@@ -21,6 +21,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    isTeacher: {
+        type: Boolean,
+        default: false
+    },
     children: [
         {
             type: Schema.Types.ObjectId,

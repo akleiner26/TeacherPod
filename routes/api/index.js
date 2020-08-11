@@ -3,7 +3,13 @@ const userRoutes = require("./users");
 const podRoutes = require("./pods");
 const studentRoutes = require("./students");
 
-// Book routes
-router.use("/books", bookRoutes);
+// User routes
+router.use("/users", userRoutes);
+
+// Pod routes
+router.use("/pods", podRoutes);
+
+// Student routes
+router.use("/students", studentRoutes);
 
 module.exports = router;

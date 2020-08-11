@@ -33,7 +33,7 @@ module.exports = {
         db.User.findOne({ _id: req.body.id }).populate("Students").then( ({ students }) => {
             students.forEach(student => {
                 if (student._id == req.body.idToDelete){
-                    db.student.remove({ _id: student._id }).then(res => {
+                    db.Student.remove({ _id: student._id }).then(res => {
                         return res;
                     })
                 }

@@ -6,16 +6,25 @@ const podSchema = new Schema({
         type: String,
         required: true
     },
-    subject: String,
-    grade: String,
+    subject: {
+        type: String,
+        required: true
+    },
+    grade: {
+        type: String,
+        required: true
+    },
     slots: {
         type: Number,
         required: true
     },
-    price: Number,
+    price: {
+        type: Number,
+        required: true
+    },
     location: {
         type: String,
-        required
+        default: "remote"
     },
     students: [
         {
@@ -25,6 +34,6 @@ const podSchema = new Schema({
     ]
 })
 
-const Pod = mongoose.model("Exercise", podSchema);
+const Pod = mongoose.model("Pod", podSchema);
 
 module.exports = Pod;

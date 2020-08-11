@@ -16,8 +16,7 @@ const messengerSchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now,
-        required: true
+        default: Date.now
     },
     read: {
         type: Boolean,
@@ -25,6 +24,6 @@ const messengerSchema = new Schema({
     },
 })
 
-const Messenger = mongoose.model("Exercise", messengerSchema);
+const Messenger = mongoose.model("Messenger", messengerSchema);
 
 module.exports = Messenger;

@@ -32,8 +32,8 @@ module.exports = {
     removeOneStudentByParentId: (req, res) => {
         db.User.findOne({ _id: req.body.id }).populate("Students").then( ({ Students }) => {
             Students.forEach(student => {
-                if (Student._id == req.body.idToDelete){
-                    db.Student.remove({ _id: Student._id }).then(res => {
+                if (student._id == req.body.idToDelete){
+                    db.student.remove({ _id: student._id }).then(res => {
                         return res;
                     })
                 }

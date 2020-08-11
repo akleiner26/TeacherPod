@@ -22,36 +22,43 @@ function Header() {
     return (
         <>
             <header>
-                  <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">TeachPod</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
-                        <Nav className="mr-auto" navbar>
+                        <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
+                                <NavLink href="/components/">Announcements</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                                <NavLink href="https://github.com/reactstrap/reactstrap">Messages</NavLink>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
-                                    Options
+                                    Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
-                                        Option 1
+                                        Profile
                                     </DropdownItem>
                                     <DropdownItem>
-                                        Option 2
+                                        Signup
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        Login
                                      </DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>
-                                        Reset
+                                        Logout
                                     </DropdownItem>
+                                    <DropdownItem divider />
+                                    <DropdownItem>
+                                        Contact
+                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                         </Nav>
-                        <NavbarText>Simple Text</NavbarText>
+                        {/* <NavbarText>Simple Text</NavbarText> */}
                     </Collapse>
                 </Navbar>
 

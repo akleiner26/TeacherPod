@@ -30,10 +30,10 @@ module.exports = {
     //Used in DELETE routes
     //Parent Profile remove child
     removeOneStudentByParentId: (req, res) => {
-        db.User.findOne({ _id: req.body.id }).populate("Students").then( ({ Students }) => {
-            Students.forEach(student => {
-                if (Student._id == req.body.idToDelete){
-                    db.Student.remove({ _id: Student._id }).then(res => {
+        db.User.findOne({ _id: req.body.id }).populate("Students").then( ({ students }) => {
+            students.forEach(student => {
+                if (student._id == req.body.idToDelete){
+                    db.student.remove({ _id: student._id }).then(res => {
                         return res;
                     })
                 }
@@ -42,8 +42,8 @@ module.exports = {
     },
     //Teacher Profile remove student from pod, take in teacher data and id of student to delete
     removeOneStudentFromPod: (req, res) => {
-        db.User.findOne({ _id: req.body.id, isTeacher: true }).populate("Students").then( ({ Students }) => {
-            Students.forEach(student => {
+        db.User.findOne({ _id: req.body.id, isTeacher: true }).populate("Students").then( ({ students }) => {
+            students.forEach(student => {
                 if (student._id == req.body.idToDelete){
                     db.Student.remove({ _id: student._id }).then(response => {
                         return response;

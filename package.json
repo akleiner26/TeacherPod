@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/akleiner26/TeacherPod/issues"
   },
-  "homepage": "https://github.com/akleiner26/TeacherPod#readme"
+  "homepage": "https://github.com/akleiner26/TeacherPod#readme",
+  "dependencies": {
+    "mongoose": "^5.9.28"
+  }
 }

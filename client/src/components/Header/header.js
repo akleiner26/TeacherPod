@@ -28,31 +28,31 @@ function Header() {
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Announcements</NavLink>
+                                <NavLink href="/announcements">Announcements</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">Messages</NavLink>
+                                <NavLink href="/messages">Messages</NavLink>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem>
+                                    <DropdownItem href="/profile">
                                         Profile
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/signup">
                                         Signup
                                     </DropdownItem>
-                                    <DropdownItem>
+                                    <DropdownItem href="/login">
                                         Login
                                      </DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem>
+                                    <DropdownItem href="/login">
                                         Logout
                                     </DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem>
+                                    <DropdownItem href="/contact">
                                         Contact
                                      </DropdownItem>
                                 </DropdownMenu>

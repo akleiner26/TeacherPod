@@ -1,8 +1,4 @@
-.carousel{
+.carouselImg{
     max-width: 640px !important;
     max-height: 427px !important;
-}
-
-.thumb {
-    display: none !important;
 }

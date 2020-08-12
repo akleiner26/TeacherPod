@@ -21,7 +21,11 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    children: [
+    isTeacher: {
+        type: Boolean,
+        default: false
+    },
+    students: [
         {
             type: Schema.Types.ObjectId,
             ref: "Students"

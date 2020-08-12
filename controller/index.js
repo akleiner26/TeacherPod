@@ -33,7 +33,8 @@ module.exports = {
             .catch(err => res.json(err))
     },
     createTeacher: (req, res) => {
-        db.User.create(req.body, { isTeacher: true })
+        req.body.isTeacher = true;
+        db.User.create(req.body)
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },

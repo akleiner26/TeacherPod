@@ -4,19 +4,19 @@ module.exports = {
     //Used in GET Routes
     //Card search
     findAllTeachers: (req, res) => {
-        db.User.find({ gradesTaught: req.body.grades, location: req.body.location })
+        db.User.find({ gradesTaught: req.query.grades, location: req.query.location, isTeacher: true })
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
     //Teacher Profile w/ Pods
     findOneTeacherById: (req, res) => {
-        db.User.find({ _id: req.body.id }).populate("pods")
+        db.User.find({ _id: req.params.id })
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
     //Parent Profile w/ Students
     findOneParentById: (req, res) => {
-        db.User.findOne({ _id: req.body.id }).populate("Students")
+        db.User.find({ _id: req.params.id })
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },

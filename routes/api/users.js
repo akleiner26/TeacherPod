@@ -6,12 +6,14 @@ router.route("/")
     .get(controller.findAllTeachers)
     .post(controller.createUser)
 
+// Matches with "/api/users/teacher"
 router.route("/teacher")
     .post(controller.createTeacher)
 
 // Matches with "/api/users/teacher/:id"
 router.route("/teacher/:id")
     .get(controller.findOneTeacherById)
+    .put(controller.updateProfile)
 
 // Matches with "/api/users/parent/:id"
 router.route("/parent/:id")

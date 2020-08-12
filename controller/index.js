@@ -27,6 +27,21 @@ module.exports = {
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
+    createUser: (req, res) => {
+        db.User.create(req.body)
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
+    createTeacher: (req, res) => {
+        db.User.create(req.body, { isTeacher: true })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
+    createPod: (req, res) => {
+        db.Pod.create(req.body)
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
     //Used in PUT routes
     //Parent Profile add child
     addOneStudentByParentId: (req, res) => {

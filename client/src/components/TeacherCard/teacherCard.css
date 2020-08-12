@@ -1,7 +1,10 @@
 .cardThumb {
-    width: 150px !important;
+    /* width: 150px !important;
     height: 100px !important;
-    margin: 10px;
+    margin: 10px; */
+    width: 80%;
+    height: 80%;
+    margin: 10%;
 }
 
 .cardText {
@@ -20,5 +23,6 @@
 .cardBtn{
     bottom:0;
     position:absolute;
-    width:75px;
+    /* width:75px; */
+    width:100%
 }

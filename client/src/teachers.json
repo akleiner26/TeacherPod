@@ -101,9 +101,9 @@
     {
         "id":11,
         "name": "Polly Shaffer",
-        "thumbnail": "images/Thumbnails/pollyShaferThumbnail.jpg",
-        "fullImage": "images/fullSize/pollyShaferImg.jpg",
-        "subject": "3rd Grade",
+        "thumbnail": "images/Thumbnails/pollyShafferThumbnail.jpg",
+        "fullImage": "images/fullSize/pollyShafferImg.jpg",
+        "subject": "4th Grade",
         "price": "$225/Child/Week",
         "capacity": 7
     },

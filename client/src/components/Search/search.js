@@ -1,15 +1,15 @@
 import React from "react"
-import { Form, Label, Input, FormGroup, Button, Card, Col } from "reactstrap"
+import { Form, Label, Input, FormGroup, Button, Card, Col, Row } from "reactstrap"
 import "./search.css"
-
-
-
+import ImgCarousel from "../Carousel/carousel"
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 const Search = (props) => {
     return (
         <Col className="offset-1" xs="10">
             <Card className="m-3">
+                <Row>
                 <Col className="offset-1" xs="5">
                 <h3>Pod Search</h3>
                     <Card className="m-3">
@@ -54,6 +54,10 @@ const Search = (props) => {
                     </Form>
                     </Card>
                 </Col>
+                <Col className="m-2 mt-5" xs="5">
+                   <ImgCarousel className="carousel"/>
+                </Col>
+                </Row>
             </Card>
         </Col>
     );

@@ -1,0 +1,44 @@
+/* .teachCardContainer {
+    margin-top: 25%;
+    margin-bottom: 5%;
+} */
+
+
+.cardThumb {
+    /* width: 150px !important;
+    height: 100px !important;
+    margin: 10px; */
+    width: 100%;
+    min-width: 80px;
+    height: auto;
+    /* margin: 10px; */
+    /* margin bottom: 10px; */
+
+}
+
+.cardText {
+    text-align: center;
+}
+
+.vertCenter{
+    bottom: 50%;
+    position: absolute;
+}
+
+.cardContainer{
+    margin: 10px;
+}
+
+
+.cardInfo {
+    vertical-align: middle;
+    margin-top: 50%
+    /* margin-bottom: 20%; */
+  
+}
+
+.vertAlign {
+    vertical-align: middle !important;
+    text-align: center;
+  
+}

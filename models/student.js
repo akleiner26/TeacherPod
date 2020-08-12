@@ -13,7 +13,7 @@ const studentSchema = new Schema({
         ref: "Pods"
     },
     notes: {
-        type: Text
+        type: String
     }
 })
 

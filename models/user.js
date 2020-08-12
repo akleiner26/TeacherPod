@@ -38,7 +38,7 @@ const userSchema = new Schema({
         type: String
     },
     bio: {
-        type: Text
+        type: String
     },
     dateJoined: {
         type: Date,

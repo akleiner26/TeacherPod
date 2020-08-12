@@ -14,7 +14,7 @@ function Home() {
     return (
         <>
             <Header />
-            <Search />
+                <Search />
             <div className="teachCardContainer">
                 <>
 

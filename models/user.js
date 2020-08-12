@@ -28,7 +28,7 @@ const userSchema = new Schema({
     students: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Students"
+            ref: "Student"
         }
     ],
     location : {
@@ -49,7 +49,7 @@ const userSchema = new Schema({
     },
     pods: {
         type: Schema.Types.ObjectId,
-        ref: "Pods"
+        ref: "Pod"
     },
     hours: {
         type: String

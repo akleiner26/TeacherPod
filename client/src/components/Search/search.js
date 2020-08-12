@@ -34,7 +34,7 @@ const Search = (props) => {
             <FormGroup>
                 <Label for="priceSelect"><i class="fa fa-usd" aria-hidden="true"></i>Price Range</Label>
                 <Input type="select" name="priceSelect" id="priceSelect">
-                    <option>< $100/week</option>
+                    <option>Less than $100/week</option>
                     <option>Kindergarten</option>
                     <option>1st Grade</option>
                     <option>2nd Grade</option>
@@ -55,4 +55,4 @@ const Search = (props) => {
     );
 }
 
-export default Example;
+export default Search

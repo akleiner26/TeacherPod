@@ -1,31 +1,39 @@
-const mongoose = require("mongoose");
 const db = require("../models");
 
 module.exports = {
     //Used in GET Routes
     //Card search
     findAllTeachers: (req, res) => {
-        return db.User.find({ gradesTaught: req.body.grades, location: req.body.location });
+        db.User.find({ gradesTaught: req.body.grades, location: req.body.location })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     //Teacher Profile w/ Pods
     findOneTeacherById: (req, res) => {
-        return db.User.find({ _id: req.body.id }).populate("pods");
+        db.User.find({ _id: req.body.id }).populate("pods")
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     //Parent Profile w/ Students
     findOneParentById: (req, res) => {
-        return db.User.findOne({ _id: req.body.id }).populate("Students");
+        db.User.findOne({ _id: req.body.id }).populate("Students")
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     //Used in POST routes
     //Login
     findOneUserByLogin: (req, res) => {
-        return db.User.findOne({ username: req.body.username, password: req.body.password});
+        db.User.findOne({ username: req.body.username, password: req.body.password})
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     //Used in PUT routes
     //Parent Profile add child
     addOneStudentByParentId: (req, res) => {
-        db.Student.create(req.body).then( ({ _id }) => {
-            return db.User.findOneAndUpdate({ _id: req.body.id }, { $push: { Students: _id } }, { new: true })
-        });
+        db.Student.create(req.body).then( ({ _id }) => db.User.findOneAndUpdate({ _id: req.body.id }, { $push: { Students: _id } }, { new: true } ))
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+
     },
     //Used in DELETE routes
     //Parent Profile remove child
@@ -33,9 +41,9 @@ module.exports = {
         db.User.findOne({ _id: req.body.id }).populate("Students").then( ({ students }) => {
             students.forEach(student => {
                 if (student._id == req.body.idToDelete){
-                    db.Student.remove({ _id: student._id }).then(res => {
-                        return res;
-                    })
+                    db.Student.remove({ _id: student._id })
+                        .then(results => res.json(results))
+                        .catch(err => res.json(err))
                 }
             })
         })
@@ -45,9 +53,9 @@ module.exports = {
         db.User.findOne({ _id: req.body.id, isTeacher: true }).populate("Students").then( ({ students }) => {
             students.forEach(student => {
                 if (student._id == req.body.idToDelete){
-                    db.Student.remove({ _id: student._id }).then(response => {
-                        return response;
-                    })
+                    db.Student.remove({ _id: student._id })
+                        .then(results => res.json(results))
+                        .catch(err => res.json(err))
                 }
             })
         })
@@ -56,17 +64,21 @@ module.exports = {
     // Used in Get routes
     // Find all messages that user has recieved, takes in logged in users id
     findAllMessages:(req, res) => {
-        return db.Messenger.find({ receiver: req.body.id })
+        db.Messenger.find({ receiver: req.body.id })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     // Find all messages between user logged in and incoming user
     findAllMessagesBetween: (req, res) => {
-        return db.Messenger.find({ receiver: (req.body.id || req.body.senderId ), sender: (req.body.id || req.body.senderId ) });
+        db.Messenger.find({ receiver: (req.body.id || req.body.senderId ), sender: (req.body.id || req.body.senderId ) })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     },
     // Used in POST routes
     //Send a message, req.body.message must include sender(id), receiver(id), and content keys
     createMessage: (req, res) => {
-        db.Messenger.create(req.body.message).then(response => {
-            return response;
-        })
+        db.Messenger.create(req.body.message)
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
     }
 }

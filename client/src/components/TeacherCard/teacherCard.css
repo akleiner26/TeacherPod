@@ -31,5 +31,6 @@
 .cardBtn{
     bottom:0;
     position:absolute;
-    width:75px;
+    /* width:75px; */
+    width:100%
 }

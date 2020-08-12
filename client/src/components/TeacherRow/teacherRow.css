@@ -29,12 +29,6 @@
     margin: 10px;
 }
 
-.cardBtn{
-    bottom:0;
-    position:absolute;
-    /* width:75px; */
-    width:100%
-}
 
 .cardInfo {
     vertical-align: middle;
@@ -43,7 +37,7 @@
   
 }
 
-div.col-2 {
+.vertAlign {
     vertical-align: middle !important;
     text-align: center;
   

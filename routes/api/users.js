@@ -19,8 +19,8 @@ router.route("/teacher/:id")
 router.route("/parent/:id")
     .get(controller.findOneParentById)
 
-// Matches with "/api/users/:username"
-router.route("/:username")
-    .get(controller.findOneUserByLogin)
+// Matches with "/api/users/login"
+router.route("/login")
+    .post(controller.findOneUserByLogin)
 
 module.exports = router;

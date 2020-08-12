@@ -1,7 +1,17 @@
+/* .teachCardContainer {
+    margin-top: 25%;
+    margin-bottom: 5%;
+} */
+
+
 .cardThumb {
-    width: 150px !important;
+    /* width: 150px !important;
     height: 100px !important;
-    margin: 10px;
+    margin: 10px; */
+    width: 100%;
+    height: auto;
+    margin: 3%;
+    margin-bottom: 3% !important;
 }
 
 .cardText {

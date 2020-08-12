@@ -4,6 +4,10 @@ const controller = require("../../controller");
 // Matches with "/api/users"
 router.route("/")
     .get(controller.findAllTeachers)
+    .post(controller.createUser)
+
+router.route("/teacher")
+    .post(controller.createTeacher)
 
 // Matches with "/api/users/teacher/:id"
 router.route("/teacher/:id")

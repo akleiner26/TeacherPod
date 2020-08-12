@@ -3,7 +3,7 @@ const controller = require("../../controller");
 
 // Matches with "/api/students"
 router.route("/")
-    .create(controller.addOneStudentByParentId)
+    .put(controller.addOneStudentByParentId)
 
 // Matches with "/api/students/byparent/:id"
 router.route("/byparent/:id")

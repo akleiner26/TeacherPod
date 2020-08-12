@@ -11,8 +11,9 @@
     width: 100%;
     min-width: 80px;
     height: auto;
-    margin: 3%;
-    margin-bottom: 3% !important;
+    /* margin: 10px; */
+    /* margin bottom: 10px; */
+
 }
 
 .cardText {
@@ -33,4 +34,17 @@
     position:absolute;
     /* width:75px; */
     width:100%
+}
+
+.cardInfo {
+    vertical-align: middle;
+    margin-top: 50%
+    /* margin-bottom: 20%; */
+  
+}
+
+div.col-2 {
+    vertical-align: middle !important;
+    text-align: center;
+  
 }

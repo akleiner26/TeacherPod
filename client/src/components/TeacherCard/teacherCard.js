@@ -13,7 +13,7 @@ const Example = (props) => {
                 <Card className="cardText cardContainer">
                     <Row>
                         <Col xs="2">
-                            <CardImg className="cardThumb cardInfo" top width="100%" src={props.thumbnail} alt={props.name} />
+                            <CardImg className="cardThumb cardInfo align-middle" top width="100%" src={props.thumbnail} alt={props.name} />
                         </Col>
                         {/* <CardBody> */}
                         <Col xs="2">

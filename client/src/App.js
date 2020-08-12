@@ -6,19 +6,21 @@ import Logout from "./components/Logout/logout"
 import Messages from "./components/Messages/messages"
 import Signup from "./components/Signup/signup"
 import Home from "./components/Home/home"
+import Contact from "./components/Contact/contact"
 
 function App() {
   return (
- <Router>
-   <Switch>
-     <Route exact path="/" component={Home} />
-     <Route exact path="/home" component={Home} />
-     <Route exact path="/signup" component={Signup} />
-     <Route exact path="/login" component={Login} />
-     <Route exact path="/logout" component={Logout} />
-     <Route exact path="/messages" component={Messages} />
-   </Switch>
- </Router>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/logout" component={Logout} />
+        <Route exact path="/messages" component={Messages} />
+        <Route exact path="/contact" component={Contact} />
+      </Switch>
+    </Router>
   );
 }
 

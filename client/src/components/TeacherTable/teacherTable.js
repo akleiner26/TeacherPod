@@ -3,13 +3,14 @@ import "./teacherTable.css"
 import { Table, Col, Card } from "reactstrap"
 import teachers from "../../teachers.json"
 import TeacherRow from "../TeacherRow/teacherRow"
+import style from "./teacherTable.css"
 
 
 function TeacherTable(props) {
     return (
         <Col xs="10" className="offset-1">
-        <Card>
-        <Table hover>
+        <Card className="tableMargin">
+        <Table hover >
             <thead>
                 <tr>
                     <th>Photo</th>

@@ -5,6 +5,7 @@ import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import teachers from "../../teachers.json"
 import TeacherCard from "../TeacherCard/teacherCard"
+import Search from "../Search/search"
 import { Container } from "reactstrap"
 import style from "./home.css"
 
@@ -13,7 +14,7 @@ function Home() {
     return (
         <>
             <Header />
-            {/* <Search /> */}
+            <Search />
             <div className="teachCardContainer">
                 <>
 

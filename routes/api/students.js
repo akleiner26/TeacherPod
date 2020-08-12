@@ -2,7 +2,7 @@ const router = require("express").Router();
 const controller = require("../../controller");
 
 // Matches with "/api/students"
-router.route("/")
+router.route("/:id")
     .put(controller.addOneStudentByParentId)
 
 // Matches with "/api/students/byparent/:id"

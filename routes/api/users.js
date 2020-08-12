@@ -12,13 +12,14 @@ router.route("/teacher")
 // Matches with "/api/users/teacher/:id"
 router.route("/teacher/:id")
     .get(controller.findOneTeacherById)
+    .put(controller.updateProfile)
 
 // Matches with "/api/users/parent/:id"
 router.route("/parent/:id")
     .get(controller.findOneParentById)
 
-// Matches with "/api/users/:username"
-router.route("/:username")
-    .get(controller.findOneUserByLogin)
+// Matches with "/api/users/login/"
+router.route("/login/")
+    .post(controller.findOneUserByLogin)
 
 module.exports = router;

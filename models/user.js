@@ -31,7 +31,7 @@ const userSchema = new Schema({
             ref: "Student"
         }
     ],
-    location : {
+    location: {
         type: String
     },
     image: {

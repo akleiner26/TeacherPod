@@ -18,6 +18,16 @@ export default {
         return axios.get("/api/users/parent/" + id);
     },
 
+    // Gets all messages for a user based on username
+    findAllMessages: function (username) {
+        return axios.get("/api/messages/" + username);
+    },
+
+    // Gets all messages between two users
+    findMessageHistory: function (username1, username2) {
+        return axios.get("/api/messages/between/" + username1 + "/" + username2);
+    },
+
     // POST ROUTES
     // ==================================================
     // Creates a new parent account
@@ -38,6 +48,11 @@ export default {
     // Creates a pod based on teacher id
     createPod: function (id, podData) {
         return axios.post("/api/pods/", podData);
+    },
+
+    // Creates a new message
+    createMessage: function (msgData) {
+        return axios.post("/api/messages/", msgData);
     },
 
     // PUT ROUTES

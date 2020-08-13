@@ -3,7 +3,7 @@ const controller = require("../../controller");
 
 // Matches with "/api/students"
 router.route("/:id")
-    //Takes in params where id is teacherId, requires body object => {parentUsername, studentFirstName, studentLastName}
+    //Takes in params where id is parent id, requires body object => {parentUsername, studentFirstName, studentLastName}
     //This adds student to pod, pod must exist
     .put(controller.addOneStudentByParentId)
 

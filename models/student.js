@@ -13,14 +13,6 @@ const studentSchema = new Schema({
     preferredName: {
         type: String
     },
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
     gradeLevel: {
         type: String
     },

@@ -7,7 +7,7 @@ function Footer() {
     return (
         <>
             <footer>
-                <Nav className="navbar footer" >
+                <Nav className="navbar footer footer-fixed" >
                     <Container>
                         <NavItem href="/container">
                             <NavLink href="/contact">Contact</NavLink>

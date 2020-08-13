@@ -6,3 +6,16 @@
 .thumb {
     display: none !important;
 }
+
+.control-dots{
+    display: none !important;
+}
+
+.control-arrow{
+    display: none !important;
+}
+
+.carousel-status{
+    display: none !important;
+}
+

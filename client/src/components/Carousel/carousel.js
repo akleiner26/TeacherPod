@@ -1,9 +1,10 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
+
 function ImgCarousel () {
     return (
-    <Carousel autoPlay>
+    <Carousel infiniteLoop autoPlay>
             <div>
                 <img alt="Angela Davidson" src="images/carousel/angelaDavidsonCarousel.jpg"/>
                 <p className="legend">Angela Davidson: Algebra</p>

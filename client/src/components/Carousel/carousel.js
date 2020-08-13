@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 
 function ImgCarousel () {
     return (
-    <Carousel infiniteLoop autoPlay>
+    <Carousel infiniteLoop autoPlay interval="5000">
             <div>
                 <img alt="Angela Davidson" src="images/carousel/angelaDavidsonCarousel.jpg"/>
                 <p className="legend">Angela Davidson: Algebra</p>

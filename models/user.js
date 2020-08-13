@@ -47,10 +47,12 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    pods: {
-        type: Schema.Types.ObjectId,
-        ref: "Pod"
-    },
+    pods: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Pod"
+        }
+    ],
     hours: {
         type: String
     },

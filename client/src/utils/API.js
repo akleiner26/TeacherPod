@@ -35,6 +35,11 @@ export default {
         return axios.post("/api/users/login", loginData);
     },
 
+    // Creates a pod based on teacher id
+    createPod: function (id, podData) {
+        return axios.post("/api/pods/", podData);
+    },
+
     // PUT ROUTES
     // ==================================================
     // Updates a teacher's profile based on teacher's id
@@ -47,6 +52,11 @@ export default {
         return axios.put("/api/students/" + id, studentData);
     },
 
+    // Adds a student to a pod based in pod id
+    addStudentToPod: function (id, studentData) {
+        return axios.put("/api/pods/" + id, studentData);
+    },
+
     // DELETE ROUTES
     // ==================================================
     // Deletes a student from db based on parent id
@@ -57,5 +67,10 @@ export default {
     // Deletes a student from a pod based on pod id, but leaves student in db under parent
     deleteStudentFromPod: function (id, idToDelete) {
         return axios.delete("/api/students/pod/" + id, idToDelete);
+    },
+
+    // Deletes a pod from db based on pod id
+    deletePod: function (id, teacherId) {
+        return axios.delete("/api/pods/" + id, teacherId);
     }
 };

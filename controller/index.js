@@ -25,7 +25,7 @@ module.exports = {
     },
     //Parent Profile w/ Students
     findOneParentById: (req, res) => {
-        db.User.find({ _id: req.params.id })
+        db.User.find({ _id: req.params.id }).populate("students")
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
@@ -89,20 +89,6 @@ module.exports = {
             students.forEach(student => {
                 if (student.firstName == req.body.studentFirstName && student.lastName == req.body.studentLastName) {
                     db.Pod.findOneAndUpdate({ _id: req.params.id }, { $push: { students: student._id } })
-                        .then(results => {
-                            res.json(results)
-                        })
-                }
-            })
-        })
-    },
-    addStudent: (req, res) => {
-        db.User.find({ username: req.body.parentUsername }).populate("students").then(results => {
-            console.log(results[0].students);
-            let students = results[0].students;
-            students.forEach(student => {
-                if (student.firstName == req.body.studentFirstName && student.lastName == req.body.studentLastName){
-                    db.Pod.findOneAndUpdate({ _id: req.params.id }, { $push: { students: student._id} }, { new: true})
                         .then(results => {
                             res.json(results)
                         })

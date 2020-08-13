@@ -9,10 +9,15 @@ router.route("/")
     //Requires body object => {username, password}
     .post(controller.createUser)
 
-// Matches with "/api/users/teacher"
-router.route("/teacher")
+// Matches with "/api/users/signup/teacher"
+router.route("/signup/teacher")
     //Requires body object => {username, password}, isTeacher boolean is added in controller
     .post(controller.createTeacher)
+    
+// Matches with "/api/users/signup"
+router.route("/signup")
+    //Requires body object => {username, password}
+    .post(controller.createUser)
 
 // Matches with "/api/users/teacher/:id"
 router.route("/teacher/:id")
@@ -30,6 +35,13 @@ router.route("/parent/:id")
 // Matches with "/api/users/login"
 router.route("/login")
     //Takes in body object => {username, password}
-    .post(controller.findOneUserByLogin)
+    .post(controller.loginUser)
+
+router.route("/logout")
+    //Logs user out by clearing the cookie
+    .post((req, res) => {
+        res.cookie("session", process.env.cookieSecret, {expires: new Date(0)});
+        res.status(200).json({message: "User logged out"});
+    })
 
 module.exports = router;

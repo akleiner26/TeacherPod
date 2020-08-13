@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const path = require("path");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,6 +20,15 @@ if (process.env.NODE_ENV === "production") {
 
 // Connects to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/teacher-pod");
+
+//Sessions
+const sessions = require("client-sessions");
+
+app.use(sessions({
+  cookieName: "session",
+  secret: process.env.cookieSecret,
+  duration: 6 * 60 * 60 * 1000 // 6 hours 
+}))
 
 // Pulls in API routes for use
 app.use(routes);

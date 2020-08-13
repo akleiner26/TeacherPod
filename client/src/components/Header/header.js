@@ -35,8 +35,8 @@ function Header() {
     return (
         <>
             <header className="topNav">
-                <Navbar color="light" light expand="md" className="fixed-top">
-                    <NavbarBrand href="/">TeachPod <img className="logo" src="images/icons/peas.png"></img></NavbarBrand>
+                <Navbar color="light" light expand="md" className="nav fixed-top shadow-sm">
+                    <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="images/icons/peas.png"></img></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>

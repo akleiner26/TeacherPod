@@ -12,7 +12,7 @@ function TeacherTable(props) {
         <Card className="tableMargin">
         <Table hover >
             <thead>
-                <tr>
+                <tr className="teacherTableHead">
                     <th>Photo</th>
                     <th>Name</th>
                     <th>Grade</th>

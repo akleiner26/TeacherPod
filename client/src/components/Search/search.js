@@ -8,12 +8,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Search = (props) => {
     return (
         <Col className="offset-1" xs="10">
-            <Card className="m-3">
+            <Card className="mb-3">
                 <Row>
                 <Col className="offset-1" xs="5">
-                <h3>Pod Search</h3>
-                    <Card className="m-3">
-                    <Form className="m-2">
+                <h3 className="m-2"><span className="pod">Pod</span> Search</h3>
+                    <Card className="m-2 mb-4">
+                    <Form className="m-2 podSearchForm">
                         <FormGroup>
                             <Label for="zipCode"><i class="fa fa-map-marker" aria-hidden="true"></i> Zip Code</Label>
                             <Input type="text" name="zipCode" id="zipCode" placeholder="12345" />

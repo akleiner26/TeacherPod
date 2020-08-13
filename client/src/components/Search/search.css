@@ -19,3 +19,10 @@
     display: none !important;
 }
 
+.pod {
+    color: #117840;
+}
+
+.podSearchForm{
+    padding: 15px;
+}

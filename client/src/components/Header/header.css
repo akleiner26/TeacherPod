@@ -2,3 +2,23 @@
 .topNav {
     margin-bottom: 90px;
 }
+
+.logo{
+    width: 25px;
+    height: 25px;
+}
+
+.teach{
+    color: #30DAC7;
+}
+
+.pod {
+    color: #117840;
+}
+
+.nav {
+   background-color: white !important;
+   border-bottom: solid;
+   border-width: 1px;
+   border-color: #ECECEC;
+}

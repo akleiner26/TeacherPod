@@ -21,29 +21,41 @@ export default {
     // POST ROUTES
     // ==================================================
     // Creates a new parent account
-    createParent: function () {
+    createParent: function (userData) {
         return axios.post("/api/users", userData);
     },
     
     // Creates a new teacher account
-    createTeacher: function () {
+    createTeacher: function (userData) {
         return axios.post("/api/users/teacher", userData);
     },
 
     // Sends the user login information
-    sendLoginInfo: function () {
+    sendLoginInfo: function (loginData) {
         return axios.post("/api/users/login", loginData);
     },
 
     // PUT ROUTES
     // ==================================================
     // Updates a teacher's profile based on teacher's id
-    updateTeacherProfile: function (id) {
+    updateTeacherProfile: function (id, teacherProfileData) {
         return axios.put("/api/users/teacher/" + id, teacherProfileData);
-    }
+    },
 
+    // Creates a student based on parent id
+    createStudent: function (id, studentData) {
+        return axios.put("/api/students/" + id, studentData);
+    },
 
     // DELETE ROUTES
     // ==================================================
+    // Deletes a student from db based on parent id
+    deleteStudentFromDB: function (id, idToDelete) {
+        return axios.delete("/api/students/byparent/" + id, idToDelete);
+    },
 
+    // Deletes a student from a pod based on pod id, but leaves student in db under parent
+    deleteStudentFromPod: function (id, idToDelete) {
+        return axios.delete("/api/students/pod/" + id, idToDelete);
+    }
 };

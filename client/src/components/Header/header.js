@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Collapse,
     Navbar,
@@ -13,12 +13,24 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
-import style from "./header.css"
+import style from "./header.css";
+import axios from "axios";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedin, setLogin] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        // axios.get("/api/users/login").then(response => {
+        //     setLogin(response);
+        // })
+        //Choose what login setting to display for testing purposes
+        //True => logged in
+        //False => Not a user
+        setLogin(true);
+    }, [])
 
     return (
         <>
@@ -32,16 +44,27 @@ function Header() {
                                 <NavLink href="/announcements">Announcements</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/messages">Messages</NavLink>
+                            {isLoggedin ?
+                                <NavLink 
+                                href="/messages">Messages</NavLink>
+                                :
+                                <NavLink href="/login">Messages</NavLink>
+                            }
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
+                                    {isLoggedin ?
                                     <DropdownItem href="/profile">
                                         Profile
                                     </DropdownItem>
+                                    :
+                                    <DropdownItem href="/login">
+                                        Profile
+                                    </DropdownItem>
+                                    }
                                     <DropdownItem href="/signup">
                                         Signup
                                     </DropdownItem>

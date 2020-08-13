@@ -1,5 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
+const authCheck = require("../configs/authentication/isAuthenticated");
 
 module.exports = {
     //Used in GET Routes
@@ -55,6 +56,9 @@ module.exports = {
                 }
             })
             .catch(err => res.json(err))
+    },
+    loginStatus: (req, res) => {
+        authCheck(req, res);
     },
     createUser: (req, res) => {
         db.User.find({ username: req.body.username })

@@ -36,6 +36,8 @@ router.route("/parent/:id")
 router.route("/login")
     //Takes in body object => {username, password}
     .post(controller.loginUser)
+    //Checks if the user is logged in
+    .get(controller.loginStatus)
 
 router.route("/logout")
     //Logs user out by clearing the cookie

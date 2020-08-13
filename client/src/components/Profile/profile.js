@@ -28,12 +28,9 @@ const Profile = () => {
                                             </Col>
                                 </Row>
                                 <p><strong>About:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus doloremque laboriosam? Saepe sapiente, atque delectus modi, voluptas quidem voluptatem iure dolorum perspiciatis expedita, voluptates quae eius repellat similique exercitationem?</p>
+                                <a href="/messages">
                                 <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
-                                {/* <Row className="m-2">
-                                    <Col className="offset-4" xs="2">
-                                        
-                                    </Col>
-                                </Row> */}
+                                </a>
                             </Col>
                         </Row>
                     </Card>

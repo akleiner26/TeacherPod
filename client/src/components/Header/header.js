@@ -36,7 +36,7 @@ function Header() {
         <>
             <header className="topNav">
                 <Navbar color="light" light expand="md" className="fixed-top">
-                    <NavbarBrand href="/">TeachPod</NavbarBrand>
+                    <NavbarBrand href="/">TeachPod <img className="logo" src="images/icons/peas.png"></img></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>

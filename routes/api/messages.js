@@ -5,9 +5,12 @@ const controller = require("../../controller");
 router.route("/")
     .post(controller.createMessage)
 
-// Matches with "/api/messages/:id"
-router.route("/:id")
+// Matches with "/api/messages/:username"
+router.route("/:username")
     .get(controller.findAllMessages)
-    .get(controller.findAllMessagesBetween)
 
+// Matches with "/api/messages/between"
+router.route("/between/:usernames")
+    .get(controller.findAllMessagesBetween)
+    
 module.exports = router;

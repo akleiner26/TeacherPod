@@ -6,5 +6,6 @@ const controller = require("../../controller");
 router.route("/:id")
     .post(controller.createPod)
     .put(controller.addStudent)
+    .delete(controller.removePod)
 
 module.exports = router;

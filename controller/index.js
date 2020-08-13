@@ -63,6 +63,13 @@ module.exports = {
             })
             .catch(err => res.json(err))
     },
+    removePod: (req, res) => {
+        db.Pod.remove({ _id: req.params.id })
+            .catch(err => res.json(err))
+        db.User.findOneAndUpdate({ _id: req.body.id }, { $pull: { pods: req.params.id } })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
     //Used in PUT routes
     //Parent Profile add child
     updateProfile: (req, res) => {
@@ -140,14 +147,23 @@ module.exports = {
     // Used in Get routes
     // Find all messages that user has recieved, takes in logged in users id
     findAllMessages: (req, res) => {
-        db.Messenger.find({ receiver: req.body.id })
+        db.Messenger.find({ receiver: req.params.username })
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
     // Find all messages between user logged in and incoming user
     findAllMessagesBetween: (req, res) => {
-        db.Messenger.find({ receiver: (req.body.id || req.body.senderId), sender: (req.body.id || req.body.senderId) })
-            .then(results => res.json(results))
+        console.log(req.params.usernames);
+        let users = req.params.usernames.split("+");
+        let messages = {};
+        db.Messenger.find({ receiver: users[0], sender: users[1]})
+            .then(results => messages.received = results)
+            .catch(err => res.json(err))
+        db.Messenger.find({ receiver: users[1], sender: users[0]})
+            .then(results => {
+                messages.sent = results;
+                res.json(messages);
+            })
             .catch(err => res.json(err))
     },
     // Used in POST routes

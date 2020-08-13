@@ -1,0 +1,14 @@
+.teacherImage{
+    /* max-width: 375px;
+    max-height: 250px; */
+    margin: 0 auto;
+    /* border-radius: 100%; */
+
+}
+
+.proPicCol{
+    border-right: solid;
+    border-width: thin;
+    border-color: rgba(190, 190, 190, 0.63);
+}
+

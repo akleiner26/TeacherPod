@@ -13,6 +13,7 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import style from "./header.css"
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +22,8 @@ function Header() {
 
     return (
         <>
-            <header>
-                <Navbar color="light" light expand="md">
+            <header className="topNav">
+                <Navbar color="light" light expand="md" className="fixed-top">
                     <NavbarBrand href="/">TeachPod</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
@@ -61,8 +62,9 @@ function Header() {
                         {/* <NavbarText>Simple Text</NavbarText> */}
                     </Collapse>
                 </Navbar>
-
             </header>
+
+
         </>
     );
 }

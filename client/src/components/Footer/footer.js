@@ -7,12 +7,12 @@ function Footer() {
     return (
         <>
             <footer>
-                <Nav className="navbar footer footer-fixed" >
-                    <Container>
+                <Nav className="navbar footer footer-fixed shadow" >
+                    {/* <Container> */}
                         <NavItem href="/container">
-                            <NavLink href="/contact">Contact</NavLink>
+                            <NavLink className="contactLink" href="/contact">Contact</NavLink>
                         </NavItem>
-                    </Container>
+                    {/* </Container> */}
                 </Nav>
             </footer>
         </>

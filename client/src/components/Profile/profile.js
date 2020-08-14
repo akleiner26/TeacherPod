@@ -1,13 +1,26 @@
-import React, { useState } from "react"
+import React, { useState, setState } from "react"
 import style from "./profile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
+import API from "../../utils/API"
 
 const Profile = () => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
+    const [teacher, setTeacher] = useState({})
+    const [pods, setPods] = useState({});
+
+    useEffect(() => {
+        API.getTeacher()
+        .then(res =>{
+            console.log(res);
+                // setTeacher(res.data),
+                // setPods(res.data.pods)
+            }
+            ).catch(err => console.log(err));
+    },[])
 
     return (
         <>

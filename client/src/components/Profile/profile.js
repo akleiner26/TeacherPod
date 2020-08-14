@@ -62,7 +62,7 @@ const Profile = (props) => {
                     </Card>
                 </Col>
             </Row>
-            <PodTable />
+            <PodTable pods={pods} />
             <Footer />
         </>
     )

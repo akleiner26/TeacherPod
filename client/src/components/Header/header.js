@@ -15,22 +15,23 @@ import {
 } from 'reactstrap';
 import style from "./header.css";
 import axios from "axios";
+import API from "../../utils/API";
 
-function Header() {
+function Header(props) {
     const [isOpen, setIsOpen] = useState(false);
-    const [loggedIn, setLogin] = useState("");
 
     const toggle = () => setIsOpen(!isOpen);
 
     useEffect(() => {
         axios.get("/api/users/login").then(response => {
             console.log(response.data);
-            setLogin(response.data);
+            props.func.setLogin(response.data.status);
+            props.func.setUsername(response.data.username);
         })
         //Choose what login setting to display for testing purposes
         //True => logged in
         //False => Not a user
-        setLogin(true);
+        // props.func.setLogin(true);
     }, [])
 
     const logOut = event => {
@@ -42,6 +43,7 @@ function Header() {
                 }
             })
     }
+    console.log(props);
 
     return (
         <>
@@ -55,14 +57,14 @@ function Header() {
                                 <NavLink href="/announcements">Announcements</NavLink>
                             </NavItem>
                             <NavItem>
-                            {loggedIn ?
+                            {props.loggedIn ?
                                 <NavLink 
                                 href="/messages">Messages</NavLink>
                                 :
                                 <NavLink href="/login">Messages</NavLink>
                             }
                             </NavItem>
-                            {!loggedIn ?
+                            {!props.loggedIn ?
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Account

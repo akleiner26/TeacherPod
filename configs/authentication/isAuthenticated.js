@@ -1,8 +1,8 @@
 module.exports = (req, res) => {
     if (!(req.session && req.session.userId)){
-        res.send(false);
+        res.json({status: false})
     }
     else {
-       res.send(true)
+       res.json({status: true, username: req.session.username})
     }
 }

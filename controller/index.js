@@ -35,24 +35,23 @@ module.exports = {
     //Login
     loginUser: (req, res) => {
         console.log(req.body);
-        db.User.find({ username: req.body.username})
+        db.User.findOne({ username: req.body.username})
             .then(user => {
+                console.log(user);
                 if (!user) {
                     res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                 }
                 else {
-                    let login = bcrypt.compareSync(req.body.password, user[0].password);
+                    let login = bcrypt.compareSync(req.body.password, user.password);
                     if(!login){
                         res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                     }
-                    else {
-                        console.log("matched staging for cookie")
-                        //Save session id
-                        req.session.userId = user._id;
-                        req.session.username = user.username;
-                        console.log(req.session)
-                        res.status(200).json({message: "Logged in"});
-                    }  
+                    console.log("matched staging for cookie")
+                    //Save session id
+                    req.session.userId = user._id;
+                    req.session.username = user.username;
+                    console.log(req.session)
+                    res.status(201).json({message: "Logged in"});
                 }
             })
             .catch(err => res.json(err))

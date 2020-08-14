@@ -3,6 +3,6 @@ module.exports = (req, res) => {
         res.json({status: false})
     }
     else {
-       res.json({status: true, username: req.session.username})
+       res.json({status: true, username: req.session.username, id: req.session.userId})
     }
 }

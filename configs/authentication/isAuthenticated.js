@@ -1,6 +1,8 @@
 module.exports = (req, res) => {
-    if (!req.session){
+    if (!(req.session && req.session.userId)){
         res.send(false);
     }
-    res.send(true)
+    else {
+       res.send(true)
+    }
 }

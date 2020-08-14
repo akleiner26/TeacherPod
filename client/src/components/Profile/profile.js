@@ -5,13 +5,14 @@ import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 
-const Profile = () => {
+const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
+    const [id, setId] = useState("");
 
     return (
         <>
-            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
+            <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />
             <Row className="mt-5 profileCardRow">
                 <Col xs="8" className="offset-2">
                     <Card className="profileCard">

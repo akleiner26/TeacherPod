@@ -13,12 +13,12 @@ function TeacherTable(props) {
         <Table className="teacherTable" hover >
             <thead className="teacherHeadRow">
                 <tr className="teacherTableHead">
-                    <th className="teacherTableHeadTitle cameraIcon"><i class="fa fa-camera-retro" aria-hidden="true"></i></th>
-                    <th className="teacherTableHeadTitle">Name</th>
-                    <th className="teacherTableHeadTitle">Grade</th>
-                    <th className="teacherTableHeadTitle">Price/Week</th>
-                    <th className="teacherTableHeadTitle">Pod Capacity</th>
-                    <th className="teacherTableHeadTitle">Message</th>
+                    <th className="darkGrayText cameraIcon"><i class="fa fa-camera-retro" aria-hidden="true"></i></th>
+                    <th className="darkGrayText">Name</th>
+                    <th className="darkGrayText">Grade</th>
+                    <th className="darkGrayText">Price/Week</th>
+                    <th className="darkGrayText">Pod Capacity</th>
+                    <th className="darkGrayText">Message</th>
                 </tr>
             </thead>
             <tbody className="teacherTable">

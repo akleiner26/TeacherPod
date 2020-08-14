@@ -1,4 +1,4 @@
-import React, { useState, setState } from "react"
+import React, { useState, useEffect } from "react"
 import style from "./profile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
@@ -6,12 +6,13 @@ import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 import API from "../../utils/API"
 
-const Profile = () => {
+const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
+    const [id, setId] = useState("");
     const [teacher, setTeacher] = useState({})
     const [pods, setPods] = useState({});
-
+    
     useEffect(() => {
         API.getTeacher()
         .then(res =>{
@@ -21,10 +22,11 @@ const Profile = () => {
             }
             ).catch(err => console.log(err));
     },[])
+ 
 
     return (
         <>
-            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
+            <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />
             <Row className="mt-5 profileCardRow">
                 <Col xs="8" className="offset-2">
                     <Card className="profileCard">

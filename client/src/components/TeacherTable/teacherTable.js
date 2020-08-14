@@ -1,7 +1,7 @@
 import React from "react"
 import "./teacherTable.css"
 import { Table, Col, Card } from "reactstrap"
-import teachers from "../../teachers.json"
+// import teachers from "../../teachers.json"
 import TeacherRow from "../TeacherRow/teacherRow"
 import style from "./teacherTable.css"
 
@@ -22,14 +22,7 @@ function TeacherTable(props) {
                 </tr>
             </thead>
             <tbody className="teacherTable">
-                {teachers.map(teacher => <TeacherRow className="teacherTable"
-                    key={teacher.id}
-                    thumbnail={teacher.thumbnail}
-                    name={teacher.name}
-                    subject={teacher.subject}
-                    price={teacher.price}
-                    capacity={teacher.capacity} />
-                )}
+                {props.children}
             </tbody>
         </Table>
         </Card>

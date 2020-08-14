@@ -12,6 +12,12 @@ module.exports = {
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
+    findAllTeachersUnsearched: (req, res) => {
+        // console.log(req.query);
+        db.User.find({ isTeacher: true }).populate("pods")
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
     //Teacher Profile w/ Pods
     findOneTeacherById: (req, res) => {
         db.User.find({ _id: mongoose.Types.ObjectId(req.params.id) }).populate({

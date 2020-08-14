@@ -9,11 +9,15 @@ router.route("/")
     //Requires body object => {username, password}
     .post(controller.createUser)
 
+// Matches with "/api/users/teachers"
+router.route("/teachers")
+    .get(controller.findAllTeachersUnsearched)
+
 // Matches with "/api/users/signup/teacher"
 router.route("/signup/teacher")
     //Requires body object => {username, password}, isTeacher boolean is added in controller
     .post(controller.createTeacher)
-    
+
 // Matches with "/api/users/signup"
 router.route("/signup")
     //Requires body object => {username, password}
@@ -42,8 +46,8 @@ router.route("/login")
 router.route("/logout")
     //Logs user out by clearing the cookie
     .post((req, res) => {
-        res.cookie("session", process.env.cookieSecret, {expires: new Date(0)});
-        res.status(200).json({message: "User logged out"});
+        res.cookie("session", process.env.cookieSecret, { expires: new Date(0) });
+        res.status(200).json({ message: "User logged out" });
     })
 
 module.exports = router;

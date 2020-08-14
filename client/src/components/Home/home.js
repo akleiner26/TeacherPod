@@ -18,6 +18,7 @@ function Home() {
         grades: "",
         price: ""
     })
+    const [teachers, setTeachers] = useState({})
 
     console.log(loggedIn, username);
 

@@ -50,7 +50,7 @@ const Search = (props) => {
                                 <option>Greater than $500/week</option>
                             </Input>
                         </FormGroup>
-                        <Button>Submit</Button>
+                        <Button className="btnHover hvr-fade">Submit</Button>
                     </Form>
                     </Card>
                 </Col>

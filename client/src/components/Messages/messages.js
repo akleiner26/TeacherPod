@@ -65,7 +65,7 @@ function Messages() {
                             <Label for="message" hidden>Message</Label>
                             <Input type="text" name="message" id="messageID" placeholder="Write Message Here" />
                         </FormGroup>
-                        <Button>Send</Button>
+                        <Button className="btnHover hvr-fade">Send</Button>
 
                     </Form>
                 </Col>

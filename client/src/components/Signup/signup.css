@@ -11,3 +11,11 @@
     margin-right: 2em;
 
 }
+
+.hrefColor {
+    color: #117840;
+}
+
+.hrefColor:hover {
+    color: teal;
+}

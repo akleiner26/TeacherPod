@@ -39,7 +39,7 @@ function Signup() {
                                 <Label for="confirmPassword">Confirm Password</Label>
                                 <Input type="password" name="confirmpassword" id="confirmPassword" placeholder="Confirm password here" />
                             </FormGroup>
-                            <Button>Submit</Button> Already a member? <a href="/login">Login </a>
+                            <Button className="btnHover hvr-fade">Submit</Button> Already a member? <a className="hrefColor" href="/login">Login </a>
                         </Form>
                     </CardBody>
                 </Card>

@@ -1,9 +1,5 @@
 .teacherImage{
-    /* max-width: 375px;
-    max-height: 250px; */
     margin: 0 auto;
-    /* border-radius: 100%; */
-
 }
 
 .proPicCol{
@@ -12,3 +8,7 @@
     border-color: rgba(190, 190, 190, 0.63);
 }
 
+.mailIcon{
+    vertical-align: middle !important;
+    text-align: center !important;
+}

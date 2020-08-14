@@ -19,3 +19,43 @@
     display: none !important;
 }
 
+.pod {
+    color: #117840;
+}
+
+.podSearchForm{
+    padding: 15px;
+}
+
+.searchArea{
+    margin-top: -40px !important;
+    padding-top: 40px;
+    background: linear-gradient(180deg, rgba(48,218,199,.1) 20%, rgba(17,120,64,.8) 100%);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+
+.btnHover{
+    display: inline-block !important;
+    vertical-align: middle !important;
+    -webkit-transform: perspective(1px) translateZ(0) !important;
+    transform: perspective(1px) translateZ(0) !important;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
+    overflow: hidden !important;
+    -webkit-transition-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+    -webkit-transition-property: color, background-color !important;
+    transition-property: color, background-color !important;
+  }
+  .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+    background-color: #117840 !important;
+    color: white !important;
+  }
+
+  .hvr-fade{
+      background:white;
+      color: black;
+  }
+
+  

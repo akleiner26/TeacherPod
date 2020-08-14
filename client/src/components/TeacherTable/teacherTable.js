@@ -10,9 +10,9 @@ function TeacherTable(props) {
     return (
         <Col xs="10" className="offset-1">
         <Card className="tableMargin">
-        <Table hover >
-            <thead>
-                <tr>
+        <Table className="teacherTable" hover >
+            <thead className="teacherHeadRow">
+                <tr className="teacherTableHead">
                     <th>Photo</th>
                     <th>Name</th>
                     <th>Grade</th>
@@ -21,8 +21,8 @@ function TeacherTable(props) {
                     <th>Message</th>
                 </tr>
             </thead>
-            <tbody>
-                {teachers.map(teacher => <TeacherRow
+            <tbody className="teacherTable">
+                {teachers.map(teacher => <TeacherRow className="teacherTable"
                     key={teacher.id}
                     thumbnail={teacher.thumbnail}
                     name={teacher.name}

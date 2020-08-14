@@ -7,8 +7,8 @@ import TeacherTable from "../TeacherTable/teacherTable";
 import TeacherRow from "../TeacherRow/teacherRow";
 import Search from "../Search/search";
 import API from "../../utils/API"
-import { Container, Table } from "reactstrap";
-import style from "./home.css";
+// import { Container, Table } from "reactstrap";
+// import style from "./home.css";
 
 function Home() {
     const [loggedIn, setLogin] = useState("");
@@ -56,6 +56,8 @@ function Home() {
             .then(res => {
                 console.log("API call is working...")
                 console.log(res)
+
+                setTeachers(res.data)
             })
 
     }
@@ -73,6 +75,7 @@ function Home() {
 
                     return <TeacherRow
                         key={teacher._id}
+                        id={teacher._id}
                         image={teacher.image}
                         name={name}
                         gradesTaught={teacher.gradesTaught}

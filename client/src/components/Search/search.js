@@ -11,7 +11,7 @@ const Search = (props) => {
             {/* <Card className="mb-3"> */}
                 <Row>
                 <Col className="offset-1" xs="5">
-                <h3 className="m-2"><span className="pod">Pod</span> Search</h3>
+                <h3 className="m-2"><span className="aquaText">Pod</span> Search</h3>
                     <Card className="m-2 mb-4">
                     <Form className="m-2 podSearchForm">
                         <FormGroup>

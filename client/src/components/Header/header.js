@@ -30,7 +30,7 @@ function Header() {
         //Choose what login setting to display for testing purposes
         //True => logged in
         //False => Not a user
-        // setLogin(true);
+        setLogin(true);
     }, [])
 
     const logOut = event => {

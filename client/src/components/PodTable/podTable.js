@@ -6,7 +6,7 @@ import PodRow from "../PodRow/podRow"
 
 function PodTable(props) {
     return (
-        <Col xs="10" className="offset-1">
+        <Col xs="10" className="offset-1 mt-4">
         <Card className="tableMargin">
         <Table hover >
             <thead>

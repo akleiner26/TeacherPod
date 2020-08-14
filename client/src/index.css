@@ -11,3 +11,83 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.aquaText{
+  color: rgba(57,180,167,1);
+}
+
+
+.btnHover{
+  display: inline-block !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+  -webkit-transition-duration: 0.3s !important;
+  transition-duration: 0.3s !important;
+  -webkit-transition-property: color, background-color !important;
+  transition-property: color, background-color !important;
+}
+.hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+  background-color: rgba(57,180,167,1) !important;
+  color: white !important;
+}
+
+.hvr-fade{
+    background:white;
+    color: rgba(57,180,167,1) !important;
+    border-color: rgba(57,180,167,1) !important;
+}
+
+.darkBtnHover{
+  display: inline-block !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+  -webkit-transition-duration: 0.3s !important;
+  transition-duration: 0.3s !important;
+  -webkit-transition-property: color, background-color !important;
+  transition-property: color, background-color !important;
+}
+.darkHvr-fade:hover, .darkHvr-fade:focus, .darkHvr-fade:active {
+  background-color: rgba(40,120,111,1) !important;
+  color: white !important;
+  border: none;
+}
+
+.darkHvr-fade{
+    background-color:rgba(57,180,167,1) !important;
+    color: white !important;
+    border-color: rgba(57,180,167,1);
+}
+
+.iconBtnHover{
+  display: inline-block !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+  -webkit-transition-duration: 0.3s !important;
+  transition-duration: 0.3s !important;
+  -webkit-transition-property: color, background-color !important;
+  transition-property: color, background-color !important;
+}
+.iconHvr-fade:hover, .iconHvr-fade:focus, .iconHvr-fade:active {
+  background-color: white !important;
+  color: rgba(40,120,111,1) !important;
+  border: none;
+}
+
+.iconHvr-fade{
+    background-color:white !important;
+    color: rgba(57,180,167,1) !important;
+    border-color: rgba(57,180,167,1);
+}
+
+.darkGrayText{
+    color: rgb(97, 97, 97);
+}

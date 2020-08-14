@@ -7,8 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Search = (props) => {
     return (
-        <Col className="offset-1" xs="10">
-            <Card className="mb-3">
+        <Col className= "col-12 searchArea">
+            {/* <Card className="mb-3"> */}
                 <Row>
                 <Col className="offset-1" xs="5">
                 <h3 className="m-2"><span className="pod">Pod</span> Search</h3>
@@ -58,7 +58,7 @@ const Search = (props) => {
                    <ImgCarousel className="carousel"/>
                 </Col>
                 </Row>
-            </Card>
+            {/* </Card> */}
         </Col>
     );
 }

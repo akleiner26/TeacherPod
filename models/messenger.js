@@ -24,6 +24,6 @@ const messengerSchema = new Schema({
     },
 })
 
-const Messenger = mongoose.model("Messengers", messengerSchema);
+const Messenger = mongoose.model("Messenger", messengerSchema);
 
 module.exports = Messenger;

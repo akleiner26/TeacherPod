@@ -12,10 +12,10 @@ const Profile = () => {
     return (
         <>
             <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
-            <Row className="mt-5">
+            <Row className="mt-5 profileCardRow">
                 <Col xs="8" className="offset-2">
                     <Card className="profileCard">
-                        <CardTitle className="text-center loginTitle">Profile
+                        <CardTitle className="text-center loginTitle darkGrayText">PROFILE
                     <hr className="line"></hr>
                         </CardTitle>
                         <Row className="m-3">
@@ -26,12 +26,12 @@ const Profile = () => {
                                 <Row>
                                     <Col>
                                             <h2>
-                                                <strong>Lillian Woods </strong>
+                                                <strong className="aquaText">Lillian Woods </strong>
                                             </h2>
                                             </Col>
                                 </Row>
                                 <p><strong>About:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus doloremque laboriosam? Saepe sapiente, atque delectus modi, voluptas quidem voluptatem iure dolorum perspiciatis expedita, voluptates quae eius repellat similique exercitationem?</p>
-                                <a href="/messages">
+                                <a href="/messages" className="iconHvr-fade">
                                 <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
                                 </a>
                             </Col>

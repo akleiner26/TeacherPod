@@ -37,30 +37,6 @@
   
 }
 
-.tblBtnHover{
-    display: inline-block !important;
-    vertical-align: middle !important;
-    -webkit-transform: perspective(1px) translateZ(0) !important;
-    transform: perspective(1px) translateZ(0) !important;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
-    overflow: hidden !important;
-    -webkit-transition-duration: 0.3s !important;
-    transition-duration: 0.3s !important;
-    -webkit-transition-property: color, background-color !important;
-    transition-property: color, background-color !important;
-  }
-  .tblHvr-fade:hover, .tblHvr-fade:focus, .tblHvr-fade:active {
-    background-color: rgba(40,120,111,1) !important;
-    color: white !important;
-    border: none;
-  }
-
-  .tblHvr-fade{
-      background-color:rgba(57,180,167,1) !important;
-      color: white !important;
-      border-color: rgba(57,180,167,1);
-  }
-
   .teacherTableName{
       color: rgba(57,180,167,1);
       font-weight: bold;

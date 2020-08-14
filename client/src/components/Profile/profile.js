@@ -10,19 +10,25 @@ const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
-    const [teacher, setTeacher] = useState({})
-    const [pods, setPods] = useState({});
+    const [teacher, setTeacher] = useState({
+        firstName: "",
+        lastName: "",
+
+    })
+    const [pods, setPods] = useState([]);
     
     useEffect(() => {
-        API.getTeacher()
+        API.getTeacher(id)
         .then(res =>{
             console.log(res);
-                // setTeacher(res.data),
-                // setPods(res.data.pods)
+                setTeacher(res.data[0])
+                console.log(teacher)
+                setPods(res.data[0].pods)
             }
             ).catch(err => console.log(err));
-    },[])
+    },[id])
  
+  
 
     return (
         <>
@@ -41,11 +47,13 @@ const Profile = (props) => {
                                 <Row>
                                     <Col>
                                             <h2>
-                                                <strong className="aquaText">Lillian Woods </strong>
+                                                <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
                                             </h2>
                                             </Col>
                                 </Row>
-                                <p><strong>About:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ducimus doloremque laboriosam? Saepe sapiente, atque delectus modi, voluptas quidem voluptatem iure dolorum perspiciatis expedita, voluptates quae eius repellat similique exercitationem?</p>
+                                <p><strong>About: </strong> 
+                                {teacher.bio}
+                                </p>
                                 <a href="/messages" className="iconHvr-fade">
                                 <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
                                 </a>

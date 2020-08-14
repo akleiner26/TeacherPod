@@ -8,10 +8,11 @@ import style from "./contact.css";
 function Contact() {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
+    const [id, setId] = useState("");
 
     return (
         <>
-            <Header loggedIn={loggedIn} username={username} func={{ setLogin, setUsername }} />
+            <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
 
             <Row className="mt-5 profileCardRow">
                 <Container>

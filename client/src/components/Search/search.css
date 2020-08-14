@@ -34,3 +34,28 @@
     padding-bottom: 30px;
     margin-bottom: 30px;
 }
+
+
+.btnHover{
+    display: inline-block !important;
+    vertical-align: middle !important;
+    -webkit-transform: perspective(1px) translateZ(0) !important;
+    transform: perspective(1px) translateZ(0) !important;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0) !important;
+    overflow: hidden !important;
+    -webkit-transition-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+    -webkit-transition-property: color, background-color !important;
+    transition-property: color, background-color !important;
+  }
+  .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
+    background-color: #117840 !important;
+    color: white !important;
+  }
+
+  .hvr-fade{
+      background:white;
+      color: black;
+  }
+
+  

@@ -42,7 +42,7 @@ function PodTable(props) {
                     key={pod._id}
                     name={pod.name}
                     grade={pod.grade}
-                    capacity={pod.slots}
+                    slots={pod.slots}
                     price={pod.price}
                     location={pod.location} 
                     availability={pod.slots-pod.students.length} /> )}

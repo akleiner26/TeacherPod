@@ -12,7 +12,7 @@ function Messages() {
 
     return (
         <div className="overflowMessage">
-            <Header loggedIn={loggedIn} id={id} username={username} func={{setLogin, setUsername}} />
+            <Header loggedIn={loggedIn} id={id} username={username} func={{setLogin, setUsername, setId}} />
 
 
             <Row className="messageRow">

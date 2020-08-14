@@ -18,19 +18,30 @@ import axios from "axios";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isLoggedin, setLogin] = useState(false);
+    const [loggedIn, setLogin] = useState("");
 
     const toggle = () => setIsOpen(!isOpen);
 
     useEffect(() => {
-        // axios.get("/api/users/login").then(response => {
-        //     setLogin(response);
-        // })
+        axios.get("/api/users/login").then(response => {
+            console.log(response.data);
+            setLogin(response.data);
+        })
         //Choose what login setting to display for testing purposes
         //True => logged in
         //False => Not a user
-        setLogin(true);
+        // setLogin(true);
     }, [])
+
+    const logOut = event => {
+        event.preventDefault();
+        axios.post("/api/users/logout")
+            .then( ({ data }) => {
+                if (data.message === "User logged out"){
+                    window.location.replace("/home");
+                }
+            })
+    }
 
     return (
         <>
@@ -44,35 +55,42 @@ function Header() {
                                 <NavLink href="/announcements">Announcements</NavLink>
                             </NavItem>
                             <NavItem>
-                            {isLoggedin ?
+                            {loggedIn ?
                                 <NavLink 
                                 href="/messages">Messages</NavLink>
                                 :
                                 <NavLink href="/login">Messages</NavLink>
                             }
                             </NavItem>
+                            {!loggedIn ?
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    {isLoggedin ?
-                                    <DropdownItem href="/profile">
-                                        Profile
-                                    </DropdownItem>
-                                    :
-                                    <DropdownItem href="/login">
-                                        Profile
-                                    </DropdownItem>
-                                    }
                                     <DropdownItem href="/signup">
-                                        Signup
+                                        Sign up
                                     </DropdownItem>
                                     <DropdownItem href="/login">
                                         Login
                                      </DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem href="/login">
+                                    <DropdownItem href="/contact">
+                                        Contact
+                                     </DropdownItem>
+                                </DropdownMenu>
+                            </UncontrolledDropdown>
+                            :
+                            <UncontrolledDropdown nav inNavbar>
+                                <DropdownToggle nav caret>
+                                    Account
+                                </DropdownToggle>
+                                <DropdownMenu right>
+                                    <DropdownItem href="/profile">
+                                        Profile
+                                    </DropdownItem>
+                                    <DropdownItem divider />
+                                    <DropdownItem onClick={logOut}>
                                         Logout
                                     </DropdownItem>
                                     <DropdownItem divider />
@@ -81,6 +99,7 @@ function Header() {
                                      </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
+                            }
                         </Nav>
                         {/* <NavbarText>Simple Text</NavbarText> */}
                     </Collapse>

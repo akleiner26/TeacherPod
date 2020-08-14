@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 const authCheck = require("../configs/authentication/isAuthenticated");
+const mongoose = require("mongoose")
 
 module.exports = {
     //Used in GET Routes
@@ -19,7 +20,7 @@ module.exports = {
     },
     //Teacher Profile w/ Pods
     findOneTeacherById: (req, res) => {
-        db.User.find({ _id: req.params.id }).populate({
+        db.User.find({ _id: mongoose.Types.ObjectId(req.params.id) }).populate({
             path: "pods", populate: {
                 path: "students",
                 model: "Student"

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/header";
 import Footer from "../Footer/footer"
 import { Card, CardTitle, CardBody, Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import style from "./messages.css";
 
 function Messages() {
+    const [loggedIn, setLogin] = useState("");
+    const [username, setUsername] = useState("");
+
+
     return (
         <div className="overflowMessage">
-            <Header />
+            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
 
 
             <Row className="messageRow">

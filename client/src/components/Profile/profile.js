@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import style from "./profile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
@@ -6,9 +6,12 @@ import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 
 const Profile = () => {
+    const [loggedIn, setLogin] = useState("");
+    const [username, setUsername] = useState("");
+
     return (
         <>
-            <Header />
+            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
             <Row className="mt-5">
                 <Col xs="8" className="offset-2">
                     <Card className="profileCard">

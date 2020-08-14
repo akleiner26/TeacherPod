@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import { Table, Container, Card, CardTitle, CardBody } from "reactstrap";
 import style from "./contact.css";
 
 function Contact() {
+    const [loggedIn, setLogin] = useState("");
+    const [username, setUsername] = useState("");
+
     return (
         <>
-            <Header />
+            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
 
 
             <Container>

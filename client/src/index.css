@@ -91,3 +91,13 @@ code {
 .darkGrayText{
     color: rgb(97, 97, 97);
 }
+
+.iconHvr-fade2:hover, .iconHvr-fade2:focus, .iconHvr-fade2:active {
+color: rgba(40,120,111,1) !important;
+border: none;
+}
+
+.iconHvr-fade2{
+  color: rgba(57,180,167,1) !important;
+  border-color: rgba(57,180,167,1);
+}

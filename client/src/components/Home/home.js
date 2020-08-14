@@ -19,8 +19,9 @@ function Home() {
         price: ""
     })
     const [teachers, setTeachers] = useState({})
+    const [id, setId] = useState("");
 
-    console.log(loggedIn, username);
+    console.log(loggedIn, username, id);
 
     // Captures input from search
     const handleInputChange = event => {
@@ -46,8 +47,8 @@ function Home() {
     }
 
     return (
-        <>
-            <Header loggedIn={loggedIn} username={username} func={{ setLogin, setUsername }} />
+        <>  
+            <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />
             <Search
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}

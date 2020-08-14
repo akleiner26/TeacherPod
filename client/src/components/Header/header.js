@@ -27,6 +27,7 @@ function Header(props) {
             console.log(response.data);
             props.func.setLogin(response.data.status);
             props.func.setUsername(response.data.username);
+            props.func.setId(response.data.id);
         })
         //Choose what login setting to display for testing purposes
         //True => logged in

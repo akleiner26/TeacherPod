@@ -7,11 +7,12 @@ import style from "./messages.css";
 function Messages() {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
+    const [id, setId] = useState("");
 
 
     return (
         <div className="overflowMessage">
-            <Header loggedIn={loggedIn} username={username} func={{setLogin, setUsername}} />
+            <Header loggedIn={loggedIn} id={id} username={username} func={{setLogin, setUsername}} />
 
 
             <Row className="messageRow">

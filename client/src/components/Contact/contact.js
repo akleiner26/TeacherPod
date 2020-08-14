@@ -95,7 +95,9 @@ function Contact() {
                 </Card>
             </Container>
 
-            <Footer />
+            <div className="fixed-bottom">
+                <Footer />
+            </div>
         </>
     )
 }

@@ -15,7 +15,7 @@ function Messages() {
                     <Card className="sideCard">
                         <CardTitle className="text-center topSpace">
                             Messages</CardTitle>
-                        <CardBody className="text-center">
+                        <CardBody className="text-center sideBody">
                             <Card className="cardPaddingMargin">
                                 Test
                             </Card>
@@ -49,7 +49,9 @@ function Messages() {
                             <Card className="cardPaddingMargin">
                                 Test
                             </Card>
-                         
+                            <Card className="cardPaddingMargin">
+                                Test
+                            </Card>
                         </CardBody>
                     </Card>
 
@@ -69,10 +71,10 @@ function Messages() {
                 </Col>
 
             </Row>
-{/* 
+
             <div className="fixed-bottom">
                 <Footer />
-            </div> */}
+            </div>
         </div>
     )
 }

@@ -255,7 +255,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/angelaDavidsonImg.jpg",
                                 gradesTaught: "fifth",
-                                pods: [mongoose.Types.ObjectId(podData.ops[2]._id)],
+                                pods: [mongoose.Types.ObjectId(podData.ops[2]._id), mongoose.Types.ObjectId(podData.ops[3]._id)],
                                 bio: "Hi there, I'm Ms. Davidson from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
@@ -264,8 +264,10 @@ db.Student.deleteMany({})
                                 username: "tkelly@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19128",
                                 image: "images/fullSize/tedKellyImg.jpg",
                                 gradesTaught: "seventh",
+                                pods: [mongoose.Types.ObjectId(podData.ops[4]._id)],
                                 bio: "Ahoy there! The name's Ted Kelly. I'm all about creating an encouraging and engaging environment that fosters creativity and confidence! My talent is bringing out each student's unique character and personality so that they can learn at a pace that is comfortable for them."
                             },
                             {
@@ -274,8 +276,10 @@ db.Student.deleteMany({})
                                 username: "mburns@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19123",
                                 image: "images/fullSize/margoBurnsImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[5]._id)],
                                 bio: "Welcome! I believe in a learning environment in which students feel comfortable, but I'm also clearcut on setting expectations and rules. I give my best in ensuring each student's growth, and I expect the same in return from my students and will not accept anything less. Success does not come without motivation and effort. It's all about grit!"
                             },
                             {
@@ -284,8 +288,10 @@ db.Student.deleteMany({})
                                 username: "rhorne@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19123",
                                 image: "images/fullSize/rogerHorneImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[6]._id), mongoose.Types.ObjectId(podData.ops[7]._id)],
                                 bio: "Hi, I'm Mr. Horne and my passion and belief has always to invest in our children because they are the future. I'm all about creating an environment that fosters diversity and growth, and I design my curriculum to fit each student's needs. This means that each student's experience may be different from another's, but rest assured that I'll still cover all their needs. It's just that I may mix things up for a change of pace if I feel that something's not working out for a student. So if you are all for the unexpected but also want your child to have a solid learning foundation, I'd love to hear from you!"
                             },
                             {
@@ -294,8 +300,10 @@ db.Student.deleteMany({})
                                 username: "bmyers@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "remote",
                                 image: "images/fullSize/billyMyersImg.jpg",
                                 gradesTaught: "fifth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[8]._id), mongoose.Types.ObjectId(podData.ops[9]._id)],
                                 bio: "Hello, Mr. Myers here! I come from a family of teachers so I've always felt that teaching was my calling. My job is to motivate each student and to give them an education that is both solid in foundation but also fun and interesting. My pods are smaller because I really invest in each student's growth and development. If you are looking for a personalized learning experience for your child, contact me today!"
                             },
                             {
@@ -304,18 +312,22 @@ db.Student.deleteMany({})
                                 username: "ecollier@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "remote",
                                 image: "images/fullSize/erickCollierImg.jpg",
                                 gradesTaught: "fifth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[10]._id)],
                                 bio: "Hi there, I'm Mrs. Collier from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
                                 firstName: "Lena",
                                 lastName: "Woods",
-                                username: "lwoods@email.com",
+                                username: "lwoods2@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19128",
                                 image: "images/fullSize/lenaWoodsImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[11]._id)],
                                 bio: "Hi, I'm Miss Woods and my passion and belief has always been to invest in our children because they are the future. I'm all about creating an environment that fosters diversity and growth, and I design my curriculum to fit each student's needs. This means that each student's experience may be different from another's, but rest assured that I'll still cover all their needs. It's just that I may mix things up for a change of pace if I feel that something's not working out for a student. So if you are all for the unexpected but also want your child to have a solid learning foundation, I'd love to hear from you!"
                             },
                             {
@@ -324,8 +336,10 @@ db.Student.deleteMany({})
                                 username: "bjordan@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19125",
                                 image: "images/fullSize/brigitteJordanImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[12]._id)],
                                 bio: "Hi, I'm Miss Jordan and my passion and belief has always been to invest in our children because they are the future. I'm all about creating an environment that fosters diversity and growth, and I design my curriculum to fit each student's needs. This means that each student's experience may be different from another's, but rest assured that I'll still cover all their needs. It's just that I may mix things up for a change of pace if I feel that something's not working out for a student. So if you are all for the unexpected but also want your child to have a solid learning foundation, I'd love to hear from you!"
                             },
                             {
@@ -334,8 +348,10 @@ db.Student.deleteMany({})
                                 username: "kbest@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19125",
                                 image: "images/fullSize/kenBestImg.jpg",
                                 gradesTaught: "fifth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[13]._id)],
                                 bio: "Hello, Mr. Best here! I come from a family of teachers so I've always felt that teaching was my calling. My job is to motivate each student and to give them an education that is both solid in foundation but also fun and interesting. My pods are smaller because I really invest in each student's growth and development. If you are looking for a personalized learning experience for your child, contact me today!"
                             },
                             {
@@ -344,8 +360,10 @@ db.Student.deleteMany({})
                                 username: "ibrowning@email.com",
                                 password: "password",
                                 isTeacher: true,
+                                location: "19125",
                                 image: "images/fullSize/isabelBrowningImg.jpg",
                                 gradesTaught: "first",
+                                pods: [mongoose.Types.ObjectId(podData.ops[14]._id)],
                                 bio: "Welcome! I am Miss Browning and I've taught the first grade since 2001. First grade is usually a huge adjustment for children as it really kicks off their educational journey. I understand each day can be filled with many challenges and responsibilities, and I believe that as a teacher, my job is to motive and guide them in the right direction."
                             },
                             {
@@ -356,6 +374,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/pollyShafferImg.jpg",
                                 gradesTaught: "fourth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[15]._id)],
                                 bio: "Hi there, I'm Mrs. Shaffer from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
@@ -366,6 +385,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/joannMcmahonImg.jpg",
                                 gradesTaught: "seventh",
+                                pods: [mongoose.Types.ObjectId(podData.ops[16]._id)],
                                 bio: "Hi there! I'm Joann McMahon. I'm all about creating an encouraging and engaging environment that fosters creativity and confidence! My talent is bringing out each student's unique character and personality so that they can learn at a pace that is comfortable for them."
                             },
                             {
@@ -376,6 +396,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/bonitaWilcoxImg.jpg",
                                 gradesTaught: "first",
+                                pods: [mongoose.Types.ObjectId(podData.ops[17]._id)],
                                 bio: "Welcome! I am Miss Wilcox and I've taught the first grade since 2001. First grade is usually a huge adjustment for children as it really kicks off their educational journey. I understand each day can be filled with many challenges and responsibilities, and I believe that as a teacher, my job is to motive and guide them in the right direction."
                             },
                             {
@@ -386,6 +407,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/marvaFranklinImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[18]._id)],
                                 bio: "Hi there, I'm Mrs. Franklin from Wishockon. I began working at Wishockon High in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
@@ -396,6 +418,7 @@ db.Student.deleteMany({})
                                 isTeacher: true,
                                 image: "images/fullSize/sophiaCalderonImg.jpg",
                                 gradesTaught: "tenth",
+                                pods: [mongoose.Types.ObjectId(podData.ops[19]._id)],
                                 bio: "Hi there, I'm Mrs. Calderon from Wishockon. I began working at Wishockon High in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             }
                         ]

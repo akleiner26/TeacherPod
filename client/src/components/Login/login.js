@@ -21,7 +21,7 @@ function Login() {
                                 <Label for="examplePassword">Password</Label>
                                 <Input type="password" name="password" id="examplePassword" placeholder="Enter password here" />
                             </FormGroup>
-                            <Button>Submit</Button> Don't have an account yet?  <a href="/signup">Signup</a>
+                            <Button className="btnHover hvr-fade">Submit</Button> Don't have an account yet?  <a href="/signup">Signup</a>
                         </Form>
                     </CardBody>
                 </Card>

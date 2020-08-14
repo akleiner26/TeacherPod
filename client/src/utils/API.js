@@ -4,8 +4,8 @@ export default {
     // GET ROUTES
     // ==================================================
     // Gets all teachers based on grade taught and location (optional: default is "remote")
-    getTeachers: function () {
-        return axios.get("/api/users");
+    getTeachers: function (searchData) {
+        return axios.get("/api/users" + `?grades=${searchData.grades}`);
     },
 
     // Gets one teacher based on teacher's id

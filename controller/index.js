@@ -8,7 +8,7 @@ module.exports = {
     //Card search
     findAllTeachers: (req, res) => {
         console.log(req.query);
-        db.User.find({ gradesTaught: req.query.grades, location: req.query.location, isTeacher: true }).populate("pods")
+        db.User.find({ gradesTaught: req.query.grades, isTeacher: true }).populate("pods")
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },

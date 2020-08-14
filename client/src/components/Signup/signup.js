@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
 import style from "./signup.css"
+import axios from "axios";
 
 function Signup() {
+    const [signupInput, setInput] = useState({
+        firstName: "",
+        lastName: "",
+        username: "",
+        password: "",
+        confirmed: ""
+        // confirm: ""
+    })
+    
+    const handleInputChange = event => {
+        setInput({
+            ...signupInput,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    const handleFormSubmit = event => {
+        event.preventDefault();
+        console.log(signupInput);
+        if (signupInput.confirmed !== signupInput.password) {
+            document.getElementById("error").style.display = "block"
+            return
+        }
+        axios.post("/api/users/signup", signupInput)
+            .then(({ data }) => {
+                if (data.message === "Signed up and logged in") {
+                    window.location.replace("/")
+                }
+            })
+    }
+
+
     return (
         <>
             <Row className="mt-5 profileCardRow">
@@ -18,30 +51,31 @@ function Signup() {
                                     <Row form>
                                         <Col md={6}>
                                             <FormGroup>
-                                                <Label for="firstName">First Name</Label>
-                                                <Input type="text" name="firstName" id="exampleFirstName" placeholder="First Name" />
+                                                <Label for="exampleFirstName">First Name</Label>
+                                                <Input type="text" name="firstName" id="exampleFirstName" placeholder="First Name" onChange={handleInputChange}/>
                                             </FormGroup>
                                         </Col>
                                         <Col md={6}>
                                             <FormGroup>
-                                                <Label for="lastName">Last Name</Label>
-                                                <Input type="text" name="lastName" id="exampleLastName" placeholder="Last Name" />
+                                                <Label for="exampleLastName">Last Name</Label>
+                                                <Input type="text" name="lastName" id="exampleLastName" placeholder="Last Name" onChange={handleInputChange}/>
                                             </FormGroup>
                                         </Col>
                                     </Row>
                                     <FormGroup>
                                         <Label for="exampleEmail">Email</Label>
-                                        <Input type="email" name="email" id="exampleEmail" placeholder="test@example.com" />
+                                        <Input type="email" name="username" id="exampleEmail" placeholder="test@example.com" onChange={handleInputChange}/>
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="examplePassword">Password</Label>
-                                        <Input type="password" name="password" id="examplePassword" placeholder="Enter password here" />
+                                        <Input type="password" name="password" id="examplePassword" placeholder="Enter password here"  onChange={handleInputChange}/>
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="confirmPassword">Confirm Password</Label>
-                                        <Input type="password" name="confirmpassword" id="confirmPassword" placeholder="Confirm password here" />
+                                        <Input type="password" name="confirmed" id="confirmPassword" placeholder="Confirm password here" onChange={handleInputChange}/>
                                     </FormGroup>
-                                    <Button className="btnHover hvr-fade">Submit</Button> Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
+                                    <p id="error" style={{display: "none"}}>Passwords don't match. Please try again.</p>
+                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
                                 </Form>
                             </CardBody>
                         </Card>

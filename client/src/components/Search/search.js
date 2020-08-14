@@ -16,11 +16,11 @@ const Search = (props) => {
                     <Form className="m-2 podSearchForm">
                         <FormGroup>
                             <Label for="zipCode"><i class="fa fa-map-marker" aria-hidden="true"></i> Zip Code</Label>
-                            <Input type="text" name="zipCode" id="zipCode" placeholder="12345" />
+                            <Input onChange={props.handleInputChange} type="text" name="location" id="zipCode" placeholder="12345" />
                         </FormGroup>
                         <FormGroup>
                             <Label for="gradeSelect"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Grade</Label>
-                            <Input type="select" name="grade" id="gradeSelect">
+                            <Input onChange={props.handleInputChange} type="select" name="grades" id="gradeSelect">
                                 <option value="">Select</option>
                                 <option>PreSchool</option>
                                 <option>Kindergarten</option>
@@ -40,7 +40,7 @@ const Search = (props) => {
                         </FormGroup>
                         <FormGroup>
                             <Label for="priceSelect"><i class="fa fa-usd" aria-hidden="true"></i> Price Range</Label>
-                            <Input type="select" placeholder="Price/Week" name="priceSelect" id="priceSelect">
+                            <Input onChange={props.handleInputChange} type="select" placeholder="Price/Week" name="price" id="priceSelect">
                                 <option value="">Select</option>
                                 <option>Less than $100/week</option>
                                 <option>$100-$200/week</option>
@@ -50,7 +50,7 @@ const Search = (props) => {
                                 <option>Greater than $500/week</option>
                             </Input>
                         </FormGroup>
-                        <Button className="btnHover hvr-fade">Submit</Button>
+                        <Button onClick={props.handleFormSubmit}className="btnHover hvr-fade">Submit</Button>
                     </Form>
                     </Card>
                 </Col>

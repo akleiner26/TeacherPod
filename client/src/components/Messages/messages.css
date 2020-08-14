@@ -1,0 +1,45 @@
+
+.sideCard{
+    
+    width: 100%;
+    height: 120%;
+    /* position: absolute; */
+    overflow: scroll;
+    margin-bottom: 0;
+
+}
+
+
+.topSpace {
+    padding-top: 40px;
+    /* padding-bottom: 60px; */
+}
+
+.messageRow {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: scroll;
+}
+
+.mainMessageCard {
+    min-height: 70%;
+    min-width: 100%;
+    /* margin-left: -190px; */
+}
+
+.messageText {
+    width: 50%;
+    margin-left: 20%;
+}
+#messageID {
+    width: 99%
+}
+
+
+.cardPaddingMargin {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 20px; 
+    padding-bottom: 20px;
+}

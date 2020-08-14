@@ -1,4 +1,17 @@
 .footer {
-   background-color:  #f8f9fa;
+   /* position: fixed; */
+   bottom: 0;
+   width: 100%;
+   background-color: white !important;
+   border-bottom: solid;
+   border-width: 1px;
+   border-color: #ECECEC;
 
 }
+
+a.contactLink.nav-link {
+    color: #30DAC7;
+    text-align: left;
+   
+}
+

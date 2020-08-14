@@ -1,0 +1,14 @@
+.teacherImage{
+    margin: 0 auto;
+}
+
+.proPicCol{
+    border-right: solid;
+    border-width: thin;
+    border-color: rgba(190, 190, 190, 0.63);
+}
+
+.mailIcon{
+    vertical-align: middle !important;
+    text-align: center !important;
+}

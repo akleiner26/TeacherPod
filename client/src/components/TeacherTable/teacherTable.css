@@ -1,3 +1,13 @@
 div.card {
     margin-bottom: 50px;
 }
+
+.teacherTableHead{
+    text-align: center;
+    border-bottom: solid #117840;
+}
+
+.teacherTable{
+    border-right: solid white 1px !important;
+}
+

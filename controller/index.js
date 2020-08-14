@@ -1,4 +1,6 @@
 const db = require("../models");
+const bcrypt = require("bcryptjs");
+const authCheck = require("../configs/authentication/isAuthenticated");
 
 module.exports = {
     //Used in GET Routes
@@ -31,22 +33,76 @@ module.exports = {
     },
     //Used in POST routes
     //Login
-    findOneUserByLogin: (req, res) => {
-        db.User.findOne({ username: req.body.username, password: req.body.password })
-            .then(results => res.json(results))
+    loginUser: (req, res) => {
+        console.log(req.body);
+        db.User.findOne({ username: req.body.username})
+            .then(user => {
+                console.log(user);
+                if (!user) {
+                    res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                }
+                else {
+                    let login = bcrypt.compareSync(req.body.password, user.password);
+                    if(!login){
+                        res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                    }
+                    console.log("matched staging for cookie")
+                    //Save session id
+                    req.session.userId = user._id;
+                    req.session.username = user.username;
+                    console.log(req.session)
+                    res.status(201).json({message: "Logged in"});
+                }
+            })
             .catch(err => res.json(err))
+    },
+    loginStatus: (req, res) => {
+        authCheck(req, res);
     },
     createUser: (req, res) => {
-        console.log(req.body);
-        db.User.create(req.body)
-            .then(results => res.json(results))
-            .catch(err => res.json(err))
+        db.User.find({ username: req.body.username })
+            .then(user => {
+                // If no accounts with that username then create new user
+                if (user.length == 0){
+                    let hashedPW = bcrypt.hashSync(req.body.password);
+                    req.body.password = hashedPW;
+                    db.User.create(req.body)
+                        .then(accountCreated => {
+                            req.session.userId = accountCreated._id;
+                            req.session.username = accountCreated.username;
+                            console.log(req.session)
+                            res.status(200).json({message: "Signed up and logged in"});
+                        })
+                        .catch(err => res.json(err))
+                }
+                // Else cannot create account
+                else {
+                    res.status(500).json({message: "User already exists, please sign up with a different username"});
+                }
+            })
     },
     createTeacher: (req, res) => {
-        req.body.isTeacher = true;
-        db.User.create(req.body)
-            .then(results => res.json(results))
-            .catch(err => res.json(err))
+        db.User.find({ username: req.body.username })
+            .then(user => {
+                // If no accounts with that username then create new user
+                if (user.length == 0){
+                    let hashedPW = bcrypt.hashSync(req.body.password);
+                    req.body.password = hashedPW;
+                    req.body.isTeacher = true;
+                    db.User.create(req.body)
+                        .then(user => {
+                            req.session.userId = user._id;
+                            req.session.username = user.username;
+                            console.log(req.session)
+                            res.status(200).json({message: "Signed up and logged in"});
+                        })
+                        .catch(err => res.json(err))
+                }
+                // Else cannot create account
+                else {
+                    res.status(500).json({message: "User already exists, please sign up with a different username"});
+                }
+            })
     },
     updateProfile: (req, res) => {
         db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { upsert: true })

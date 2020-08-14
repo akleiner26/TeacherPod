@@ -20,7 +20,7 @@
 }
 
 .pod {
-    color: #117840;
+    color: rgba(57,180,167,1);
 }
 
 .podSearchForm{
@@ -71,14 +71,14 @@
     transition-property: color, background-color !important;
   }
   .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
-    background-color: #117840 !important;
+    background-color: rgba(57,180,167,1) !important;
     color: white !important;
   }
 
   .hvr-fade{
       background:white;
-      color: #117840 !important;
-      border-color: #117840 !important;
+      color: rgba(57,180,167,1) !important;
+      border-color: rgba(57,180,167,1) !important;
   }
 
   

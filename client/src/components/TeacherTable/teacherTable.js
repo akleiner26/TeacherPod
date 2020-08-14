@@ -8,17 +8,17 @@ import style from "./teacherTable.css"
 
 function TeacherTable(props) {
     return (
-        <Col xs="10" className="offset-1">
+        <Col xs="10" className="offset-1 mt-4">
         <Card className="tableMargin">
         <Table className="teacherTable" hover >
             <thead className="teacherHeadRow">
                 <tr className="teacherTableHead">
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Grade</th>
-                    <th>Price/Week</th>
-                    <th>Pod Capacity</th>
-                    <th>Message</th>
+                    <th className="teacherTableHeadTitle cameraIcon"><i class="fa fa-camera-retro" aria-hidden="true"></i></th>
+                    <th className="teacherTableHeadTitle">Name</th>
+                    <th className="teacherTableHeadTitle">Grade</th>
+                    <th className="teacherTableHeadTitle">Price/Week</th>
+                    <th className="teacherTableHeadTitle">Pod Capacity</th>
+                    <th className="teacherTableHeadTitle">Message</th>
                 </tr>
             </thead>
             <tbody className="teacherTable">

@@ -50,12 +50,22 @@
     transition-property: color, background-color !important;
   }
   .tblHvr-fade:hover, .tblHvr-fade:focus, .tblHvr-fade:active {
-    background-color: #2BBA36 !important;
+    background-color: rgba(40,120,111,1) !important;
     color: white !important;
     border: none;
   }
 
   .tblHvr-fade{
-      background-color:#117840 !important;
+      background-color:rgba(57,180,167,1) !important;
       color: white !important;
+      border-color: rgba(57,180,167,1);
+  }
+
+  .teacherTableName{
+      color: rgba(57,180,167,1);
+      font-weight: bold;
+  }
+
+  .teacherTableName:hover{
+      color: rgba(40,120,111,1)
   }

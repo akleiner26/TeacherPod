@@ -4,10 +4,17 @@ div.card {
 
 .teacherTableHead{
     text-align: center;
-    border-bottom: solid #117840;
+    border-bottom: solid rgba(57,180,167,1);
 }
 
 .teacherTable{
     border-right: solid white 1px !important;
 }
 
+.teacherTableHeadTitle{
+    color: rgb(97, 97, 97);
+}
+
+.cameraIcon{
+    font-size: 20px;
+}

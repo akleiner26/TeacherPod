@@ -19,8 +19,6 @@ import API from "../../utils/API";
 
 function Header(props) {
     const [isOpen, setIsOpen] = useState(false);
-    // const [loggedIn, setLogin] = useState("");
-    // const [username, setUsername] = useState("");
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -33,7 +31,7 @@ function Header(props) {
         //Choose what login setting to display for testing purposes
         //True => logged in
         //False => Not a user
-        // setLogin(true);
+        // props.func.setLogin(true);
     }, [])
 
     const logOut = event => {

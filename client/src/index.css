@@ -101,3 +101,14 @@ border: none;
   color: rgba(57,180,167,1) !important;
   border-color: rgba(57,180,167,1);
 }
+
+.vertAlign {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+
+.tableHead{
+  text-align: center;
+  border-bottom: solid rgba(57,180,167,1);
+}

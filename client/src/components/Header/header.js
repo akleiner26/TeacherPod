@@ -49,7 +49,7 @@ function Header(props) {
         <>
             <header className="topNav">
                 <Navbar color="light" light expand="md" className="nav fixed-top shadow-sm headerNav">
-                    <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="images/icons/peas.png"></img></NavbarBrand>
+                    <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="../images/icons/peas.png"></img></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -88,7 +88,7 @@ function Header(props) {
                                     Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem href="/profile">
+                                    <DropdownItem href={`/profile/${props.id}`}>
                                         Profile
                                     </DropdownItem>
                                     <DropdownItem divider />

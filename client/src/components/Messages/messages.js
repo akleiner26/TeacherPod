@@ -7,6 +7,7 @@ import axios from "axios";
 import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard"
 
+
 function Messages() {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
@@ -36,6 +37,17 @@ function Messages() {
                 <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
 
 
+<<<<<<< HEAD
+            <Row className="messageRow">
+                <Col className="messageCOL col-4">
+                    <Card className="sideCard">
+                        <CardTitle className="text-center topSpace">
+                            Messages</CardTitle>
+                        <CardBody className="text-center sideBody">
+                             <MessageCard />
+                        </CardBody>
+                    </Card>
+=======
                 <Row className="messageRow">
                     <Col className="messageCOL col-4">
                         <Card className="sideCard">
@@ -86,6 +98,7 @@ function Messages() {
                             </Card>
                             </CardBody>
                         </Card>
+>>>>>>> 6f57cf25076ef11f897e73bcfa99afbc80ba6a1f
 
                     </Col>
                     <Col>

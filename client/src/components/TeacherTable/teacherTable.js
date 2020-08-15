@@ -1,7 +1,6 @@
 import React from "react"
 import "./teacherTable.css";
 import { Table, Col, Card } from "reactstrap"
-import "./teacherTable.css"
 
 
 function TeacherTable(props) {

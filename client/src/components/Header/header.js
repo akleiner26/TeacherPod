@@ -10,12 +10,11 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem,
-    NavbarText
+    DropdownItem
 } from 'reactstrap';
-import style from "./header.css";
+import "./header.css";
 import axios from "axios";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 function Header(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +103,6 @@ function Header(props) {
                             </UncontrolledDropdown>
                             }
                         </Nav>
-                        {/* <NavbarText>Simple Text</NavbarText> */}
                     </Collapse>
                 </Navbar>
             </header>

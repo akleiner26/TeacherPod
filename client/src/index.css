@@ -129,3 +129,7 @@ border: none;
   height: 870px;
   width: 101%;
 }
+
+.floatRt {
+  float: right;
+}

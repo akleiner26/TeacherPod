@@ -17,6 +17,7 @@ const Profile = (props) => {
     })
     const [pods, setPods] = useState([]);
     
+    
     useEffect(() => {
         API.getTeacher(id)
         .then(res =>{
@@ -27,8 +28,7 @@ const Profile = (props) => {
             }
             ).catch(err => console.log(err));
     },[id])
- 
-  
+
 
     return (
         <>

@@ -19,7 +19,7 @@ const TeacherRow = (props) => {
                     )}
             </td>
             <td className="vertAlign teacherTableName aquaText">
-                <Link to={"/profile/" + props.key} >
+                <Link to={"/profile/" + props.id} >
                     <p className="aquaText mb-0">{props.name}</p>
                 </Link>
             </td>

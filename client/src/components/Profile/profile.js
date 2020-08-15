@@ -16,10 +16,11 @@ const Profile = (props) => {
 
     })
     const [pods, setPods] = useState([]);
+    let key = props.match.params.id
     
     
     useEffect(() => {
-        API.getTeacher(id)
+        API.getTeacher(key)
         .then(res =>{
             console.log(res);
                 setTeacher(res.data[0])
@@ -27,7 +28,7 @@ const Profile = (props) => {
                 setPods(res.data[0].pods)
             }
             ).catch(err => console.log(err));
-    },[id])
+    },[key])
 
 
     return (
@@ -41,7 +42,7 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
                             <Col className="proPicCol" xs="6">
-                                <img className="img-fluid teacherImage" alt="Lillian Woods" src="images/fullSize/lillianWoodsImg.jpg"></img>
+                                <img className="img-fluid teacherImage" alt={`${teacher.firstName} ${teacher.lastName}`}  src={`../${teacher.image}`}></img>
                             </Col>
                             <Col>
                                 <Row>

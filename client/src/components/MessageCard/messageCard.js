@@ -8,7 +8,7 @@ function MessageCard() {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
-    const [Convos, setConvos] = useState([{}]);
+    const [Convos, setConvos] = useState([]);
 
     useEffect(() => {
         getConvos("lwoods@email.com");
@@ -16,9 +16,9 @@ function MessageCard() {
 
     const getConvos = (user) => {
         API.findAllMessages(user)
-            .then( ({ data }) => {
+            .then(({ data }) => {
                 console.log(data)
-                if (typeof(data) !== "object"){
+                if (typeof (data) !== "object") {
                     return
                 }
                 setConvos(data);
@@ -26,17 +26,13 @@ function MessageCard() {
     }
 
     console.log(Convos);
+
     return (
-        <>
-            <Card className="cardPaddingMargin">
-                {Convos.map(convo => {
-                    return (
-                        <div>{convo.participants}</div>
-                    )
-                }
-                )}
-            </Card>
-        </>
+        <div></div>
+            // {Convos.map(convo => <Card className="cardPaddingMargin">
+            //     <div>{convo.participants}</div>
+            // </Card>
+    // )}
     )
 }
 

@@ -7,6 +7,7 @@ import axios from "axios";
 import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard"
 
+
 function Messages() {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
@@ -41,47 +42,7 @@ function Messages() {
                         <CardTitle className="text-center topSpace">
                             Messages</CardTitle>
                         <CardBody className="text-center sideBody">
-                            <Card className="cardPaddingMargin">
-                                {Convos.map(convo => {
-                                    return(
-                                    <div>{convo.participants}</div>
-                                    )}
-                                )}
-                            </Card>
-                            <MessageCard />
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
+                             <MessageCard />
                         </CardBody>
                     </Card>
 

@@ -1,86 +1,69 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import "./ProfileModal.css";
 
 const ProfileModal = (props) => {
     return (
-        <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
+        <Modal isOpen={props.modal} toggle={props.toggle} className="">
             <ModalHeader toggle={props.toggle}>Edit Profile</ModalHeader>
             <ModalBody>
                 <Form>
                     <FormGroup>
-                        <Label for="exampleEmail">Email</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                        <Label for="prefix">Prefix</Label>
+                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.teacher.prefix} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="examplePassword">Password</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                        <Label for="firstName">First Name</Label>
+                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.teacher.firstName} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="exampleSelect">Select</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </Input>
+                        <Label for="lastName">Last Name</Label>
+                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.teacher.lastName} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="exampleSelectMulti">Select Multiple</Label>
-                        <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </Input>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleText">Text Area</Label>
-                        <Input type="textarea" name="text" id="exampleText" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleFile">File</Label>
-                        <Input type="file" name="file" id="exampleFile" />
+                        <Label for="image">Profile Image</Label>
+                        <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.teacher.image} />
                         <FormText color="muted">
-                            This is some placeholder block-level help text for the above input.
-                            It's a bit lighter and easily wraps to a new line.
-        </FormText>
+                            Provide url to image.
+                        </FormText>
                     </FormGroup>
-                    <FormGroup tag="fieldset">
-                        <legend>Radio Buttons</legend>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="radio1" />{' '}
-            Option one is this and that—be sure to include why it's great
-          </Label>
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="radio1" />{' '}
-            Option two can be something else and selecting it will deselect option one
-          </Label>
-                        </FormGroup>
-                        <FormGroup check disabled>
-                            <Label check>
-                                <Input type="radio" name="radio1" disabled />{' '}
-            Option three is disabled
-          </Label>
-                        </FormGroup>
+                    <FormGroup>
+                        <Label for="grade">Grade Level</Label>
+                        <Input type="select" name="select" id="grade" value={props.teacher.gradesTaught}>
+                            <option value="">Select</option>
+                            <option>PreSchool</option>
+                            <option>Kindergarten</option>
+                            <option>1st Grade</option>
+                            <option>2nd Grade</option>
+                            <option>3rd Grade</option>
+                            <option>4th Grade</option>
+                            <option>5th Grade</option>
+                            <option>6th Grade</option>
+                            <option>7th Grade</option>
+                            <option>8th Grade</option>
+                            <option>9th Grade</option>
+                            <option>10th Grade</option>
+                            <option>11th Grade</option>
+                            <option>12th Grade</option>
+                        </Input>
                     </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input type="checkbox" />{' '}
-          Check me out
-        </Label>
+                    <FormGroup>
+                        <Label for="location">Location</Label>
+                        <Input type="type" name="location" id="location" placeholder="Location" value={props.teacher.location} />
+                        <FormText color="muted">
+                            Location must be entered as "remote" or by zip code.
+                        </FormText>
                     </FormGroup>
-                    <Button>Submit</Button>
+                    <FormGroup>
+                        <Label for="bio">About</Label>
+                        <Input type="textarea" name="bio" id="bio" placeholder="About" value={props.teacher.bio} />
+                    </FormGroup>
+                    <ModalFooter>
+                    <Button>Save</Button>
+                    <Button onClick={props.toggle} className="ml-3 mr-0">Cancel</Button>
+                    </ModalFooter>
                 </Form>
             </ModalBody>
-            <ModalFooter>
-                <Button color="primary" onClick={props.toggle}>Do Something</Button>{' '}
-                <Button color="secondary" onClick={props.toggle}>Cancel</Button>
-            </ModalFooter>
         </Modal>
     );
 }

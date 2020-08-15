@@ -5,6 +5,7 @@ import { Card, CardTitle, CardBody, Row, Col, Form, FormGroup, Label, Input, But
 import style from "./messages.css";
 import axios from "axios";
 import API from "../../utils/API";
+import MessageCard from "../MessageCard/messageCard"
 
 function Messages() {
     const [loggedIn, setLogin] = useState("");
@@ -47,6 +48,7 @@ function Messages() {
                                     )}
                                 )}
                             </Card>
+                            <MessageCard />
                             <Card className="cardPaddingMargin">
                                 Test
                             </Card>
@@ -86,7 +88,8 @@ function Messages() {
                 </Col>
                 <Col>
                     <Card className="mainMessageCard col-8">
-                        Test
+                        <Card className="received">RECEIVED MESSAGE</Card>
+                        <Card className="sent">SENT MESSAGE</Card>
                     </Card>
                     <Form inline  className="formBottom">
                         <FormGroup inline className="messageText">

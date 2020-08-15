@@ -10,7 +10,7 @@ function TeacherTable(props) {
         <Table className="teacherTable" hover >
             <thead className="teacherHeadRow">
                 <tr className="tableHead">
-                    <th className="darkGrayText cameraIcon"><i class="fa fa-camera-retro" aria-hidden="true"></i></th>
+                    <th className="darkGrayText cameraIcon text-center"><i className="fa fa-camera-retro" aria-hidden="true"></i></th>
                     <th className="darkGrayText">Name</th>
                     <th className="darkGrayText">Grade</th>
                     <th className="darkGrayText">Price/Week</th>

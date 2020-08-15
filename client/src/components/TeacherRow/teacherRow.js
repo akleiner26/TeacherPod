@@ -11,7 +11,13 @@ const TeacherRow = (props) => {
     return (
 
         <tr className="vertAlign">
-            <td className="vertAlign teacherRowImg"><img className="teacherThumbnails" src={props.image} alt={props.name} /></td>
+            <td className="vertAlign teacherRowImg">
+                {props.image !== "" ? (
+                    <img className="teacherThumbnails" src={props.image} alt={props.name} />
+                ) : (
+                        <img className="teacherThumbnails" src="images/fullSize/profile-placeholder.png" alt={props.name} />
+                    )}
+            </td>
             <td className="vertAlign teacherTableName aquaText">
                 <Link to={"/profile/" + props.key} >
                     <p className="aquaText mb-0">{props.name}</p>

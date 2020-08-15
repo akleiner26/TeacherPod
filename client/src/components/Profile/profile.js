@@ -51,10 +51,32 @@ const Profile = (props) => {
                     <hr className="line"></hr>
                         </CardTitle>
                         <Row className="m-3">
+
                             <Col className="proPicCol" xs="6">
                                 <img className="img-fluid teacherImage" alt="Lillian Woods" src={`../${teacher.image}`}></img>
-                                <Button className="btnHover hvr-fade mt-4" onClick={openProfileEditor}>Edit Profile</Button>
+                                {/* <Button className="btnHover hvr-fade mt-4" onClick={openProfileEditor}>Edit Profile</Button> */}
+                                {/* <a href="/messages" className="iconHvr-fade">
+                                    <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
+                                </a> */}
+                                <Row>
+                                    <Col></Col>
+                                    <Col className="text-center">
+                                        <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
+                                    </Col>
+                                    <Col className="text-center">
+                                        <i className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                    </Col>
+                                    <Col className="text-center">
+                                        <a href="/messages" className="iconHvr-fade">
+                                            <i class="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                        </a>
+                                    </Col>
+                                    <Col></Col>
+                                </Row>
+
+
                             </Col>
+
                             <Col>
                                 <Row>
                                     <Col>
@@ -64,9 +86,6 @@ const Profile = (props) => {
                                     </Col>
                                 </Row>
                                 {teacher.bio}
-                                <a href="/messages" className="iconHvr-fade">
-                                    <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
-                                </a>
                             </Col>
                         </Row>
                     </Card>

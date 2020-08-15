@@ -3,13 +3,18 @@ import style from "./teacherRow.css"
 import {
     Button
 } from 'reactstrap';
+import { Link } from "react-router-dom"
 
 const TeacherRow = (props) => {
+
+
     return (
 
         <tr className="vertAlign">
-            <td className="vertAlign teacherRowImg"><img className="teacherThumbnails" src={props.image} alt={props.name}/></td>
-            <td className="vertAlign"><a href="/profile" className="teacherTableName aquaText">{props.name}</a></td>
+            <td className="vertAlign teacherRowImg"><img className="teacherThumbnails" src={props.image} alt={props.name} /></td>
+            <Link to={"/profile/" + props.id}>
+                <td className="vertAlign teacherTableName aquaText">{props.name}</td>
+            </Link>
             <td className="vertAlign">{props.gradesTaught}</td>
             <td className="vertAlign">${props.price}</td>
             <td className="vertAlign">{props.capacity}</td>

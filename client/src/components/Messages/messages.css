@@ -5,7 +5,11 @@
     height: 100%;
     /* position: absolute; */
     overflow: auto;
-    margin-bottom: 0;
+    /* margin-bottom: 100px !important; */
+    /* border: 3px solid black */
+    /* margin-top: 10; */
+    /* padding-bottom: -20px; */
+
 
 }
 
@@ -16,8 +20,12 @@
 
 
 .topSpace {
-    padding-top: 40px;
-    /* padding-bottom: 60px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #39b487;
+    color: white;
+    margin-bottom: 0px;
+  
 }
 
 .messageRow {
@@ -55,24 +63,30 @@
     margin-bottom: 0 !important;
     padding-top: 20px; 
     padding-bottom: 20px;
+    background-color: #ececec;
 }
 
 .received {
-    width: 50%;
+    min-height: 50px !important;
+    /* width: 50%; */
     margin-right: 50%;
     text-align: center;
+    vertical-align: middle !important;
     border-right-style: 20%;
     margin-top: 1% !important;
     margin-bottom: 1% !important;
+    background-color: #30DAC7;
     /* border-color: ; */
 }
 
 .sent{
-    width: 50%;
+    min-height: 50px !important;
+    /* width: 50%; */
     margin-left: 50%;
     text-align: center;
     margin-top: 1% !important;
     margin-bottom: 1% !important;
+    background-color: #39b487;
 
 }
 

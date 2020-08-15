@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./podRow.css"
+import "./podRow.css"
 
 
 const PodRow = (props) => {

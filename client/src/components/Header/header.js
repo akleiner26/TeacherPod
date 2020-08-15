@@ -10,12 +10,11 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem,
-    NavbarText
+    DropdownItem
 } from 'reactstrap';
-import style from "./header.css";
+import "./header.css";
 import axios from "axios";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 function Header(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +49,7 @@ function Header(props) {
         <>
             <header className="topNav">
                 <Navbar color="light" light expand="md" className="nav fixed-top shadow-sm headerNav">
-                    <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="images/icons/peas.png"></img></NavbarBrand>
+                    <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="../images/icons/peas.png"></img></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -89,7 +88,7 @@ function Header(props) {
                                     Account
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    <DropdownItem href="/profile">
+                                    <DropdownItem href={`/profile/${props.id}`}>
                                         Profile
                                     </DropdownItem>
                                     <DropdownItem divider />
@@ -104,7 +103,6 @@ function Header(props) {
                             </UncontrolledDropdown>
                             }
                         </Nav>
-                        {/* <NavbarText>Simple Text</NavbarText> */}
                     </Collapse>
                 </Navbar>
             </header>

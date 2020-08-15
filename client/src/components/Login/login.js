@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import Header from "../Header/header"
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
-import style from "./login.css";
+import "./login.css";
 import axios from "axios";
 import API from "../../utils/API";
 import Header from "../Header/header"
@@ -56,7 +56,16 @@ function Login() {
                                         <Label for="examplePassword">Password</Label>
                                         <Input type="password" name="password" id="examplePassword" placeholder="Enter password here" onChange={handleInputChange} />
                                     </FormGroup>
-                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Don't have an account yet?  <a className="iconHvr-fade2" href="/signup">Signup</a>
+                                  
+                                        <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button>
+                                        <div className="floatRt">
+                                            Don't have an account yet?<a className="iconHvr-fade2" href="/signup"> Signup</a>
+                                        </div>
+
+
+                         
+
+
                                 </Form>
                             </CardBody>
                         </Card>

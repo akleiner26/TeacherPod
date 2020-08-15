@@ -21,7 +21,7 @@ const TeacherRow = (props) => {
                 </div>
             </td>
             <td className="vertAlign teacherTableName aquaText">
-                <Link to={"/profile/" + props.teacherId} >
+                <Link to={"/profile/" + props.id} >
                     <p className="aquaText mb-0">{props.name}</p>
                 </Link>
             </td>

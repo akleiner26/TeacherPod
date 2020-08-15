@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
-import style from "./signup.css";
+import "./signup.css";
 import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
@@ -80,8 +80,18 @@ function Signup() {
                                         <Label for="confirmPassword">Confirm Password</Label>
                                         <Input type="password" name="confirmed" id="confirmPassword" placeholder="Confirm password here" onChange={handleInputChange} />
                                     </FormGroup>
+                                    <FormGroup>
+                                        <Label for="exampleSelect">Are you a teacher?</Label>
+                                        <Input type="select" name="select" id="exampleSelect">
+                                            <option>No</option>
+                                            <option>Yes</option>
+                                        </Input>
+                                    </FormGroup>
                                     <p id="error" style={{ display: "none" }}>Passwords don't match. Please try again.</p>
-                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
+                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button>
+                                    <div className="floatRt">
+                                        Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
+                                    </div>
                                 </Form>
                             </CardBody>
                         </Card>

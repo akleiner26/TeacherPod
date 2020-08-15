@@ -81,7 +81,10 @@ function Signup() {
                                         <Input type="password" name="confirmed" id="confirmPassword" placeholder="Confirm password here" onChange={handleInputChange} />
                                     </FormGroup>
                                     <p id="error" style={{ display: "none" }}>Passwords don't match. Please try again.</p>
-                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
+                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button>
+                                    <div className="floatRt">
+                                        Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
+                                    </div>
                                 </Form>
                             </CardBody>
                         </Card>

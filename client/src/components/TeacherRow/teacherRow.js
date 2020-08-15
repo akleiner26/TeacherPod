@@ -12,9 +12,11 @@ const TeacherRow = (props) => {
 
         <tr className="vertAlign">
             <td className="vertAlign teacherRowImg"><img className="teacherThumbnails" src={props.image} alt={props.name} /></td>
-            <Link to={"/profile/" + props.key}>
-                <td className="vertAlign teacherTableName aquaText">{props.name}</td>
-            </Link>
+            <td className="vertAlign teacherTableName aquaText">
+                <Link to={"/profile/" + props.key} >
+                    <p className="aquaText mb-0">{props.name}</p>
+                </Link>
+            </td>
             <td className="vertAlign">{props.gradesTaught}</td>
             <td className="vertAlign">${props.price}</td>
             <td className="vertAlign">{props.pods}</td>

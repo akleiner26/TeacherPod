@@ -22,7 +22,7 @@
 .topSpace {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #39b487;
+    background-color: #30DAC7;
     color: white;
     margin-bottom: 0px;
   
@@ -53,10 +53,25 @@
     width: 50%;
     margin-left: 20%;
 }
+
+.messageText:active, .messageText:focus, messageText:hover {
+    /* border-color: white !important;
+    border: 3px dashed white */
+    /* border-color: white; */
+}
 #messageID {
     width: 99%
 }
 
+/* .form-control:active, .form-control:focus {
+    border-color: grey;
+    box-shadow: blueviolet;
+} */
+
+/* .form-control:focus {
+    border-color: #ff80ff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.075) inset, 0px 0px 412px rgba(255, 100, 255, 0.5);
+} */
 
 .cardPaddingMargin {
     margin-top: 0 !important;
@@ -70,12 +85,13 @@
     min-height: 50px !important;
     /* width: 50%; */
     margin-right: 50%;
+    margin-left: 2%;
     text-align: center;
     vertical-align: middle !important;
     border-right-style: 20%;
     margin-top: 1% !important;
     margin-bottom: 1% !important;
-    background-color: #30DAC7;
+    background-color: #ececec;
     /* border-color: ; */
 }
 
@@ -83,10 +99,12 @@
     min-height: 50px !important;
     /* width: 50%; */
     margin-left: 50%;
+    margin-right: 2%;
     text-align: center;
     margin-top: 1% !important;
     margin-bottom: 1% !important;
-    background-color: #39b487;
+    background-color: #30DAC7;
+    color: white;
 
 }
 
@@ -105,3 +123,4 @@
     border-radius: 8px;
     /* display: none; */
   }
+

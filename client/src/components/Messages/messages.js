@@ -49,16 +49,16 @@ function Messages() {
 
                     </Col>
                     <Col>
-                        <Card className="mainMessageCard col-8">
-                            <Card className="received align-items-center d-flex justify-content-center">RECEIVED MESSAGE</Card>
-                            <Card className="sent align-items-center d-flex justify-content-center">SENT MESSAGE</Card>
+                        <Card className="mainMessageCard col-8 shadow">
+                            <Card className="received align-items-center d-flex justify-content-center shadow">RECEIVED MESSAGE</Card>
+                            <Card className="sent align-items-center d-flex justify-content-center shadow">SENT MESSAGE</Card>
                         </Card>
                         <Form inline className="formBottom">
                             <FormGroup inline className="messageText">
                                 <Label for="message" hidden>Message</Label>
                                 <Input type="text" name="message" id="messageID" placeholder="Write Message Here" />
                             </FormGroup>
-                            <Button className="btnHover hvr-fade">Send</Button>
+                            <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
 
                         </Form>
                     </Col>

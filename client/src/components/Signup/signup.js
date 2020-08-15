@@ -80,6 +80,13 @@ function Signup() {
                                         <Label for="confirmPassword">Confirm Password</Label>
                                         <Input type="password" name="confirmed" id="confirmPassword" placeholder="Confirm password here" onChange={handleInputChange} />
                                     </FormGroup>
+                                    <FormGroup>
+                                        <Label for="exampleSelect">Are you a teacher?</Label>
+                                        <Input type="select" name="select" id="exampleSelect">
+                                            <option>No</option>
+                                            <option>Yes</option>
+                                        </Input>
+                                    </FormGroup>
                                     <p id="error" style={{ display: "none" }}>Passwords don't match. Please try again.</p>
                                     <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button>
                                     <div className="floatRt">

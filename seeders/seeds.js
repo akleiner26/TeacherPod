@@ -220,6 +220,13 @@ db.Student.deleteMany({})
                 slots: "10",
                 price: "355",
                 location: "remote"
+            },
+            {
+                name: "General 10th",
+                grade: "10th Grade",
+                slots: "10",
+                price: "355",
+                location: "remote"
             }
         ]
 
@@ -421,6 +428,17 @@ db.Student.deleteMany({})
                                 gradesTaught: "10th Grade",
                                 pods: [mongoose.Types.ObjectId(podData.ops[19]._id)],
                                 bio: "Hi there, I'm Mrs. Calderon from Wishockon. I began working at Wishockon High in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
+                            },
+                            {
+                                firstName: "Test",
+                                lastName: "Test",
+                                username: "test@email.com",
+                                password: bcrypt.hashSync("password"),
+                                isTeacher: true,
+                                image: "",
+                                gradesTaught: "",
+                                pods: [mongoose.Types.ObjectId(podData.ops[20]._id)],
+                                bio: ""
                             }
                         ]
 

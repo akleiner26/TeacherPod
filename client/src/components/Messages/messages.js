@@ -19,9 +19,9 @@ function Messages() {
 
     const getConvos = (user) => {
         API.findAllMessages(user)
-            .then( ({ data }) => {
+            .then(({ data }) => {
                 console.log(data)
-                if (typeof(data) !== "object"){
+                if (typeof (data) !== "object") {
                     return
                 }
                 setConvos(data);
@@ -31,82 +31,85 @@ function Messages() {
     console.log(Convos);
 
     return (
-        <div className="overflowMessage">
-            <Header loggedIn={loggedIn} id={id} username={username} func={{setLogin, setUsername, setId}} />
+        // <div className="fullBackground">
+            <div className="overflowMessage fullBackground" >
+                <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
 
 
-            <Row className="messageRow">
-                <Col className="messageCOL col-4">
-                    <Card className="sideCard">
-                        <CardTitle className="text-center topSpace">
-                            Messages</CardTitle>
-                        <CardBody className="text-center sideBody">
-                            <Card className="cardPaddingMargin">
-                                {Convos.map(convo => {
-                                    return(
-                                    <div>{convo.participants}</div>
+                <Row className="messageRow">
+                    <Col className="messageCOL col-4">
+                        <Card className="sideCard">
+                            <CardTitle className="text-center topSpace">
+                                Messages</CardTitle>
+                            <CardBody className="text-center sideBody">
+                                <Card className="cardPaddingMargin">
+                                    {Convos.map(convo => {
+                                        return (
+                                            <div>{convo.participants}</div>
+                                        )
+                                    }
                                     )}
-                                )}
+                                </Card>
+                                <MessageCard />
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <MessageCard />
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
+                                <Card className="cardPaddingMargin">
+                                    Test
                             </Card>
-                            <Card className="cardPaddingMargin">
-                                Test
-                            </Card>
-                        </CardBody>
-                    </Card>
+                            </CardBody>
+                        </Card>
 
-                </Col>
-                <Col>
-                    <Card className="mainMessageCard col-8">
-                        <Card className="received">RECEIVED MESSAGE</Card>
-                        <Card className="sent">SENT MESSAGE</Card>
-                    </Card>
-                    <Form inline  className="formBottom">
-                        <FormGroup inline className="messageText">
-                            <Label for="message" hidden>Message</Label>
-                            <Input type="text" name="message" id="messageID" placeholder="Write Message Here" />
-                        </FormGroup>
-                        <Button className="btnHover hvr-fade">Send</Button>
+                    </Col>
+                    <Col>
+                        <Card className="mainMessageCard col-8">
+                            <Card className="received">RECEIVED MESSAGE</Card>
+                            <Card className="sent">SENT MESSAGE</Card>
+                        </Card>
+                        <Form inline className="formBottom">
+                            <FormGroup inline className="messageText">
+                                <Label for="message" hidden>Message</Label>
+                                <Input type="text" name="message" id="messageID" placeholder="Write Message Here" />
+                            </FormGroup>
+                            <Button className="btnHover hvr-fade">Send</Button>
 
-                    </Form>
-                </Col>
+                        </Form>
+                    </Col>
 
-            </Row>
+                </Row>
 
-            <div className="fixed-bottom">
-                <Footer />
+                <div className="fixed-bottom">
+                    <Footer />
+                </div>
             </div>
-        </div>
+        // </div>
     )
 }
 

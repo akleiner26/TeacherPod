@@ -8,6 +8,11 @@ export default {
         return axios.get("/api/users" + `?grades=${searchData.grades}`);
     },
 
+    // Gets all teachers with no specified criteria
+    getAllTeachers: function () {
+        return axios.get("/api/users/teachers");
+    },
+
     // Gets one teacher based on teacher's id
     getTeacher: function (id) {
         return axios.get("/api/users/teacher/" + id);

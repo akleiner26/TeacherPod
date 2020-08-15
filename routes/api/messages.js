@@ -11,6 +11,11 @@ router.route("/:username")
     //Takes in params where username is logged in parent id
     .get(controller.findAllMessages)
 
+// Matches with "/api/messages/conversation"
+router.route("/conversation/")
+    //Takes in array through body => {participants: [username1, username2]}
+    .post(controller.createConversation)
+
 // Matches with "/api/messages/between"
 router.route("/between/:usernames")
     //Takes in params where usernames are a string separated by "+" i.e /api/messages/between/testUser1+testUser2

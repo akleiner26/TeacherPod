@@ -12,6 +12,12 @@ module.exports = {
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
+    findAllTeachersUnsearched: (req, res) => {
+        // console.log(req.query);
+        db.User.find({ isTeacher: true }).populate("pods")
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
     //Teacher Profile w/ Pods
     findOneTeacherById: (req, res) => {
         db.User.find({ _id: mongoose.Types.ObjectId(req.params.id) }).populate({
@@ -190,8 +196,12 @@ module.exports = {
     // Used in Get routes
     // Find all messages that user has recieved, takes in logged in users id
     findAllMessages: (req, res) => {
-        db.Messenger.find({ receiver: req.params.username })
-            .then(results => res.json(results))
+        console.log(req.params.username);
+        db.Conversation.find({ participants: req.params.username }).populate("messengers")
+            .then(results => {
+                console.log(results)
+                res.json(results);
+            })
             .catch(err => res.json(err))
     },
     // Find all messages between user logged in and incoming user
@@ -212,15 +222,28 @@ module.exports = {
     // Used in POST routes
     //Send a message, req.body.message must include sender(id), receiver(id), and content keys
     createMessage: (req, res) => {
+        
         db.Messenger.create(req.body.message)
-            .then( ({ _id }) => {
-                // db.Conversation.findOne({ participants })
-            })
+        .then(message => {
+            console.log(message)
+            db.Conversation.findOneAndUpdate({ participants: message.receiver}, { $push: { messengers: message._id }}, {new: true})
+                .then(results => res.json(results))
+        })
             .catch(err => res.json(err))
     },
     createConversation: (req, res) => {
-        db.Conversation.create(req.body.participants)
-            .then(results => res.json(results))
-            .catch(err => res.json(err))
+        console.log(req.body.participants)
+        db.Conversation.find({ participants: { $all: [req.body.participants[0], req.body.participants[1] ] } }).then( conversations => {
+            console.log(conversations)
+            if (conversations.length !== 0){
+                res.status(500).json({ message: "Conversation already exists" })
+            }
+            else {
+                db.Conversation.create({ participants: req.body.participants})
+                .then(results => res.json(results))
+                .catch(err => res.json(err))
+            }
+        })
+        .catch(err => res.json(err))
     },
 }

@@ -14,7 +14,7 @@ function Contact() {
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
 
-            <Row className="mt-5 profileCardRow">
+            <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Container>
                     <Card className="loginCard">
                         <CardTitle className="text-center loginTitle darkGreyText">CONTACT

@@ -3,8 +3,15 @@ import React, { useState } from "react";
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
 import style from "./login.css";
 import axios from "axios";
+import API from "../../utils/API";
+import Header from "../Header/header"
+import Footer from "../Footer/footer"
+// import Home from "../Home/home"
 
 function Login() {
+    const [loggedIn, setLogin] = useState("");
+    const [username, setUsername] = useState("");
+    const [id, setId] = useState("");
     const [loginInput, setInput] = useState({
         username: "",
         password: ""
@@ -30,10 +37,10 @@ function Login() {
 
     return (
         <>
-            {/* <Header /> */}
-            <Row className="mt-5 profileCardRow">
+            <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
+            <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Col xs="8" className="offset-2">
-                    <Container>
+                    <Container className>
                         <Card className="loginCard">
                             <CardTitle className="text-center loginTitle darkGrayText">LOGIN
                     <hr className="line"></hr>
@@ -56,7 +63,7 @@ function Login() {
                     </Container>
                 </Col>
             </Row>
-
+            <Footer />
         </>
     )
 }

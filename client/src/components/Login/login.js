@@ -56,7 +56,14 @@ function Login() {
                                         <Label for="examplePassword">Password</Label>
                                         <Input type="password" name="password" id="examplePassword" placeholder="Enter password here" onChange={handleInputChange} />
                                     </FormGroup>
-                                    <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Don't have an account yet?  <a className="iconHvr-fade2" href="/signup">Signup</a>
+                                    {/* <Row> */}
+                                        <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button> Don't have an account yet?
+                                        <a className="iconHvr-fade2" href="/signup"> Signup</a>
+
+                                       
+                                    {/* </Row> */}
+
+
                                 </Form>
                             </CardBody>
                         </Card>

@@ -39,7 +39,7 @@ function Messages() {
                 <Row className="messageRow">
                     <Col className="messageCOL col-4">
                         <Card className="sideCard">
-                            <CardTitle className="text-center topSpace">
+                            <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
                                 Messages</CardTitle>
                             <CardBody className="text-center sideBody">
                                 <Card className="cardPaddingMargin">
@@ -90,8 +90,8 @@ function Messages() {
                     </Col>
                     <Col>
                         <Card className="mainMessageCard col-8">
-                            <Card className="received">RECEIVED MESSAGE</Card>
-                            <Card className="sent">SENT MESSAGE</Card>
+                            <Card className="received align-items-center d-flex justify-content-center">RECEIVED MESSAGE</Card>
+                            <Card className="sent align-items-center d-flex justify-content-center">SENT MESSAGE</Card>
                         </Card>
                         <Form inline className="formBottom">
                             <FormGroup inline className="messageText">

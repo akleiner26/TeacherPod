@@ -60,6 +60,11 @@ export default {
         return axios.post("/api/messages/", msgData);
     },
 
+    //Creates a conversation between users, participants is an array i.e [username1, username2]
+    createConversation: function (participants) {
+        return axios.post("/api/messages/conversation/", participants)
+    },
+
     // PUT ROUTES
     // ==================================================
     // Updates a teacher's profile based on teacher's id

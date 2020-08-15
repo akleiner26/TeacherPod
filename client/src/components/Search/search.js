@@ -15,12 +15,12 @@ const Search = (props) => {
                     <Card className="m-2 mb-4">
                     <Form className="m-2 podSearchForm">
                         <FormGroup>
-                            <Label for="zipCode"><i class="fa fa-map-marker" aria-hidden="true"></i> Zip Code</Label>
-                            <Input onChange={props.handleInputChange} type="text" name="location" id="zipCode" placeholder="12345" />
+                            <Label for="zipCode"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</Label>
+                            <Input onChange={props.handleInputChange} type="text" name="location" id="zipCode" placeholder='Enter "remote" or zip code' value={props.search.location} />
                         </FormGroup>
                         <FormGroup>
                             <Label for="gradeSelect"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Grade</Label>
-                            <Input onChange={props.handleInputChange} type="select" name="grades" id="gradeSelect">
+                            <Input onChange={props.handleInputChange} type="select" name="grades" id="gradeSelect" value={props.search.grades}>
                                 <option value="">Select</option>
                                 <option>PreSchool</option>
                                 <option>Kindergarten</option>
@@ -40,7 +40,7 @@ const Search = (props) => {
                         </FormGroup>
                         <FormGroup>
                             <Label for="priceSelect"><i class="fa fa-usd" aria-hidden="true"></i> Price Range</Label>
-                            <Input onChange={props.handleInputChange} type="select" placeholder="Price/Week" name="price" id="priceSelect">
+                            <Input onChange={props.handleInputChange} type="select" placeholder="Price/Week" name="price" id="priceSelect" value={props.search.price}>
                                 <option value="">Select</option>
                                 <option>Less than $100/week</option>
                                 <option>$100-$200/week</option>

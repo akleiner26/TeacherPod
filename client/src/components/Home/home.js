@@ -21,7 +21,7 @@ function Home() {
     const [teachers, setTeachers] = useState([])
     const [id, setId] = useState("");
 
-    console.log(loggedIn, username, id);
+    // console.log(loggedIn, username, id);
 
     useEffect(() => {
         loadTeachers();
@@ -49,7 +49,7 @@ function Home() {
 
     //Onclick event for profile route
     const getTeacherProfile = (event) => {
-        
+
     }
 
     // Kicks off search with selected criteria when "submit" is clicked
@@ -59,12 +59,17 @@ function Home() {
 
         API.getTeachers(search)
             .then(res => {
-                console.log("API call is working...")
-                console.log(res)
+                // console.log("API call is working...")
+                // console.log(res)
 
                 setTeachers(res.data)
             })
 
+            setSearch({
+                location: "",
+                grades: "",
+                price: ""
+            })
     }
 
     return (
@@ -73,6 +78,7 @@ function Home() {
             <Search
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}
+                search={search}
             />
             {teachers.length ? (
                 <TeacherTable>
@@ -82,6 +88,7 @@ function Home() {
                         return <TeacherRow
                             key={teacher._id}
                             id={teacher._id}
+                            teacherId={teacher._id}
                             image={teacher.image}
                             name={name}
                             gradesTaught={teacher.gradesTaught}
@@ -93,7 +100,9 @@ function Home() {
                 </TeacherTable>
             ) : (
                     <TeacherTable>
-                            <td colspan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                        <tr>
+                            <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                        </tr>
                     </TeacherTable>
 
                 )}

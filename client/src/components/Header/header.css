@@ -1,4 +1,3 @@
-
 .topNav {
     margin-bottom: 90px;
 }
@@ -21,4 +20,10 @@
    border-bottom: solid;
    border-width: 1px;
    border-color: #ECECEC;
+}
+
+.dropdown-item:focus, .dropdown-item:active {
+    background: none;
+    outline: none;
+    color: black
 }

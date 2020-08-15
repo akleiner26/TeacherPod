@@ -37,68 +37,15 @@ function Messages() {
                 <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
 
 
-<<<<<<< HEAD
             <Row className="messageRow">
                 <Col className="messageCOL col-4">
                     <Card className="sideCard">
-                        <CardTitle className="text-center topSpace">
+                    <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
                             Messages</CardTitle>
                         <CardBody className="text-center sideBody">
                              <MessageCard />
                         </CardBody>
                     </Card>
-=======
-                <Row className="messageRow">
-                    <Col className="messageCOL col-4">
-                        <Card className="sideCard">
-                            <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
-                                Messages</CardTitle>
-                            <CardBody className="text-center sideBody">
-                                <Card className="cardPaddingMargin">
-                                    {Convos.map(convo => {
-                                        return (
-                                            <div>{convo.participants}</div>
-                                        )
-                                    }
-                                    )}
-                                </Card>
-                                <MessageCard />
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                                <Card className="cardPaddingMargin">
-                                    Test
-                            </Card>
-                            </CardBody>
-                        </Card>
->>>>>>> 6f57cf25076ef11f897e73bcfa99afbc80ba6a1f
 
                     </Col>
                     <Col>

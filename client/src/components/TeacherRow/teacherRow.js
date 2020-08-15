@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./teacherRow.css"
+import "./teacherRow.css";
 import {
     Button
 } from 'reactstrap';
@@ -12,8 +12,8 @@ const TeacherRow = (props) => {
             <td className="vertAlign"><a href="/profile" className="teacherTableName aquaText">{props.name}</a></td>
             <td className="vertAlign">{props.gradesTaught}</td>
             <td className="vertAlign">${props.price}</td>
-            <td className="vertAlign">{props.capacity}</td>
-            <td className="vertAlign"><Button className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i class="fa fa-comments" aria-hidden="true"></i></Button></td>
+            <td className="vertAlign">{props.pods}</td>
+            <td className="vertAlign"><Button data-username={props.username} className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i class="fa fa-comments" aria-hidden="true"></i></Button></td>
         </tr>
     );
 };

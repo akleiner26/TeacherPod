@@ -69,21 +69,29 @@ function Home() {
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}
             />
-            <TeacherTable>
-                {teachers.map(teacher => {
-                    let name = teacher.firstName + " " + teacher.lastName;
+            {teachers.length ? (
+                <TeacherTable>
+                    {teachers.map(teacher => {
+                        let name = teacher.firstName + " " + teacher.lastName;
 
-                    return <TeacherRow
-                        key={teacher._id}
-                        id={teacher._id}
-                        image={teacher.image}
-                        name={name}
-                        gradesTaught={teacher.gradesTaught}
-                        price={teacher.pods[0].price}
-                        capacity={teacher.pods[0].slots} />
-                }
+                        return <TeacherRow
+                            key={teacher._id}
+                            id={teacher._id}
+                            image={teacher.image}
+                            name={name}
+                            gradesTaught={teacher.gradesTaught}
+                            price={teacher.pods[0].price}
+                            pods={teacher.pods.length}
+                            username={teacher.username} />
+                    }
+                    )}
+                </TeacherTable>
+            ) : (
+                    <TeacherTable>
+                            <td colspan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                    </TeacherTable>
+
                 )}
-            </TeacherTable>
             <Footer />
         </>
     )

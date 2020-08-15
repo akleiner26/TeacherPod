@@ -72,12 +72,19 @@ function Home() {
             })
     }
 
+    const clearSearch = event => {
+        event.preventDefault();
+
+        loadTeachers();
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
             <Search
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}
+                clearSearch={clearSearch}
                 search={search}
             />
             {teachers.length ? (

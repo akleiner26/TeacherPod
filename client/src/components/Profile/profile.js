@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
-import style from "./profile.css"
-import { Card, Col, Row, CardTitle } from "reactstrap"
+import "./profile.css"
+import { Card, Col, Row, CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
+import ProfileModal from "../ProfileModal/ProfileModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -13,26 +14,37 @@ const Profile = (props) => {
     const [teacher, setTeacher] = useState({
         firstName: "",
         lastName: "",
-
     })
     const [pods, setPods] = useState([]);
-    
-    
+    const {
+        buttonLabel,
+        className
+    } = props;
+
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(!modal);
+
     useEffect(() => {
         API.getTeacher(id)
-        .then(res =>{
-            console.log(res);
+            .then(res => {
+                console.log(res);
                 setTeacher(res.data[0])
                 console.log(teacher)
                 setPods(res.data[0].pods)
             }
             ).catch(err => console.log(err));
-    },[id])
+    }, [id])
 
+    const openProfileEditor = event => {
+        console.log("clicked")
+
+        setModal(true);
+    }
 
     return (
         <>
-            <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />
+            <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
             <Row className="mt-5 profileCardRow">
                 <Col xs="8" className="offset-2">
                     <Card className="profileCard">
@@ -41,21 +53,22 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
                             <Col className="proPicCol" xs="6">
-                                <img className="img-fluid teacherImage" alt="Lillian Woods" src="images/fullSize/lillianWoodsImg.jpg"></img>
+                                <img className="img-fluid teacherImage" alt="Lillian Woods" src={teacher.image}></img>
+                                <Button className="btnHover hvr-fade mt-4" onClick={openProfileEditor}>Edit Profile</Button>
                             </Col>
                             <Col>
                                 <Row>
                                     <Col>
-                                            <h2>
-                                                <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
-                                            </h2>
-                                            </Col>
+                                        <h2>
+                                            <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
+                                        </h2>
+                                    </Col>
                                 </Row>
-                                <p><strong>About: </strong> 
-                                {teacher.bio}
+                                <p><strong>About: </strong>
+                                    {teacher.bio}
                                 </p>
                                 <a href="/messages" className="iconHvr-fade">
-                                <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-envelope mailIcon fa-2x" aria-hidden="true"></i>
                                 </a>
                             </Col>
                         </Row>
@@ -64,6 +77,13 @@ const Profile = (props) => {
             </Row>
             <PodTable pods={pods} />
             <Footer />
+
+            <ProfileModal 
+                toggle={toggle}
+                modal={modal}
+                className={className}
+                buttonLabe={buttonLabel}
+            />
         </>
     )
 }

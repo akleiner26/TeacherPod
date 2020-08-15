@@ -1,6 +1,8 @@
 .teacherThumbnails {
-    width: 100px;
+    max-height: 250px;
+    max-width: 150px;
 }
+
 
 .cardThumb {
 
@@ -32,11 +34,7 @@
     margin-top: 0;
 }
 
-.vertAlign {
-    vertical-align: middle !important;
-    text-align: center;
-  
-}
+
 
   .teacherTableName{
       color: rgba(57,180,167,1);

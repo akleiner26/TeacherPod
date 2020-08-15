@@ -2,10 +2,6 @@ div.card {
     margin-bottom: 50px;
 }
 
-.teacherTableHead{
-    text-align: center;
-    border-bottom: solid rgba(57,180,167,1);
-}
 
 .teacherTable{
     border-right: solid white 1px !important;

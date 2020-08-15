@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import style from "./profile.css"
+import style from "./teacherProfile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 import API from "../../utils/API"
+import { useParams } from "react-router-dom"
 
 const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
@@ -16,20 +17,20 @@ const Profile = (props) => {
 
     })
     const [pods, setPods] = useState([]);
-    
-    
+    // let { key } = useParams();
+   let key = props.match.params.key
+
     useEffect(() => {
-        API.getTeacher(id)
-        .then(res =>{
+        API.getTeacher(key)
+        .then(res => {
             console.log(res);
                 setTeacher(res.data[0])
-                console.log(teacher)
+                console.log(key)
                 setPods(res.data[0].pods)
             }
             ).catch(err => console.log(err));
-    },[id])
-
-
+    },[key])
+    
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />

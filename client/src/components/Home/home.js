@@ -47,6 +47,11 @@ function Home() {
         })
     }
 
+    //Onclick event for profile route
+    const getTeacherProfile = (event) => {
+        
+    }
+
     // Kicks off search with selected criteria when "submit" is clicked
     const handleFormSubmit = event => {
         event.preventDefault();

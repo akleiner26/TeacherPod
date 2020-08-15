@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import style from "./teacherProfile.css"
+import "./teacherProfile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"

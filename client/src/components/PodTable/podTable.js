@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react"
-import style from "./podTable.css"
+import "./podTable.css"
 import { Table, Col, Card } from "reactstrap"
 import PodRow from "../PodRow/podRow"
 import API from "../../utils/API"

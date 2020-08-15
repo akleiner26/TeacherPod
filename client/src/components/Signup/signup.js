@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
-import style from "./signup.css";
+import "./signup.css";
 import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";

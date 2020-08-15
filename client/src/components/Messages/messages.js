@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/header";
 import Footer from "../Footer/footer"
 import { Card, CardTitle, CardBody, Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import style from "./messages.css";
+import "./messages.css";
 import axios from "axios";
 import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard"

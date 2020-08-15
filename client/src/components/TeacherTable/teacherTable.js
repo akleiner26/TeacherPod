@@ -1,9 +1,7 @@
 import React from "react"
-import "./teacherTable.css"
+import "./teacherTable.css";
 import { Table, Col, Card } from "reactstrap"
-// import teachers from "../../teachers.json"
-import TeacherRow from "../TeacherRow/teacherRow"
-import style from "./teacherTable.css"
+import "./teacherTable.css"
 
 
 function TeacherTable(props) {
@@ -17,7 +15,7 @@ function TeacherTable(props) {
                     <th className="darkGrayText">Name</th>
                     <th className="darkGrayText">Grade</th>
                     <th className="darkGrayText">Price/Week</th>
-                    <th className="darkGrayText">Pod Capacity</th>
+                    <th className="darkGrayText">Pods</th>
                     <th className="darkGrayText">Message</th>
                 </tr>
             </thead>

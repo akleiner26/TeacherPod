@@ -12,7 +12,7 @@ function TeacherTable(props) {
         <Card className="tableMargin">
         <Table className="teacherTable" hover >
             <thead className="teacherHeadRow">
-                <tr className="teacherTableHead">
+                <tr className="tableHead">
                     <th className="darkGrayText cameraIcon"><i class="fa fa-camera-retro" aria-hidden="true"></i></th>
                     <th className="darkGrayText">Name</th>
                     <th className="darkGrayText">Grade</th>

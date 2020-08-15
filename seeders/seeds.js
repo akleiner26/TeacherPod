@@ -90,7 +90,7 @@ db.Student.deleteMany({})
                 name: "3rd Grade History",
                 grade: "3rd Grade",
                 slots: "10",
-                price: "220",
+                price: "250",
                 location: "remote",
                 students: [mongoose.Types.ObjectId(data.ops[2]._id)]
             },
@@ -98,7 +98,7 @@ db.Student.deleteMany({})
                 name: "5 Stars Pod",
                 grade: "5th Grade",
                 slots: "5",
-                price: "175",
+                price: "375",
                 location: "remote",
                 students: [mongoose.Types.ObjectId(data.ops[3]._id), mongoose.Types.ObjectId(data.ops[4]._id)]
             },
@@ -134,20 +134,20 @@ db.Student.deleteMany({})
                 name: "Honors 10th",
                 grade: "10th Grade",
                 slots: "10",
-                price: "375",
+                price: "250",
                 location: "19123"
             },
             {
                 name: "5th Curriculum",
                 grade: "5th Grade",
-                slots: "4",
+                slots: "9",
                 price: "150",
                 location: "remote"
             },
             {
                 name: "5th Curriculum II",
                 grade: "5th Grade",
-                slots: "4",
+                slots: "9",
                 price: "150",
                 location: "remote"
             },
@@ -212,13 +212,6 @@ db.Student.deleteMany({})
                 grade: "10th Grade",
                 slots: "10",
                 price: "475",
-                location: "remote"
-            },
-            {
-                name: "General 10th",
-                grade: "10th Grade",
-                slots: "10",
-                price: "355",
                 location: "remote"
             },
             {
@@ -297,7 +290,7 @@ db.Student.deleteMany({})
                                 password: bcrypt.hashSync("password"),
                                 isTeacher: true,
                                 location: "19123",
-                                image: "images/fullSize/rogerHorneImg.jpg",
+                                image: "",
                                 gradesTaught: "10th Grade",
                                 pods: [mongoose.Types.ObjectId(podData.ops[6]._id), mongoose.Types.ObjectId(podData.ops[7]._id)],
                                 bio: "Hi, I'm Mr. Horne and my passion and belief has always to invest in our children because they are the future. I'm all about creating an environment that fosters diversity and growth, and I design my curriculum to fit each student's needs. This means that each student's experience may be different from another's, but rest assured that I'll still cover all their needs. It's just that I may mix things up for a change of pace if I feel that something's not working out for a student. So if you are all for the unexpected but also want your child to have a solid learning foundation, I'd love to hear from you!"
@@ -428,17 +421,6 @@ db.Student.deleteMany({})
                                 gradesTaught: "10th Grade",
                                 pods: [mongoose.Types.ObjectId(podData.ops[19]._id)],
                                 bio: "Hi there, I'm Mrs. Calderon from Wishockon. I began working at Wishockon High in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
-                            },
-                            {
-                                firstName: "Test",
-                                lastName: "Test",
-                                username: "test@email.com",
-                                password: bcrypt.hashSync("password"),
-                                isTeacher: true,
-                                image: "",
-                                gradesTaught: "",
-                                pods: [mongoose.Types.ObjectId(podData.ops[20]._id)],
-                                bio: ""
                             }
                         ]
 

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import "./profile.css"
+import "./teacherProfile.css"
 import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 import API from "../../utils/API"
+import { useParams } from "react-router-dom"
 
 const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
@@ -16,21 +17,20 @@ const Profile = (props) => {
 
     })
     const [pods, setPods] = useState([]);
-    let key = props.match.params.id
-    
-    
+    // let { key } = useParams();
+   let key = props.match.params.key
+
     useEffect(() => {
         API.getTeacher(key)
-        .then(res =>{
+        .then(res => {
             console.log(res);
                 setTeacher(res.data[0])
-                console.log(teacher)
+                console.log(key)
                 setPods(res.data[0].pods)
             }
             ).catch(err => console.log(err));
     },[key])
-
-
+    
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{setLogin, setUsername, setId}} />
@@ -42,7 +42,7 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
                             <Col className="proPicCol" xs="6">
-                                <img className="img-fluid teacherImage" alt={`${teacher.firstName} ${teacher.lastName}`}  src={`../${teacher.image}`}></img>
+                                <img className="img-fluid teacherImage" alt="Lillian Woods" src="images/fullSize/lillianWoodsImg.jpg"></img>
                             </Col>
                             <Col>
                                 <Row>

@@ -112,3 +112,24 @@ border: none;
   text-align: center;
   border-bottom: solid rgba(57,180,167,1);
 }
+
+.fullBackground{
+  margin-top: -40px;
+  padding-top: 40px;
+  margin-bottom: -40px;
+  padding-bottom: -40px;
+  background: rgb(236,236,236);
+  background: -moz-linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
+  background: -webkit-linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
+  background: linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#36cbbb",GradientType=1);
+}
+
+.loginSignupRowSize {
+  height: 870px;
+  width: 101%;
+}
+
+.floatRt {
+  float: right;
+}

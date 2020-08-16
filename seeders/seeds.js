@@ -429,8 +429,76 @@ db.Student.deleteMany({})
                             .then(data => {
                                 ("===============================")
                                 console.log(data.result.n + " teachers inserted!");
-                                process.exit(0);
+                                let conversationSeed = [
+                                    {
+                                        participants: ["wtejeda@email.com", "lwoods@email.com"]
+                                    },
+                                    {
+                                        participants: ["dkleiner@email.com", "lwoods@email.com"]
+                                    },
+                                    {
+                                        participants: ["gbergman@email.com", "lwoods@email.com"]
+                                    },
+                                    {
+                                        participants: ["rmin@email.com", "lwoods@email.com"]
+                                    },
+                                    {
+                                        participants: ["wtejeda@email.com", "lwoods2@email.com"]
+                                    },
+                                    {
+                                        participants: ["dkleiner@email.com", "lwoods2@email.com"]
+                                    },
+                                    {
+                                        participants: ["gbergman@email.com", "lwoods2@email.com"]
+                                    },
+                                    {
+                                        participants: ["rmin@email.com", "lwoods2@email.com"]
+                                    },
+                                    {
+                                        participants: ["wtejeda@email.com", "adavidson@email.com"]
+                                    },
+                                    {
+                                        participants: ["dkleiner@email.com", "adavidson@email.com"]
+                                    },
+                                    {
+                                        participants: ["gbergman@email.com", "adavidson@email.com"]
+                                    },
+                                    {
+                                        participants: ["rmin@email.com", "adavidson@email.com"]
+                                    },
+                                    {
+                                        participants: ["wtejeda@email.com", "tkelly@email.com"]
+                                    },
+                                    {
+                                        participants: ["dkleiner@email.com", "tkelly@email.com"]
+                                    },
+                                    {
+                                        participants: ["gbergman@email.com", "tkelly@email.com"]
+                                    },
+                                    {
+                                        participants: ["rmin@email.com", "tkelly@email.com"]
+                                    },
+                                    {
+                                        participants: ["wtejeda@email.com", "mburns@email.com"]
+                                    },
+                                    {
+                                        participants: ["dkleiner@email.com", "mburns@email.com"]
+                                    },
+                                    {
+                                        participants: ["gbergman@email.com", "mburns@email.com"]
+                                    },
+                                    {
+                                        participants: ["rmin@email.com", "mburns@email.com"]
+                                    }
+                                ];
+                                db.Conversation.deleteMany({})
+                                    .then(() => db.Conversation.collection.insertMany(conversationSeed))
+                                    .then(data => {
+                                        console.log("===============================")
+                                        console.log(data.result.n + " conversations inserted!")
+                                        process.exit(0);
                             })
+                        })
                     })
             })
 

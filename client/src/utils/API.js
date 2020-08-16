@@ -30,7 +30,7 @@ export default {
 
     // Gets all messages between two users
     findMessageHistory: function (username1, username2) {
-        return axios.get("/api/messages/between/" + username1 + "/" + username2);
+        return axios.get("/api/messages/between/" + username1 + "+" + username2);
     },
 
     // POST ROUTES

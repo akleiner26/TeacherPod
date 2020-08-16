@@ -42,7 +42,7 @@ export default {
     
     // Creates a new teacher account
     createTeacher: function (userData) {
-        return axios.post("/api/users/teacher", userData);
+        return axios.post("/api/users/teachers", userData);
     },
 
     // Sends the user login information

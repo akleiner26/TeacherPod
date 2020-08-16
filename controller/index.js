@@ -212,9 +212,11 @@ module.exports = {
     //Send a message, req.body.message must include sender(id), receiver(id), and content keys
     createMessage: (req, res) => {
         db.Messenger.create(req.body.message)
-            .then( ({ _id }) => {
-                // db.Conversation.findOne({ participants })
-            })
+          .then(message => {
+            console.log(message)
+            db.Conversation.findOneAndUpdate({ participants: message.receiver && message.sender}, { $push: { messengers: message._id }}, {new: true})
+                .then(results => res.json(results))
+        })
             .catch(err => res.json(err))
     },
     createConversation: (req, res) => {

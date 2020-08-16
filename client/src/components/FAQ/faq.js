@@ -82,7 +82,7 @@ function FAQ() {
                                 <UncontrolledCollapse toggler="#toggler4">
                                     <Card className="toggleCard">
                                         <CardBody className="toggleText">
-                                            As of now, all classes will be conducted via <a href="https://zoom.us/">Zoom</a>. Simply setup a computer with a webcam, connect with a teacher, and start learning!
+                                            As of now, all classes will be conducted via <a href="https://zoom.us/" target="_blank">Zoom</a>. Simply setup a computer with a webcam, connect with a teacher, and start learning!
                                         </CardBody>
                                     </Card>
                                 </UncontrolledCollapse>

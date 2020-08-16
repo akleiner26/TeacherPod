@@ -15,7 +15,7 @@ function PodTable(props) {
                 <tr className="darkGrayText">
                     <th onClick={props.sortByName}>Pod Name</th>
                     <th onClick={props.sortByGrade}>Grade</th>
-                    <th>Location</th>
+                    <th onClick={props.sortByLocation}>Location</th>
                     <th>Price</th>
                     <th>Pod Capacity</th>
                     <th>Openings</th>

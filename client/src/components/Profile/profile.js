@@ -40,6 +40,7 @@ const Profile = (props) => {
     //For Sort
     const [sortGrade, setGrade] = useState([]);
     const [sortName, setName] = useState([]);
+    const [sortLocation, setLocation] = useState([]);
 
     useEffect(() => {
         API.getTeacher(key)
@@ -198,6 +199,35 @@ const Profile = (props) => {
         setPods(sortedGrades);
     }
 
+    //Sort pod table by location
+    const sortByLocation = () => {
+
+        let sortedNames = pods.sort((a, b) => {
+            const nameA = a.location;
+            const nameB = b.location;
+
+
+            let comparison = 0;
+            if (nameA > nameB) {
+                comparison = 1;
+            } else if (nameA < nameB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortName === "DESC") {
+            sortedNames.reverse();
+            setName("ASC");
+            // hideArrows();
+            // document.getElementById("nameUp").style.display = "block";
+        } else {
+            setName("DESC");
+            // hideArrows();
+            // document.getElementById("nameDown").style.display = "block";
+        }
+        setPods(sortedNames);
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -259,7 +289,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} />
+                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation}/>
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

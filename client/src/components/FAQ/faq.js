@@ -82,7 +82,20 @@ function FAQ() {
                                 <UncontrolledCollapse toggler="#toggler4">
                                     <Card className="toggleCard">
                                         <CardBody className="toggleText">
-                                            As of now, all classes will be conducted via <a href="https://zoom.us/">Zoom</a>. Simply setup a computer with a webcam, connect with a teacher, and start learning!
+                                            As of now, all classes will be conducted via <a href="https://zoom.us/" target="_blank">Zoom</a>. Simply setup a computer with a webcam, connect with a teacher, and start learning!
+                                        </CardBody>
+                                    </Card>
+                                </UncontrolledCollapse>
+                            </div>
+
+                            <div>
+                                <Button className="toggleButton" id="toggler5" style={{ marginBottom: '1rem' }}>
+                                    What times will classes be taught?
+                                </Button>
+                                <UncontrolledCollapse toggler="#toggler5">
+                                    <Card className="toggleCard">
+                                        <CardBody className="toggleText">
+                                            You can expect classes to mimic a standard school schedule. Unless otherwise indicated by the pod teacher, all classes will take place Monday-Friday 9am-4pm local time. 
                                         </CardBody>
                                     </Card>
                                 </UncontrolledCollapse>

@@ -87,6 +87,19 @@ function FAQ() {
                                     </Card>
                                 </UncontrolledCollapse>
                             </div>
+
+                            <div>
+                                <Button className="toggleButton" id="toggler5" style={{ marginBottom: '1rem' }}>
+                                    What times will classes be taught?
+                                </Button>
+                                <UncontrolledCollapse toggler="#toggler5">
+                                    <Card className="toggleCard">
+                                        <CardBody className="toggleText">
+                                            You can expect classes to mimic a standard school schedule. Unless otherwise indicated by the pod teacher, all classes will take place Monday-Friday 9am-4pm local time. 
+                                        </CardBody>
+                                    </Card>
+                                </UncontrolledCollapse>
+                            </div>
                         </CardBody>
                     </Card>
                 </Container>

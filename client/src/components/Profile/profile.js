@@ -98,9 +98,10 @@ const Profile = (props) => {
             .catch(err => console.log(err));
     }
 
+    // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
-        console.log("clicked")
         setPodModal(true);
+        console.log(teacher)
     }
 
     return (
@@ -175,6 +176,8 @@ const Profile = (props) => {
                 toggle2={toggle2}
                 podModal={podModal}
                 buttonLabe={buttonLabel}
+                teacher={teacher}
+                id={id}
             />
         </>
     )

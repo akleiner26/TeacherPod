@@ -6,6 +6,7 @@ import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
+import StudentModal from "../StudentModal/StudentModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -31,9 +32,11 @@ const Profile = (props) => {
     } = props;
     const [profileModal, setProfileModal] = useState(false);
     const [podModal, setPodModal] = useState(false);
+    const [studentModal, setStudentModal] = useState(false);
 
     const toggle = () => setProfileModal(!profileModal);
     const toggle2 = () => setPodModal(!podModal);
+    const toggle3 = () => setStudentModal(!studentModal);
 
     useEffect(() => {
         API.getTeacher(key)
@@ -55,6 +58,7 @@ const Profile = (props) => {
             }
             ).catch(err => console.log(err));
     }, [key])
+    // }, [key, pods])
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
@@ -101,7 +105,13 @@ const Profile = (props) => {
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
         setPodModal(true);
-        console.log(teacher)
+        // console.log(teacher)
+    }
+
+    // Displays modal with form to add student (for parents only)
+    const openStudentForm = event => {
+        console.log("clicked")
+        setStudentModal(true);
     }
 
     return (
@@ -125,7 +135,12 @@ const Profile = (props) => {
                                                 <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
-                                                <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                {teacher.isTeacher === true ? (
+                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                ) : (
+                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                    )}
+
                                             </Col>
                                             <Col></Col>
                                         </>
@@ -175,6 +190,14 @@ const Profile = (props) => {
             <PodModal
                 toggle2={toggle2}
                 podModal={podModal}
+                buttonLabe={buttonLabel}
+                teacher={teacher}
+                id={id}
+            />
+
+            <StudentModal
+                toggle3={toggle3}
+                studentModal={studentModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
                 id={id}

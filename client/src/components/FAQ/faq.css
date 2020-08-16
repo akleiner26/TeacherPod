@@ -7,7 +7,7 @@
 }
 
 
-.toggleButton:hover, .toggleButton:active, .toggleButton:focus-within {
+.toggleButton:hover, .toggleButton:focus-within {
     background-color: rgba(57,180,167,1) !important;
     color: white !important;
   }

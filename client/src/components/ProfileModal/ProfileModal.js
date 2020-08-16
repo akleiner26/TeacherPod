@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import "./ProfileModal.css";
 
 const ProfileModal = (props) => {
@@ -10,26 +10,26 @@ const ProfileModal = (props) => {
                 <Form>
                     <FormGroup>
                         <Label for="prefix">Prefix</Label>
-                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.teacher.prefix} />
+                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.profileData.prefix}  />
                     </FormGroup>
                     <FormGroup>
                         <Label for="firstName">First Name</Label>
-                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.teacher.firstName} />
+                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.profileData.firstName}  onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastName">Last Name</Label>
-                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.teacher.lastName} />
+                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.profileData.lastName}  />
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">Profile Image</Label>
-                        <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.teacher.image} />
+                        <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.profileData.image} />
                         <FormText color="muted">
                             Provide url to image.
                         </FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Grade Level</Label>
-                        <Input type="select" name="select" id="grade" value={props.teacher.gradesTaught}>
+                        <Input type="select" name="gradesTaught" id="grade" value={props.profileData.gradesTaught} >
                             <option value="">Select</option>
                             <option>PreSchool</option>
                             <option>Kindergarten</option>
@@ -49,19 +49,17 @@ const ProfileModal = (props) => {
                     </FormGroup>
                     <FormGroup>
                         <Label for="location">Location</Label>
-                        <Input type="type" name="location" id="location" placeholder="Location" value={props.teacher.location} />
+                        <Input type="type" name="location" id="location" placeholder="Location" value={props.profileData.location}  />
                         <FormText color="muted">
                             Location must be entered as "remote" or by zip code.
                         </FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="bio">About</Label>
-                        <Input type="textarea" name="bio" id="bio" placeholder="About" value={props.teacher.bio} />
+                        <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.profileData.bio} />
                     </FormGroup>
-                    <ModalFooter>
-                    <Button>Save</Button>
+                    <Button onClick={props.saveEdits}>Save</Button>
                     <Button onClick={props.toggle} className="ml-3 mr-0">Cancel</Button>
-                    </ModalFooter>
                 </Form>
             </ModalBody>
         </Modal>

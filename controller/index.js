@@ -208,15 +208,8 @@ module.exports = {
     findAllMessagesBetween: (req, res) => {
         console.log(req.params.usernames);
         let users = req.params.usernames.split("+");
-        let messages = {};
-        db.Messenger.find({ receiver: users[0], sender: users[1]})
-            .then(results => messages.received = results)
-            .catch(err => res.json(err))
-        db.Messenger.find({ receiver: users[1], sender: users[0]})
-            .then(results => {
-                messages.sent = results;
-                res.json(messages);
-            })
+        db.Conversation.find({ participants: users[0] && users[1]}).populate("messengers")
+            .then(results => res.json(results))
             .catch(err => res.json(err))
     },
     // Used in POST routes

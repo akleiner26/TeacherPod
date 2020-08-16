@@ -1,4 +1,27 @@
+.toggleButton {
+    background:white;
+    color: rgba(57,180,167,1) !important;
+    border-color: rgba(57,180,167,1) !important;
+    margin-left: 19px;
+}
+
+
+.toggleButton:hover, .toggleButton:active, .toggleButton:focus-within {
+    background-color: rgba(57,180,167,1) !important;
+    color: white !important;
+  }
+  
+
+
 /* .toggleCard {
-    max-width: 400px;
-    height: auto;
+
 } */
+
+/* .toggleText {
+    
+} */
+
+.toggleCardOuter {
+    max-height: 500px;
+    overflow: scroll;
+}

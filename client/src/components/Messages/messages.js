@@ -86,7 +86,7 @@ function Messages() {
                     <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
                             Messages</CardTitle>
                         <CardBody className="text-center sideBody">
-                            {Convos.map(convo => {
+                            {Convos && Convos.map(convo => {
                                     console.log(convo);
                                     let personText = "";
                                     if (!convo.participants) {
@@ -114,7 +114,7 @@ function Messages() {
                                 </div>
                                 </>
                                 :
-                                messages.map(message => {
+                                messages && messages.map(message => {
                                     let text = message.content;
                                     console.log(text);
                                     if (message.sender == username){

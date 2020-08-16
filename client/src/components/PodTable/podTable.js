@@ -13,7 +13,7 @@ function PodTable(props) {
         <Table hover >
             <thead className="tableHead">
                 <tr className="darkGrayText">
-                    <th>Pod Name</th>
+                    <th onClick={props.sortByName}>Pod Name</th>
                     <th onClick={props.sortByGrade}>Grade</th>
                     <th>Location</th>
                     <th>Price</th>

@@ -38,7 +38,8 @@ const Profile = (props) => {
     const toggle3 = () => setStudentModal(!studentModal);
 
     //For Sort
-    const [sortGrade, setGrade] = useState([])
+    const [sortGrade, setGrade] = useState([]);
+    const [sortName, setName] = useState([]);
 
     useEffect(() => {
         API.getTeacher(key)
@@ -115,6 +116,35 @@ const Profile = (props) => {
         // console.log("clicked")
         setStudentModal(true);
         console.log(teacher)
+    }
+
+    //Sorts pod table by pod name
+    const sortByName = () => {
+
+        let sortedNames = pods.sort((a, b) => {
+            const nameA = a.name;
+            const nameB = b.name;
+
+
+            let comparison = 0;
+            if (nameA > nameB) {
+                comparison = 1;
+            } else if (nameA < nameB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortName === "DESC") {
+            sortedNames.reverse();
+            setName("ASC");
+            // hideArrows();
+            // document.getElementById("nameUp").style.display = "block";
+        } else {
+            setName("DESC");
+            // hideArrows();
+            // document.getElementById("nameDown").style.display = "block";
+        }
+        setPods(sortedNames);
     }
 
     //Sorts pod table by grade taught
@@ -229,7 +259,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} sortByGrade={sortByGrade} />
+                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

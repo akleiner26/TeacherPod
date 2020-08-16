@@ -54,7 +54,7 @@ function Header(props) {
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/announcements">Announcements</NavLink>
+                                <NavLink href="/faq">FAQ</NavLink>
                             </NavItem>
                             <NavItem>
                             {props.loggedIn ?

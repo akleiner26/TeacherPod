@@ -8,6 +8,7 @@ import Home from "./components/Home/home"
 import Contact from "./components/Contact/contact"
 import Profile from "./components/Profile/profile"
 import TeacherProfile from "./components/TeacherProfile/teacherProfile"
+import FAQ from "./components/FAQ/faq"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/messages" component={Messages} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/profile/:id" component={Profile} />
+        <Route exact path="/faq" component={FAQ} />
       </Switch>
     </Router>
   );

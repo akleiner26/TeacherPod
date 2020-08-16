@@ -17,7 +17,7 @@ function Contact() {
             <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Container>
                     <Card className="loginCard">
-                        <CardTitle className="text-center loginTitle darkGreyText">CONTACT
+                        <CardTitle className="text-center loginTitle darkGrayText">CONTACT
                     <hr className="line"></hr>
                         </CardTitle>
 

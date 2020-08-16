@@ -8,6 +8,7 @@ import StudentTable from "../StudentTable/StudentTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
+import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -32,10 +33,20 @@ const Profile = (props) => {
     const [profileModal, setProfileModal] = useState(false);
     const [podModal, setPodModal] = useState(false);
     const [studentModal, setStudentModal] = useState(false);
+    const [messageModal, setMessageModal] = useState(false);
 
     const toggle = () => setProfileModal(!profileModal);
     const toggle2 = () => setPodModal(!podModal);
     const toggle3 = () => setStudentModal(!studentModal);
+    const toggle4 = () => setMessageModal(!messageModal);
+
+    //For Sort
+    const [sortGrade, setGrade] = useState([]);
+    const [sortName, setName] = useState([]);
+    const [sortLocation, setLocation] = useState([]);
+    const [sortPrice, setPrice] = useState([])
+    const [sortCapacity, setCapacity] = useState([])
+    const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
         API.getTeacher(key)
@@ -134,6 +145,227 @@ const Profile = (props) => {
         // console.log(teacher)
     }
 
+    const openMessageForm = event => {
+        setMessageModal(true);
+    }
+
+    const startConvo = () => {
+        API.createConversation({participants: [username, id]})
+            .then(() => {
+                window.location.redirect("/messages")
+            })
+    }
+
+    ////////////////////////////////////////////////////////////////////
+    //Sort Functions
+
+    const hideArrows = () => {
+        document.getElementById("podNameUp").style.display = "none";
+        document.getElementById("podNameDown").style.display = "none";
+        document.getElementById("podGradeUp").style.display = "none";
+        document.getElementById("podGradeDown").style.display = "none";
+        document.getElementById("podLocationUp").style.display = "none";
+        document.getElementById("podLocationDown").style.display = "none";
+        document.getElementById("podPriceUp").style.display = "none";
+        document.getElementById("podPriceDown").style.display = "none";
+        document.getElementById("podCapacityUp").style.display = "none";
+        document.getElementById("podCapacityDown").style.display = "none";
+        document.getElementById("podOpeningUp").style.display = "none";
+        document.getElementById("podOpeningDown").style.display = "none";
+    }
+
+    //Sorts pod table by pod name
+    const sortByName = () => {
+
+        let sortedNames = pods.sort((a, b) => {
+            const nameA = a.name;
+            const nameB = b.name;
+
+
+            let comparison = 0;
+            if (nameA > nameB) {
+                comparison = 1;
+            } else if (nameA < nameB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortName === "DESC") {
+            sortedNames.reverse();
+            setName("ASC");
+            hideArrows();
+            document.getElementById("podNameUp").style.display = "block";
+        } else {
+            setName("DESC");
+            hideArrows();
+            document.getElementById("podNameDown").style.display = "block";
+        }
+        setPods(sortedNames);
+    }
+
+    //Sorts pod table by grade taught
+    const sortByGrade = () => {
+
+        let sortedGrades = pods.sort((a, b) => {
+            const gradeA = a.grade;
+            const gradeB = b.grade;
+
+            let gradeASplit = gradeA.split(" ")[0];
+            if (gradeASplit.length == 3) {
+                gradeASplit = gradeASplit.substring(0, 1)
+            }
+            else if (gradeASplit.length == 4) {
+                gradeASplit = gradeASplit.substring(0, 2)
+            }
+            gradeASplit = parseInt(gradeASplit)
+
+            let gradeBSplit = gradeB.split(" ")[0];
+            if (gradeBSplit.length == 3) {
+                gradeBSplit = gradeBSplit.substring(0, 1)
+            }
+            else if (gradeBSplit.length == 4) {
+                gradeBSplit = gradeBSplit.substring(0, 2)
+            }
+            gradeBSplit = parseInt(gradeBSplit)
+            console.log(gradeASplit, gradeBSplit)
+
+            let comparison = 0;
+            if (gradeASplit > gradeBSplit) {
+                comparison = 1;
+                return comparison;
+            } else if (gradeASplit < gradeBSplit) {
+                comparison = -1;
+                return comparison;
+            } else if (gradeASplit !== gradeBSplit) {
+                return comparison
+            }
+        })
+
+        if (sortGrade === "DESC") {
+            sortedGrades.reverse();
+            setGrade("ASC");
+            hideArrows();
+            document.getElementById("podGradeUp").style.display = "block";
+        } else {
+            setGrade("DESC");
+            hideArrows();
+            document.getElementById("podGradeDown").style.display = "block";
+        }
+        setPods(sortedGrades);
+    }
+
+    //Sort pod table by location
+    const sortByLocation = () => {
+
+        let sortedLocation = pods.sort((a, b) => {
+            const nameA = a.location;
+            const nameB = b.location;
+
+
+            let comparison = 0;
+            if (nameA > nameB) {
+                comparison = 1;
+            } else if (nameA < nameB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortLocation === "DESC") {
+            sortedLocation.reverse();
+            setLocation("ASC");
+            hideArrows();
+            document.getElementById("podLocationUp").style.display = "block";
+        } else {
+            setLocation("DESC");
+            hideArrows();
+            document.getElementById("podLocationDown").style.display = "block";
+        }
+        setPods(sortedLocation);
+    }
+
+//Sort pod table by price
+    const sortByPrice = () => {
+        let sortedPrice = pods.sort((a, b) => {
+            const priceA = a.price;
+            const priceB = b.price;
+
+            let comparison = 0;
+            if (priceA > priceB) {
+                comparison = 1;
+            } else if (priceA < priceB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortPrice === "DESC") {
+            sortedPrice.reverse();
+            setPrice("ASC");
+            hideArrows();
+            document.getElementById("podPriceUp").style.display = "block";
+        } else {
+            setPrice("DESC");
+            hideArrows();
+            document.getElementById("podPriceDown").style.display = "block";
+        }
+        setPods(sortedPrice);
+    }
+
+//Sort pod table by capacity
+const sortByCapacity = () => {
+    let sortedCapacity = pods.sort((a, b) => {
+        const podA = a.slots;
+        const podB = b.slots;
+
+
+        let comparison = 0;
+        if (podA > podB) {
+            comparison = 1;
+        } else if (podA < podB) {
+            comparison = -1;
+        } return comparison
+    })
+
+    if (sortCapacity === "DESC") {
+        sortedCapacity.reverse();
+        setCapacity("ASC");
+        hideArrows();
+        document.getElementById("podCapacityUp").style.display = "block";
+    } else {
+        setCapacity("DESC");
+        hideArrows();
+        document.getElementById("podCapacityDown").style.display = "block";
+    }
+    setPods(sortedCapacity);
+}
+
+//Sort pod table by openings
+const sortByOpening = () => {
+    let sortedOpening = pods.sort((a, b) => {
+        const podA = a.slots-a.students.length;
+        const podB = b.slots-b.students.length;
+
+
+        let comparison = 0;
+        if (podA > podB) {
+            comparison = 1;
+        } else if (podA < podB) {
+            comparison = -1;
+        } return comparison
+    })
+
+    if (sortOpening === "DESC") {
+        sortedOpening.reverse();
+        setOpening("ASC");
+        hideArrows();
+        document.getElementById("podOpeningUp").style.display = "block";
+    } else {
+        setOpening("DESC");
+        hideArrows();
+        document.getElementById("podOpeningDown").style.display = "block";
+    }
+    setPods(sortedOpening);
+}
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -171,9 +403,9 @@ const Profile = (props) => {
                                         </>
                                     ) : (
                                             <Col className="text-center">
-                                                <a href="/messages" className="iconHvr-fade">
-                                                    <i className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
-                                                </a>
+                                                {/* <a href="/messages" className="iconHvr-fade"> */}
+                                                    <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                {/* </a> */}
                                             </Col>
                                         )}
                                 </Row>
@@ -195,7 +427,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} />
+                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}
@@ -227,6 +459,13 @@ const Profile = (props) => {
                 studentModal={studentModal}
                 buttonLabe={buttonLabel}
                 id={id}
+            />
+
+            <MessageModal
+                    toggle={toggle4}
+                    messageModal={messageModal}
+                    username={username}
+                    receiver={id}
             />
         </>
     )

@@ -224,10 +224,9 @@ module.exports = {
             .catch(err => res.json(err))
     },
     createConversation: (req, res) => {
-        console.log(req.body)
         db.Conversation.find({participants: { $all: req.body.participants }})
             .then(results => {
-                if (results > 0) {
+                if (results.length > 0) {
                     res.status(500).json({message: "Conversation already exists."})
                 }
                 else {
@@ -236,5 +235,6 @@ module.exports = {
                         .catch(err => res.json(err))
                 }
             })
-    },
+                .catch(err => res.json(err))
+    }
 }

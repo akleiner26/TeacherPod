@@ -245,6 +245,8 @@ function Home() {
                         let name = teacher.firstName + " " + teacher.lastName;
 
                         return <TeacherRow
+                            loggedInUser={username}
+                            teacherUsername={teacher.username}
                             key={teacher._id}
                             id={teacher._id}
                             teacherId={teacher._id}

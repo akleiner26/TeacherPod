@@ -13,12 +13,12 @@ function PodTable(props) {
         <Table hover >
             <thead className="tableHead">
                 <tr className="darkGrayText">
-                    <th>Pod Name</th>
-                    <th>Grade</th>
-                    <th>Location</th>
-                    <th>Price</th>
-                    <th>Pod Capacity</th>
-                    <th>Openings</th>
+                    <th onClick={props.sortByName}>Pod Name<i id="podNameDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podNameUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
+                    <th onClick={props.sortByGrade}>Grade<i id="podGradeDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podGradeUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
+                    <th onClick={props.sortByLocation}>Location<i id="podLocationDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podLocationUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
+                    <th onClick={props.sortByPrice}>Price<i id="podPriceDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podPriceUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
+                    <th onClick={props.sortByCapacity}>Pod Capacity<i id="podCapacityDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podCapacityUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
+                    <th onClick={props.sortByOpening}>Openings<i id="podOpeningDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podOpeningUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>
                     {props.teacher._id === props.id ? (
                     <th>Enroll Student</th>
                     ) : (

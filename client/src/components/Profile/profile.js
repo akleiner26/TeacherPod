@@ -125,8 +125,13 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
 
-                            <Col className="proPicCol" xs="6">
-                                <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
+                            <Col className="proPicCol text-center" xs="6">
+                                {teacher.image === "" ? (
+                                    <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
+                                ) : (
+                                        <img className="img-fluid profileImage" alt="" src="../images/fullSize/profile-placeholder.png"></img>
+                                    )}
+
                                 <Row>
                                     {teacher.username === username ? (
                                         <>
@@ -199,7 +204,6 @@ const Profile = (props) => {
                 toggle3={toggle3}
                 studentModal={studentModal}
                 buttonLabe={buttonLabel}
-                parent={teacher}
                 id={id}
             />
         </>

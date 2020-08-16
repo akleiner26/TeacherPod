@@ -26,3 +26,16 @@
     max-height: 500px;
     overflow: scroll;
 }
+
+@media (max-width: 454px) {
+    .toggleButton {
+        /* background-color: black !important; */
+        margin-left: -8px !important;
+        margin-right: 0px !important;
+        text-align: center !important;
+        min-width: 240px;
+        
+        
+    }
+   
+  }

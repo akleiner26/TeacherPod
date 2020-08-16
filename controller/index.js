@@ -208,7 +208,7 @@ module.exports = {
     findAllMessagesBetween: (req, res) => {
         console.log(req.params.usernames);
         let users = req.params.usernames.split("+");
-        db.Conversation.find({ participants: users[0] && users[1]}).populate("messengers")
+        db.Conversation.find({ participants: { $all: users}}).populate("messengers")
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
@@ -225,8 +225,16 @@ module.exports = {
     },
     createConversation: (req, res) => {
         console.log(req.body)
-        db.Conversation.create(req.body)
-            .then(results => res.json(results))
-            .catch(err => res.json(err))
+        db.Conversation.find({participants: { $all: req.body.participants }})
+            .then(results => {
+                if (results > 0) {
+                    res.status(500).json({message: "Conversation already exists."})
+                }
+                else {
+                    db.Conversation.create(req.body)
+                        .then(results => res.json(results))
+                        .catch(err => res.json(err))
+                }
+            })
     },
 }

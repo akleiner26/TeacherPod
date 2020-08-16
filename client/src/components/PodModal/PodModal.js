@@ -24,10 +24,10 @@ const PodModal = (props) => {
     const savePod = event => {
         event.preventDefault();
         props.toggle2();
-        console.log(podData)
-        console.log(`id is ${props.id}`)
+        // console.log(podData)
+        // console.log(`id is ${props.id}`)
 
-        API.createPod(podData)
+        API.createPod(props.id, podData)
             .then(res => {
                 console.log(res.data)
             })

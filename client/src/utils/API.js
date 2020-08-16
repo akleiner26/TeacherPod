@@ -51,8 +51,8 @@ export default {
     },
 
     // Creates a pod based on teacher id
-    createPod: function (podData) {
-        return axios.post("/api/pods/", podData);
+    createPod: function (id, podData) {
+        return axios.post("/api/pods/" + id, podData);
     },
 
     // Creates a new message

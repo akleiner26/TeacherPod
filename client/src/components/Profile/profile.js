@@ -127,22 +127,6 @@ const Profile = (props) => {
                                                 </a>
                                             </Col>
                                         )}
-
-                                    {/* {teacher.username === loggedIn.username ?
-                                        (
-                                            <>
-                                                <Col className="text-center">
-                                                    <a href="/messages" className="iconHvr-fade">
-                                                        <i className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
-                                                    </a>
-                                                </Col>
-                                                <Col></Col>
-                                            </>
-                                        ) : (
-                                            <Col></Col>
-                                        )} */}
-
-
                                 </Row>
                             </Col>
 

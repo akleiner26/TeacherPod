@@ -196,8 +196,12 @@ module.exports = {
     // Used in Get routes
     // Find all messages that user has recieved, takes in logged in users id
     findAllMessages: (req, res) => {
-        db.Messenger.find({ receiver: req.params.username })
-            .then(results => res.json(results))
+        console.log(req.params.username);
+        db.Conversation.find({ participants: req.params.username }).populate("messengers")
+            .then(results => {
+                console.log(results)
+                res.json(results);
+            })
             .catch(err => res.json(err))
     },
     // Find all messages between user logged in and incoming user

@@ -74,8 +74,7 @@ function Messages() {
         })
     }
 
-    console.log(messages);
-    console.log(receiver, content, username);
+    console.log(Convos);
 
 
     return (
@@ -89,8 +88,11 @@ function Messages() {
                             Messages</CardTitle>
                         <CardBody className="text-center sideBody">
                             {Convos.map(convo => {
-                                    // console.log(convo);
+                                    console.log(convo);
                                     let personText = "";
+                                    if (!convo.participants) {
+                                        return
+                                    }
                                     convo.participants.forEach(person => {
                                         if (person !== username) {
                                             // console.log("Found")

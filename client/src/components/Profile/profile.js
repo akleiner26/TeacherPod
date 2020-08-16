@@ -57,7 +57,28 @@ const Profile = (props) => {
             }
             ).catch(err => console.log(err));
     // }, [key])
-    }, [key, pods])
+    }, [key])
+
+    const refresh = () => {
+        API.getTeacher(key)
+            .then(res => {
+                // console.log(res);
+                setTeacher(res.data[0])
+                // console.log(teacher)
+                setPods(res.data[0].pods)
+
+                setProfileData({
+                    prefix: teacher.prefix,
+                    firstName: teacher.firstName,
+                    lastName: teacher.lastName,
+                    image: teacher.image,
+                    gradesTaught: teacher.gradesTaught,
+                    location: teacher.location,
+                    bio: teacher.bio
+                })
+            }
+            ).catch(err => console.log(err));
+    }
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
@@ -195,6 +216,7 @@ const Profile = (props) => {
 
             <PodModal
                 toggle2={toggle2}
+                refresh={refresh}
                 podModal={podModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}

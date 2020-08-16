@@ -29,7 +29,8 @@ const PodModal = (props) => {
 
         API.createPod(props.id, podData)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data);
+                props.refresh();
             })
             .catch(err => console.log(err));
     }

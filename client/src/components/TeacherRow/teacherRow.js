@@ -3,10 +3,17 @@ import "./teacherRow.css";
 import {
     Button
 } from 'reactstrap';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 const TeacherRow = (props) => {
 
+    const startConvo = () => {
+        API.createConversation({participants: [props.loggedInUser, props.teacherUsername]})
+            .then(res => {
+                window.location.replace("/messages");
+            })
+    }
 
     return (
 
@@ -28,7 +35,7 @@ const TeacherRow = (props) => {
             <td className="vertAlign">{props.gradesTaught}</td>
             <td className="vertAlign">${props.price}</td>
             <td className="vertAlign">{props.pods}</td>
-            <td className="vertAlign"><Button data-username={props.username} className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i className="fa fa-comments" aria-hidden="true"></i></Button></td>
+            <td className="vertAlign"><Button onClick={startConvo} data-username={props.username} className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i className="fa fa-comments" aria-hidden="true"></i></Button></td>
         </tr>
     );
 };

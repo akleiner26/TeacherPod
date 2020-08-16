@@ -137,3 +137,7 @@ border: none;
 .floatRt {
   float: right;
 }
+
+.caret{
+  display:none;
+}

@@ -20,6 +20,11 @@ function Home() {
     })
     const [teachers, setTeachers] = useState([])
     const [id, setId] = useState("");
+    const [sortName, setName] = useState([])
+    const [sortGrade, setGrade] = useState([])
+    const [sortPrice, setPrice] = useState([])
+    const [sortPod, setPod] = useState([])
+    
 
     // console.log(loggedIn, username, id);
 
@@ -78,6 +83,137 @@ function Home() {
         loadTeachers();
     }
 
+    const hideArrows = () => {
+        document.getElementById("nameUp").style.display="none";
+        document.getElementById("nameDown").style.display="none";
+        document.getElementById("gradeUp").style.display="none";
+        document.getElementById("gradeDown").style.display="none";
+        document.getElementById("priceUp").style.display="none";
+        document.getElementById("priceDown").style.display="none";
+        document.getElementById("podUp").style.display="none";
+        document.getElementById("podDown").style.display="none";
+    }
+
+    //sort teachers by name//
+    const sortByName = () => {
+
+        let sortedNames = teachers.sort((a, b) => {
+            const nameA = a.firstName;
+            const nameB = b.firstName;
+      
+      
+            let comparison = 0;
+            if (nameA > nameB) {
+              comparison = 1;
+            } else if (nameA < nameB) {
+              comparison = -1;
+            } return comparison
+          })
+      
+          if (sortName === "DESC") {
+            sortedNames.reverse();
+            setName("ASC");
+            hideArrows();
+            document.getElementById("nameUp").style.display="block";
+          } else {
+            setName("DESC");
+            hideArrows();
+            document.getElementById("nameDown").style.display="block";
+          }
+          setTeachers(sortedNames);
+        }
+
+        //sort teachers by grade
+    const sortByGrade = () => {
+
+        let sortedGrades = teachers.sort((a, b) => {
+            const gradeA = a.gradesTaught;
+            const gradeB = b.gradesTaught;
+      
+      
+            let comparison = 0;
+            for(let i=0; i < gradeA.length && i < gradeB.length; i++){
+                if (gradeA[i] > gradeB[i]) {
+                    comparison = 1;
+                    return comparison;
+                } else if (gradeA[i] < gradeB[i]) {
+                    comparison = -1;
+                    return comparison;
+                } else if (gradeA[i] !== gradeB[i]){
+                    return comparison
+                }
+            }
+          })
+      
+          if (sortGrade === "DESC") {
+            sortedGrades.reverse();
+            setGrade("ASC");
+            hideArrows();
+            document.getElementById("gradeUp").style.display="block";
+          } else {
+            setGrade("DESC");
+            hideArrows();
+            document.getElementById("gradeDown").style.display="block";
+          }
+          setTeachers(sortedGrades);
+        }
+
+        //Sort by Price
+        const sortByPrice = () => {
+            let sortedPrice = teachers.sort((a, b) => {
+                const priceA = a.price;
+                const priceB = b.price;
+          
+          
+                let comparison = 0;
+                if (priceA > priceB) {
+                  comparison = 1;
+                } else if (priceA < priceB) {
+                  comparison = -1;
+                } return comparison
+              })
+          
+              if (sortPrice === "DESC") {
+                sortedPrice.reverse();
+                setPrice("ASC");
+                hideArrows();
+                document.getElementById("priceUp").style.display="block";
+              } else {
+                setPrice("DESC");
+                hideArrows();
+                document.getElementById("priceDown").style.display="block";
+              }
+              setTeachers(sortedPrice);
+            }
+
+            const sortByPod = () => {
+                let sortedPod = teachers.sort((a, b) => {
+                    const podA = a.pod;
+                    const podB = b.pod;
+              
+              
+                    let comparison = 0;
+                    if (podA > podB) {
+                      comparison = 1;
+                    } else if (podA < podB) {
+                      comparison = -1;
+                    } return comparison
+                  })
+              
+                  if (sortPod === "DESC") {
+                    sortedPod.reverse();
+                    setPod("ASC");
+                    hideArrows();
+                    document.getElementById("podUp").style.display="block";
+                  } else {
+                    setPod("DESC");
+                    hideArrows();
+                    document.getElementById("podDown").style.display="block";
+                  }
+                  setTeachers(sortedPod);
+                }
+
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -88,7 +224,7 @@ function Home() {
                 search={search}
             />
             {teachers.length ? (
-                <TeacherTable>
+                <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
                     {teachers.map(teacher => {
                         let name = teacher.firstName + " " + teacher.lastName;
 

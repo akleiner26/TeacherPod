@@ -16,9 +16,9 @@ function PodTable(props) {
                     <th onClick={props.sortByName}>Pod Name</th>
                     <th onClick={props.sortByGrade}>Grade</th>
                     <th onClick={props.sortByLocation}>Location</th>
-                    <th>Price</th>
-                    <th>Pod Capacity</th>
-                    <th>Openings</th>
+                    <th onClick={props.sortByPrice}>Price</th>
+                    <th onClick={props.sortByCapacity}>Pod Capacity</th>
+                    <th onClick={props.sortByOpening}>Openings</th>
                     <th>Book</th>
                 </tr>
             </thead>

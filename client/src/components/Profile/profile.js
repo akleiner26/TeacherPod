@@ -41,6 +41,9 @@ const Profile = (props) => {
     const [sortGrade, setGrade] = useState([]);
     const [sortName, setName] = useState([]);
     const [sortLocation, setLocation] = useState([]);
+    const [sortPrice, setPrice] = useState([])
+    const [sortCapacity, setCapacity] = useState([])
+    const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
         API.getTeacher(key)
@@ -118,6 +121,9 @@ const Profile = (props) => {
         setStudentModal(true);
         console.log(teacher)
     }
+
+    ////////////////////////////////////////
+    //Sort Functions
 
     //Sorts pod table by pod name
     const sortByName = () => {
@@ -215,18 +221,102 @@ const Profile = (props) => {
             } return comparison
         })
 
-        if (sortName === "DESC") {
+        if (sortLocation === "DESC") {
             sortedNames.reverse();
-            setName("ASC");
+            setLocation("ASC");
             // hideArrows();
             // document.getElementById("nameUp").style.display = "block";
         } else {
-            setName("DESC");
+            setLocation("DESC");
             // hideArrows();
             // document.getElementById("nameDown").style.display = "block";
         }
         setPods(sortedNames);
     }
+
+//Sort pod table by price
+    const sortByPrice = () => {
+        let sortedPrice = pods.sort((a, b) => {
+            const priceA = a.price;
+            const priceB = b.price;
+
+
+            let comparison = 0;
+            if (priceA > priceB) {
+                comparison = 1;
+            } else if (priceA < priceB) {
+                comparison = -1;
+            } return comparison
+        })
+
+        if (sortPrice === "DESC") {
+            sortedPrice.reverse();
+            setPrice("ASC");
+            // hideArrows();
+            // document.getElementById("priceUp").style.display = "block";
+        } else {
+            setPrice("DESC");
+            // hideArrows();
+            // document.getElementById("priceDown").style.display = "block";
+        }
+        setPods(sortedPrice);
+    }
+
+//Sort pod table by capacity
+const sortByCapacity = () => {
+    let sortedCapacity = pods.sort((a, b) => {
+        const podA = a.slots;
+        const podB = b.slots;
+
+
+        let comparison = 0;
+        if (podA > podB) {
+            comparison = 1;
+        } else if (podA < podB) {
+            comparison = -1;
+        } return comparison
+    })
+
+    if (sortCapacity === "DESC") {
+        sortedCapacity.reverse();
+        setCapacity("ASC");
+        // hideArrows();
+        // document.getElementById("podUp").style.display = "block";
+    } else {
+        setCapacity("DESC");
+        // hideArrows();
+        // document.getElementById("podDown").style.display = "block";
+    }
+    setPods(sortedCapacity);
+}
+
+//Sort pod table by openings
+const sortByOpening = () => {
+    let sortedOpening = pods.sort((a, b) => {
+        const podA = a.openings-a.students.length;
+        const podB = b.openings-b.students.length;
+
+
+        let comparison = 0;
+        if (podA > podB) {
+            comparison = 1;
+        } else if (podA < podB) {
+            comparison = -1;
+        } return comparison
+    })
+
+    if (sortOpening === "DESC") {
+        sortedOpening.reverse();
+        setOpening("ASC");
+        // hideArrows();
+        // document.getElementById("podUp").style.display = "block";
+    } else {
+        setOpening("DESC");
+        // hideArrows();
+        // document.getElementById("podDown").style.display = "block";
+    }
+    setPods(sortedOpening);
+}
 
     return (
         <>
@@ -289,7 +379,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation}/>
+                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

@@ -122,8 +122,23 @@ const Profile = (props) => {
         console.log(teacher)
     }
 
-    ////////////////////////////////////////
+    //////////////////////////////////////////////////
     //Sort Functions
+
+    const hideArrows = () => {
+        document.getElementById("podNameUp").style.display = "none";
+        document.getElementById("podNameDown").style.display = "none";
+        document.getElementById("podGradeUp").style.display = "none";
+        document.getElementById("podGradeDown").style.display = "none";
+        document.getElementById("podLocationUp").style.display = "none";
+        document.getElementById("podLocationDown").style.display = "none";
+        document.getElementById("podPriceUp").style.display = "none";
+        document.getElementById("podPriceDown").style.display = "none";
+        document.getElementById("podCapacityUp").style.display = "none";
+        document.getElementById("podCapacityDown").style.display = "none";
+        document.getElementById("podOpeningUp").style.display = "none";
+        document.getElementById("podOpeningDown").style.display = "none";
+    }
 
     //Sorts pod table by pod name
     const sortByName = () => {
@@ -144,12 +159,12 @@ const Profile = (props) => {
         if (sortName === "DESC") {
             sortedNames.reverse();
             setName("ASC");
-            // hideArrows();
-            // document.getElementById("nameUp").style.display = "block";
+            hideArrows();
+            document.getElementById("podNameUp").style.display = "block";
         } else {
             setName("DESC");
-            // hideArrows();
-            // document.getElementById("nameDown").style.display = "block";
+            hideArrows();
+            document.getElementById("podNameDown").style.display = "block";
         }
         setPods(sortedNames);
     }
@@ -195,12 +210,12 @@ const Profile = (props) => {
         if (sortGrade === "DESC") {
             sortedGrades.reverse();
             setGrade("ASC");
-            // hideArrows();
-            // document.getElementById("gradeUp").style.display = "block";
+            hideArrows();
+            document.getElementById("podGradeUp").style.display = "block";
         } else {
             setGrade("DESC");
-            // hideArrows();
-            // document.getElementById("gradeDown").style.display = "block";
+            hideArrows();
+            document.getElementById("podGradeDown").style.display = "block";
         }
         setPods(sortedGrades);
     }
@@ -208,7 +223,7 @@ const Profile = (props) => {
     //Sort pod table by location
     const sortByLocation = () => {
 
-        let sortedNames = pods.sort((a, b) => {
+        let sortedLocation = pods.sort((a, b) => {
             const nameA = a.location;
             const nameB = b.location;
 
@@ -222,16 +237,16 @@ const Profile = (props) => {
         })
 
         if (sortLocation === "DESC") {
-            sortedNames.reverse();
+            sortedLocation.reverse();
             setLocation("ASC");
-            // hideArrows();
-            // document.getElementById("nameUp").style.display = "block";
+            hideArrows();
+            document.getElementById("podLocationUp").style.display = "block";
         } else {
             setLocation("DESC");
-            // hideArrows();
-            // document.getElementById("nameDown").style.display = "block";
+            hideArrows();
+            document.getElementById("podLocationDown").style.display = "block";
         }
-        setPods(sortedNames);
+        setPods(sortedLocation);
     }
 
 //Sort pod table by price
@@ -252,12 +267,12 @@ const Profile = (props) => {
         if (sortPrice === "DESC") {
             sortedPrice.reverse();
             setPrice("ASC");
-            // hideArrows();
-            // document.getElementById("priceUp").style.display = "block";
+            hideArrows();
+            document.getElementById("podPriceUp").style.display = "block";
         } else {
             setPrice("DESC");
-            // hideArrows();
-            // document.getElementById("priceDown").style.display = "block";
+            hideArrows();
+            document.getElementById("podPriceDown").style.display = "block";
         }
         setPods(sortedPrice);
     }
@@ -280,12 +295,12 @@ const sortByCapacity = () => {
     if (sortCapacity === "DESC") {
         sortedCapacity.reverse();
         setCapacity("ASC");
-        // hideArrows();
-        // document.getElementById("podUp").style.display = "block";
+        hideArrows();
+        document.getElementById("podCapacityUp").style.display = "block";
     } else {
         setCapacity("DESC");
-        // hideArrows();
-        // document.getElementById("podDown").style.display = "block";
+        hideArrows();
+        document.getElementById("podCapacityDown").style.display = "block";
     }
     setPods(sortedCapacity);
 }
@@ -308,12 +323,12 @@ const sortByOpening = () => {
     if (sortOpening === "DESC") {
         sortedOpening.reverse();
         setOpening("ASC");
-        // hideArrows();
-        // document.getElementById("podUp").style.display = "block";
+        hideArrows();
+        document.getElementById("podOpeningUp").style.display = "block";
     } else {
         setOpening("DESC");
-        // hideArrows();
-        // document.getElementById("podDown").style.display = "block";
+        hideArrows();
+        document.getElementById("podOpeningDown").style.display = "block";
     }
     setPods(sortedOpening);
 }

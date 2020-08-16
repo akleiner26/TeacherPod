@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     prefix: {
-        type: String
+        type: String,
+        default: ""
     },
     firstName: {
         type: String,
@@ -33,16 +34,20 @@ const userSchema = new Schema({
         }
     ],
     location: {
-        type: String
+        type: String,
+        default: ""
     },
     image: {
-        type: String
+        type: String,
+        default: ""
     },
     gradesTaught: {
-        type: String
+        type: String,
+        default: ""
     },
     bio: {
-        type: String
+        type: String,
+        default: ""
     },
     dateJoined: {
         type: Date,
@@ -55,7 +60,8 @@ const userSchema = new Schema({
         }
     ],
     hours: {
-        type: String
+        type: String,
+        default: ""
     },
 })
 

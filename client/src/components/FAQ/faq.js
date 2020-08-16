@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Container, UncontrolledCollapse, Card, CardTitle, CardBody, Button, Row } from "reactstrap";
 import "./faq.css";
-import Header from "../Header/header"
-import Footer from "../Footer/footer"
+import Header from "../Header/header";
+import Footer from "../Footer/footer";
+import { useMediaQuery } from 'react-responsive'
 
 
 function FAQ() {

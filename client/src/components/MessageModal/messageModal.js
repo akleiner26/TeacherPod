@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import API from "../../utils/API";
 
@@ -8,6 +8,15 @@ const MessageModal = (props) => {
         content: "",
         sender: props.username
     });
+
+    useEffect(() => {
+        if (props.receiver) {
+            setMsgData({
+                ...msgData,
+                receiver: props.receiver
+            })
+        }
+    }, [])
 
     const handleInputChange = event => {
         setMsgData({
@@ -30,6 +39,7 @@ const MessageModal = (props) => {
             .catch(err => console.log(err));
     }
 
+
     return (
         <Modal isOpen={props.messageModal} toggle={props.toggle}>
             <ModalHeader toggle={props.toggle}>Start a conversation!</ModalHeader>
@@ -37,7 +47,7 @@ const MessageModal = (props) => {
                 <Form>
                     <FormGroup>
                         <Label for="podName">Receipients's Email</Label>
-                        <Input type="text" name="receiver" id="podName" placeholder="Email" onChange={handleInputChange} />
+                        <Input type="text" name="receiver" value={msgData.receiver} id="podName" placeholder="Email" onChange={handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Send with a message</Label>

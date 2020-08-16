@@ -8,6 +8,7 @@ import StudentTable from "../StudentTable/StudentTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
+import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -32,10 +33,12 @@ const Profile = (props) => {
     const [profileModal, setProfileModal] = useState(false);
     const [podModal, setPodModal] = useState(false);
     const [studentModal, setStudentModal] = useState(false);
+    const [messageModal, setMessageModal] = useState(false);
 
     const toggle = () => setProfileModal(!profileModal);
     const toggle2 = () => setPodModal(!podModal);
     const toggle3 = () => setStudentModal(!studentModal);
+    const toggle4 = () => setMessageModal(!messageModal);
 
     //For Sort
     const [sortGrade, setGrade] = useState([]);
@@ -141,6 +144,17 @@ const Profile = (props) => {
         // console.log("clicked")
         setStudentModal(true);
         // console.log(teacher)
+    }
+
+    const openMessageForm = event => {
+        setMessageModal(true);
+    }
+
+    const startConvo = () => {
+        API.createConversation({participants: [username, id]})
+            .then(() => {
+                window.location.redirect("/messages")
+            })
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -390,9 +404,9 @@ const sortByOpening = () => {
                                         </>
                                     ) : (
                                             <Col className="text-center">
-                                                <a href="/messages" className="iconHvr-fade">
-                                                    <i className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
-                                                </a>
+                                                {/* <a href="/messages" className="iconHvr-fade"> */}
+                                                    <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                {/* </a> */}
                                             </Col>
                                         )}
                                 </Row>
@@ -446,6 +460,13 @@ const sortByOpening = () => {
                 studentModal={studentModal}
                 buttonLabe={buttonLabel}
                 id={id}
+            />
+
+            <MessageModal
+                    toggle={toggle4}
+                    messageModal={messageModal}
+                    username={username}
+                    receiver={id}
             />
         </>
     )

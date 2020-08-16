@@ -12,7 +12,7 @@ const PodRow = (props) => {
             <td className="vertAlign">{props.price}/Child/Week</td>
             <td className="vertAlign">{props.location}</td>
             <td className="vertAlign">{props.availability}</td>
-            <td className="vertAlign iconHvr-fade2"><i class="fa fa-book fa-2x" aria-hidden="true"></i></td>
+            <td className="vertAlign iconHvr-fade2"><i className="fa fa-book fa-2x" aria-hidden="true"></i></td>
         </tr>
     );
 };

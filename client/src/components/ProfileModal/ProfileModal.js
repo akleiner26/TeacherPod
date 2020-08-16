@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import "./ProfileModal.css";
 
 const ProfileModal = (props) => {
+
+    // Captures edits made in modal form
+    const handleInputChange = event => {
+        console.log(event.target.value)
+
+        props.setProfileData({
+            ...props.profileData,
+            [event.target.name]: event.target.value
+        })
+    }
     return (
         <Modal isOpen={props.profileModal} toggle={props.toggle} className="">
             <ModalHeader toggle={props.toggle}>Edit Profile</ModalHeader>
@@ -10,15 +20,15 @@ const ProfileModal = (props) => {
                 <Form>
                     <FormGroup>
                         <Label for="prefix">Prefix</Label>
-                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.profileData.prefix}  />
+                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.profileData.prefix} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="firstName">First Name</Label>
-                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.profileData.firstName}  onChange={props.handleInputChange} />
+                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.profileData.firstName} onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastName">Last Name</Label>
-                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.profileData.lastName}  />
+                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.profileData.lastName} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">Profile Image</Label>
@@ -49,7 +59,7 @@ const ProfileModal = (props) => {
                     </FormGroup>
                     <FormGroup>
                         <Label for="location">Location</Label>
-                        <Input type="type" name="location" id="location" placeholder="Location" value={props.profileData.location}  />
+                        <Input type="type" name="location" id="location" placeholder="Location" value={props.profileData.location} />
                         <FormText color="muted">
                             Location must be entered as "remote" or by zip code.
                         </FormText>
@@ -58,7 +68,7 @@ const ProfileModal = (props) => {
                         <Label for="bio">About</Label>
                         <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.profileData.bio} />
                     </FormGroup>
-                    <Button onClick={props.saveEdits}>Save</Button>
+                    <Button >Save</Button>
                     <Button onClick={props.toggle} className="ml-3 mr-0">Cancel</Button>
                 </Form>
             </ModalBody>

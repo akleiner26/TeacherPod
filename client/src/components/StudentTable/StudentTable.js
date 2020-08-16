@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Table, Col, Card } from "reactstrap";
 import StudentRow from "../StudentRow/StudentRow";
 import API from "../../utils/API"
@@ -6,19 +6,10 @@ import API from "../../utils/API"
 function StudentTable(props) {
     const [students, setStudents] = useState([]);
 
-    // useEffect(() => {
-    //     API.getParent(props.id)
-    //         .then(res => {
-    //             console.log(res);
-    //             setStudents(res.data[0].students)
-    //         })
-    //         .catch(err => console.log(err));
-    // }, [students])
-
     if (!props.isTeacher) {
         API.getParent(props.id)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setStudents(res.data[0].students)
             })
             .catch(err => console.log(err));

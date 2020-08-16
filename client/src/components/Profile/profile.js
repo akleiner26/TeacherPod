@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./profile.css"
-import { Card, Col, Row, CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Card, Col, Row, CardTitle } from "reactstrap"
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
@@ -40,9 +40,9 @@ const Profile = (props) => {
     useEffect(() => {
         API.getTeacher(key)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setTeacher(res.data[0])
-                console.log(teacher)
+                // console.log(teacher)
                 setPods(res.data[0].pods)
 
                 setProfileData({
@@ -56,14 +56,14 @@ const Profile = (props) => {
                 })
             }
             ).catch(err => console.log(err));
-    }, [key])
-    // }, [key, pods])
+    // }, [key])
+    }, [key, pods])
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
         setProfileModal(true);
-        console.log("==========================")
-        console.log(profileData)
+        // console.log("==========================")
+        // console.log(profileData)
     }
 
     // Captures edits made in modal form
@@ -76,30 +76,30 @@ const Profile = (props) => {
         })
     }
 
-    const saveEdits = event => {
-        event.preventDefault();
+    // const saveEdits = event => {
+    //     event.preventDefault();
 
-        toggle()
+    //     toggle()
 
-        console.log(event.target.data)
+    //     // console.log(event.target.data)
 
-        let updatedProfileData = {
-            prefix: "",
-            firstName: "",
-            lastName: "",
-            location: "",
-            image: "",
-            gradesTaught: "",
-            bio: ""
-        }
+    //     let updatedProfileData = {
+    //         prefix: "",
+    //         firstName: "",
+    //         lastName: "",
+    //         location: "",
+    //         image: "",
+    //         gradesTaught: "",
+    //         bio: ""
+    //     }
 
-        API.updateTeacherProfile(updatedProfileData)
-            .then(res => {
-                console.log(res);
-                console.log("profile updated!")
-            })
-            .catch(err => console.log(err));
-    }
+    //     API.updateTeacherProfile(updatedProfileData)
+    //         .then(res => {
+    //             // console.log(res);
+    //             // console.log("profile updated!")
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
@@ -111,7 +111,7 @@ const Profile = (props) => {
     const openStudentForm = event => {
         // console.log("clicked")
         setStudentModal(true);
-        console.log(teacher)
+        // console.log(teacher)
     }
 
     return (
@@ -126,7 +126,7 @@ const Profile = (props) => {
                         <Row className="m-3">
 
                             <Col className="proPicCol text-center" xs="6">
-                                {teacher.image === "" ? (
+                                {teacher.image !== "" ? (
                                     <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
                                 ) : (
                                         <img className="img-fluid profileImage" alt="" src="../images/fullSize/profile-placeholder.png"></img>
@@ -187,9 +187,10 @@ const Profile = (props) => {
                 profileModal={profileModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
-                saveEdits={saveEdits}
+                // saveEdits={saveEdits}
                 handleInputChange={handleInputChange}
                 profileData={profileData}
+                setProfileData={setProfileData}
             />
 
             <PodModal

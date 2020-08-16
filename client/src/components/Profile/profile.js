@@ -53,7 +53,7 @@ const Profile = (props) => {
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
 
                 setProfileData({
@@ -67,7 +67,6 @@ const Profile = (props) => {
                 })
             }
             ).catch(err => console.log(err));
-    // }, [key])
     }, [key])
 
     const refresh = () => {
@@ -75,7 +74,7 @@ const Profile = (props) => {
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
 
                 setProfileData({
@@ -428,7 +427,7 @@ const sortByOpening = () => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
+                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

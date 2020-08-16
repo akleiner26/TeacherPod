@@ -2,6 +2,11 @@
     margin: 0 auto;
 }
 
+.profileImage {
+    border-radius: 4px;
+    width: 150px;
+}
+
 .proPicCol{
     border-right: solid;
     border-width: thin;

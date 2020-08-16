@@ -4,8 +4,10 @@ import { Card, Col, Row, CardTitle, Button, Modal, ModalHeader, ModalBody, Modal
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
+import StudentTable from "../StudentTable/StudentTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
+import StudentModal from "../StudentModal/StudentModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -26,14 +28,14 @@ const Profile = (props) => {
     })
 
     // For modal
-    const {
-        buttonLabel
-    } = props;
+    const { buttonLabel } = props;
     const [profileModal, setProfileModal] = useState(false);
     const [podModal, setPodModal] = useState(false);
+    const [studentModal, setStudentModal] = useState(false);
 
     const toggle = () => setProfileModal(!profileModal);
     const toggle2 = () => setPodModal(!podModal);
+    const toggle3 = () => setStudentModal(!studentModal);
 
     useEffect(() => {
         API.getTeacher(key)
@@ -55,6 +57,7 @@ const Profile = (props) => {
             }
             ).catch(err => console.log(err));
     }, [key])
+    // }, [key, pods])
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
@@ -101,6 +104,13 @@ const Profile = (props) => {
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
         setPodModal(true);
+        // console.log(teacher)
+    }
+
+    // Displays modal with form to add student (for parents only)
+    const openStudentForm = event => {
+        // console.log("clicked")
+        setStudentModal(true);
         console.log(teacher)
     }
 
@@ -115,8 +125,13 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
 
-                            <Col className="proPicCol" xs="6">
-                                <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
+                            <Col className="proPicCol text-center" xs="6">
+                                {teacher.image === "" ? (
+                                    <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
+                                ) : (
+                                        <img className="img-fluid profileImage" alt="" src="../images/fullSize/profile-placeholder.png"></img>
+                                    )}
+
                                 <Row>
                                     {teacher.username === username ? (
                                         <>
@@ -125,7 +140,12 @@ const Profile = (props) => {
                                                 <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
-                                                <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                {teacher.isTeacher === true ? (
+                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                ) : (
+                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                    )}
+
                                             </Col>
                                             <Col></Col>
                                         </>
@@ -157,7 +177,7 @@ const Profile = (props) => {
             {teacher.isTeacher === true ? (
                 <PodTable pods={pods} />
             ) : (
-                    <h4 className="text-center mt-5 mb-5">Student table coming soon...</h4>
+                    <StudentTable teacher={teacher} id={id} />
                 )}
 
             <Footer />
@@ -177,6 +197,13 @@ const Profile = (props) => {
                 podModal={podModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
+                id={id}
+            />
+
+            <StudentModal
+                toggle3={toggle3}
+                studentModal={studentModal}
+                buttonLabe={buttonLabel}
                 id={id}
             />
         </>

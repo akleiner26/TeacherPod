@@ -1,38 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "reactstrap"
-import API from "../../utils/API";
 
 
-function MessageCard() {
+function MessageCard(props) {
 
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
-    const [Convos, setConvos] = useState([]);
 
-    useEffect(() => {
-        getConvos("lwoods@email.com");
-    }, [])
-
-    const getConvos = (user) => {
-        API.findAllMessages(user)
-            .then(({ data }) => {
-                console.log(data)
-                if (typeof (data) !== "object") {
-                    return
-                }
-                setConvos(data);
-            })
+    const returnReceiver = (props) => {
+        props.setReceiver(props.person)
     }
-
-    console.log(Convos);
-
     return (
-        <div></div>
-            // {Convos.map(convo => <Card className="cardPaddingMargin">
-            //     <div>{convo.participants}</div>
-            // </Card>
-    // )}
+        <div>
+            <div data-username={props.person} onClick={() => returnReceiver(props)}>
+                {props.person}
+            </div>
+            <hr />
+        </div>
     )
 }
 

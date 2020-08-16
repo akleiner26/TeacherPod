@@ -19,11 +19,14 @@ function Messages() {
     const [content, setContent] = useState("");
 
     useEffect(() => {
-        getConvos("lwoods@email.com");
-    }, [])
+        if (username == ""){
+            return
+        }
+        getConvos(username);
+    }, [username])
 
     useEffect(() => {
-        if(receiver == ""){
+        if(receiver  == ""){
             return
         }
         API.findMessageHistory(username, receiver)
@@ -31,7 +34,7 @@ function Messages() {
                 console.log(res.data[0].messengers)
                 setMessages(res.data[0].messengers);
             })
-    }, [receiver])
+    }, [receiver, messages])
 
     const getConvos = (user) => {
         API.findAllMessages(user)

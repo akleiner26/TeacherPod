@@ -5,6 +5,7 @@ import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
+import PodModal from "../PodModal/PodModal";
 import API from "../../utils/API"
 
 const Profile = (props) => {
@@ -28,9 +29,11 @@ const Profile = (props) => {
     const {
         buttonLabel
     } = props;
-    const [modal, setModal] = useState(false);
+    const [profileModal, setProfileModal] = useState(false);
+    const [podModal, setPodModal] = useState(false);
 
-    const toggle = () => setModal(!modal);
+    const toggle = () => setProfileModal(!profileModal);
+    const toggle2 = () => setPodModal(!podModal);
 
     useEffect(() => {
         API.getTeacher(key)
@@ -55,7 +58,7 @@ const Profile = (props) => {
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
-        setModal(true);
+        setProfileModal(true);
         console.log("==========================")
         console.log(profileData)
     }
@@ -95,6 +98,11 @@ const Profile = (props) => {
             .catch(err => console.log(err));
     }
 
+    const openPodForm = event => {
+        console.log("clicked")
+        setPodModal(true);
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -116,7 +124,7 @@ const Profile = (props) => {
                                                 <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
-                                                <i className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
                                             </Col>
                                             <Col></Col>
                                         </>
@@ -155,12 +163,18 @@ const Profile = (props) => {
 
             <ProfileModal
                 toggle={toggle}
-                modal={modal}
+                profileModal={profileModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
                 saveEdits={saveEdits}
                 handleInputChange={handleInputChange}
                 profileData={profileData}
+            />
+
+            <PodModal
+                toggle2={toggle2}
+                podModal={podModal}
+                buttonLabe={buttonLabel}
             />
         </>
     )

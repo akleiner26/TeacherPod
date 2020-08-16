@@ -15,9 +15,9 @@ function PodTable(props) {
                 <tr className="darkGrayText">
                     <th>Pod Name</th>
                     <th>Grade</th>
-                    <th>Pod Capacity</th>
-                    <th>Price</th>
                     <th>Location</th>
+                    <th>Price</th>
+                    <th>Pod Capacity</th>
                     <th>Openings</th>
                     <th>Book</th>
                 </tr>

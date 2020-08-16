@@ -37,6 +37,9 @@ const Profile = (props) => {
     const toggle2 = () => setPodModal(!podModal);
     const toggle3 = () => setStudentModal(!studentModal);
 
+    //For Sort
+    const [sortGrade, setGrade] = useState([])
+
     useEffect(() => {
         API.getTeacher(key)
             .then(res => {
@@ -114,6 +117,57 @@ const Profile = (props) => {
         console.log(teacher)
     }
 
+    //Sorts pod table by grade taught
+    const sortByGrade = () => {
+
+        let sortedGrades = pods.sort((a, b) => {
+            const gradeA = a.grade;
+            const gradeB = b.grade;
+
+            let gradeASplit = gradeA.split(" ")[0];
+            if (gradeASplit.length == 3) {
+                gradeASplit = gradeASplit.substring(0, 1)
+            }
+            else if (gradeASplit.length == 4) {
+                gradeASplit = gradeASplit.substring(0, 2)
+            }
+            gradeASplit = parseInt(gradeASplit)
+
+            let gradeBSplit = gradeB.split(" ")[0];
+            if (gradeBSplit.length == 3) {
+                gradeBSplit = gradeBSplit.substring(0, 1)
+            }
+            else if (gradeBSplit.length == 4) {
+                gradeBSplit = gradeBSplit.substring(0, 2)
+            }
+            gradeBSplit = parseInt(gradeBSplit)
+            console.log(gradeASplit, gradeBSplit)
+
+            let comparison = 0;
+            if (gradeASplit > gradeBSplit) {
+                comparison = 1;
+                return comparison;
+            } else if (gradeASplit < gradeBSplit) {
+                comparison = -1;
+                return comparison;
+            } else if (gradeASplit !== gradeBSplit) {
+                return comparison
+            }
+        })
+
+        if (sortGrade === "DESC") {
+            sortedGrades.reverse();
+            setGrade("ASC");
+            // hideArrows();
+            // document.getElementById("gradeUp").style.display = "block";
+        } else {
+            setGrade("DESC");
+            // hideArrows();
+            // document.getElementById("gradeDown").style.display = "block";
+        }
+        setPods(sortedGrades);
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -175,7 +229,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} />
+                <PodTable pods={pods} sortByGrade={sortByGrade} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

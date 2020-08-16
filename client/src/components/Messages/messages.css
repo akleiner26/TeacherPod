@@ -9,6 +9,8 @@
     /* border: 3px solid black */
     /* margin-top: 10; */
     /* padding-bottom: -20px; */
+    border-radius: 25px;
+    /* border-top-right-radius: 25px; */
 
 
 }
@@ -25,6 +27,8 @@
     background-color: #30DAC7;
     color: white;
     margin-bottom: 0px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
   
 }
 
@@ -47,6 +51,7 @@
     padding-top: 5%;
     padding-bottom: 5%;
     /* margin-left: -190px; */
+    border-radius: 25px;
 }
 
 .messageText {
@@ -84,7 +89,7 @@
 .received {
     min-height: 50px !important;
     /* width: 50%; */
-    margin-right: 50%;
+    margin-right: 54%;
     margin-left: 2%;
     text-align: center;
     vertical-align: middle !important;
@@ -92,19 +97,26 @@
     margin-top: 1% !important;
     margin-bottom: 1% !important;
     background-color: #ececec;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
     /* border-color: ; */
 }
 
 .sent{
     min-height: 50px !important;
     /* width: 50%; */
-    margin-left: 50%;
+    margin-left: 54%;
     margin-right: 2%;
     text-align: center;
     margin-top: 1% !important;
     margin-bottom: 1% !important;
     background-color: #30DAC7;
     color: white;
+    /* border-radius: 50%; */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 
 }
 

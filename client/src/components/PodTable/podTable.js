@@ -19,12 +19,20 @@ function PodTable(props) {
                     <th>Price</th>
                     <th>Pod Capacity</th>
                     <th>Openings</th>
-                    <th>Book</th>
+                    {props.teacher._id === props.id ? (
+                    <th>Enroll Student</th>
+                    ) : (
+                        ""
+                    )}
                 </tr>
             </thead>
             <tbody>
             {props.pods && props.pods.map(pod => <PodRow className="podTable"
+                    refresh={props.refresh}
+                    teacher={props.teacher._id}
+                    id={props.id}
                     key={pod._id}
+                    podId={pod._id}
                     name={pod.name}
                     grade={pod.grade}
                     slots={pod.slots}

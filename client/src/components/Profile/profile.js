@@ -42,7 +42,7 @@ const Profile = (props) => {
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
 
                 setProfileData({
@@ -56,7 +56,6 @@ const Profile = (props) => {
                 })
             }
             ).catch(err => console.log(err));
-    // }, [key])
     }, [key])
 
     const refresh = () => {
@@ -64,7 +63,7 @@ const Profile = (props) => {
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
 
                 setProfileData({
@@ -196,7 +195,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} />
+                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

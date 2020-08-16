@@ -35,8 +35,6 @@ function Messages() {
         // <div className="fullBackground">
             <div className="overflowMessage fullBackground" >
                 <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
-
-
             <Row className="messageRow">
                 <Col className="messageCOL col-4">
                     <Card className="sideCard">

@@ -4,6 +4,7 @@ import "./signup.css";
 import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
+import API from "../../utils/API"
 
 function Signup() {
     const [loggedIn, setLogin] = useState("");
@@ -14,8 +15,8 @@ function Signup() {
         lastName: "",
         username: "",
         password: "",
-        confirmed: ""
-        // confirm: ""
+        confirmed: "",
+        isTeacher: false
     })
 
     const handleInputChange = event => {
@@ -27,17 +28,32 @@ function Signup() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
+        if (signupInput.isTeacher === "true") {
+            signupInput.isTeacher = true;
+        } else {
+            signupInput.isTeacher = false;
+        }
         console.log(signupInput);
         if (signupInput.confirmed !== signupInput.password) {
             document.getElementById("error").style.display = "block"
             return
         }
-        axios.post("/api/users/signup", signupInput)
-            .then(({ data }) => {
-                if (data.message === "Signed up and logged in") {
+        console.log(event)
+        if (signupInput.isTeacher === true){
+            API.createTeacher(signupInput)
+            .then (({ data }) => {
+                if (data.message === "Signed up and logged in"){
                     window.location.replace("/")
                 }
             })
+        } else {
+            API.createParent(signupInput)
+            .then (({ data }) => {
+                if (data.message === "Signed up and logged in"){
+                    window.location.replace("/")
+                }
+            })
+        }
     }
 
 
@@ -82,9 +98,9 @@ function Signup() {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for="exampleSelect">Are you a teacher?</Label>
-                                        <Input type="select" name="select" id="exampleSelect">
-                                            <option>No</option>
-                                            <option>Yes</option>
+                                        <Input type="select" name="isTeacher" id="teacherSelect" onChange={handleInputChange}>
+                                            <option value="false">No</option>
+                                            <option value="true">Yes</option>
                                         </Input>
                                     </FormGroup>
                                     <p id="error" style={{ display: "none" }}>Passwords don't match. Please try again.</p>

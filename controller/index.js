@@ -218,13 +218,14 @@ module.exports = {
         db.Messenger.create(req.body.message)
           .then(message => {
             console.log(message)
-            db.Conversation.findOneAndUpdate({ participants: message.receiver && message.sender}, { $push: { messengers: message._id }}, {new: true})
+            db.Conversation.findOneAndUpdate({ participants: { $all: [message.receiver, message.sender]}}, { $push: { messengers: message._id }}, {new: true})
                 .then(results => res.json(results))
         })
             .catch(err => res.json(err))
     },
     createConversation: (req, res) => {
-        db.Conversation.create(req.body.participants)
+        console.log(req.body)
+        db.Conversation.create(req.body)
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },

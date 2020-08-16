@@ -143,7 +143,7 @@ const Profile = (props) => {
         // console.log(teacher)
     }
 
-    //////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
     //Sort Functions
 
     const hideArrows = () => {
@@ -276,7 +276,6 @@ const Profile = (props) => {
             const priceA = a.price;
             const priceB = b.price;
 
-
             let comparison = 0;
             if (priceA > priceB) {
                 comparison = 1;
@@ -329,8 +328,8 @@ const sortByCapacity = () => {
 //Sort pod table by openings
 const sortByOpening = () => {
     let sortedOpening = pods.sort((a, b) => {
-        const podA = a.openings-a.students.length;
-        const podB = b.openings-b.students.length;
+        const podA = a.slots-a.students.length;
+        const podB = b.slots-b.students.length;
 
 
         let comparison = 0;

@@ -9,7 +9,7 @@ const PodRow = (props) => {
             <td className="vertAlign"><strong>{props.name}</strong></td>
             <td className="vertAlign">{props.grade}</td>
             <td className="vertAlign">{props.location}</td>
-            <td className="vertAlign">${props.price}/Child/Week</td>
+            <td className="vertAlign">${props.price}/Week</td>
             <td className="vertAlign">{props.slots}</td>
             <td className="vertAlign">{props.availability}</td>
             <td className="vertAlign">

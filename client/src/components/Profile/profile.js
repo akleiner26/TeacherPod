@@ -4,6 +4,7 @@ import { Card, Col, Row, CardTitle, Button, Modal, ModalHeader, ModalBody, Modal
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 import PodTable from "../PodTable/podTable"
+import StudentTable from "../StudentTable/StudentTable"
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
@@ -27,9 +28,7 @@ const Profile = (props) => {
     })
 
     // For modal
-    const {
-        buttonLabel
-    } = props;
+    const { buttonLabel } = props;
     const [profileModal, setProfileModal] = useState(false);
     const [podModal, setPodModal] = useState(false);
     const [studentModal, setStudentModal] = useState(false);
@@ -110,8 +109,9 @@ const Profile = (props) => {
 
     // Displays modal with form to add student (for parents only)
     const openStudentForm = event => {
-        console.log("clicked")
+        // console.log("clicked")
         setStudentModal(true);
+        console.log(teacher)
     }
 
     return (
@@ -177,7 +177,7 @@ const Profile = (props) => {
             {teacher.isTeacher === true ? (
                 <PodTable pods={pods} />
             ) : (
-                    <h4 className="text-center mt-5 mb-5">Student table coming soon...</h4>
+                    <StudentTable teacher={teacher} id={id} />
                 )}
 
             <Footer />

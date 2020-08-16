@@ -126,7 +126,7 @@ const Profile = (props) => {
                         <Row className="m-3">
 
                             <Col className="proPicCol text-center" xs="6">
-                                {teacher.image === "" ? (
+                                {teacher.image !== "" ? (
                                     <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
                                 ) : (
                                         <img className="img-fluid profileImage" alt="" src="../images/fullSize/profile-placeholder.png"></img>

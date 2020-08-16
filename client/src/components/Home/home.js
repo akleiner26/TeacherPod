@@ -82,6 +82,18 @@ function Home() {
 
         loadTeachers();
     }
+
+    const hideArrows = () => {
+        document.getElementById("nameUp").style.display="none";
+        document.getElementById("nameDown").style.display="none";
+        document.getElementById("gradeUp").style.display="none";
+        document.getElementById("gradeDown").style.display="none";
+        document.getElementById("priceUp").style.display="none";
+        document.getElementById("priceDown").style.display="none";
+        document.getElementById("podUp").style.display="none";
+        document.getElementById("podDown").style.display="none";
+    }
+
     //sort teachers by name//
     const sortByName = () => {
 
@@ -101,8 +113,12 @@ function Home() {
           if (sortName === "DESC") {
             sortedNames.reverse();
             setName("ASC");
+            hideArrows();
+            document.getElementById("nameUp").style.display="block";
           } else {
             setName("DESC");
+            hideArrows();
+            document.getElementById("nameDown").style.display="block";
           }
           setTeachers(sortedNames);
         }
@@ -132,8 +148,12 @@ function Home() {
           if (sortGrade === "DESC") {
             sortedGrades.reverse();
             setGrade("ASC");
+            hideArrows();
+            document.getElementById("gradeUp").style.display="block";
           } else {
             setGrade("DESC");
+            hideArrows();
+            document.getElementById("gradeDown").style.display="block";
           }
           setTeachers(sortedGrades);
         }
@@ -156,8 +176,12 @@ function Home() {
               if (sortPrice === "DESC") {
                 sortedPrice.reverse();
                 setPrice("ASC");
+                hideArrows();
+                document.getElementById("priceUp").style.display="block";
               } else {
                 setPrice("DESC");
+                hideArrows();
+                document.getElementById("priceDown").style.display="block";
               }
               setTeachers(sortedPrice);
             }
@@ -179,8 +203,12 @@ function Home() {
                   if (sortPod === "DESC") {
                     sortedPod.reverse();
                     setPod("ASC");
+                    hideArrows();
+                    document.getElementById("podUp").style.display="block";
                   } else {
                     setPod("DESC");
+                    hideArrows();
+                    document.getElementById("podDown").style.display="block";
                   }
                   setTeachers(sortedPod);
                 }

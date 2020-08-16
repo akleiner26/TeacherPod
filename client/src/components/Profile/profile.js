@@ -199,7 +199,7 @@ const Profile = (props) => {
                 toggle3={toggle3}
                 studentModal={studentModal}
                 buttonLabe={buttonLabel}
-                teacher={teacher}
+                parent={teacher}
                 id={id}
             />
         </>

@@ -3,8 +3,33 @@ import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, F
 import API from "../../utils/API"
 
 const StudentModal = (props) => {
+    const [studentData, setStudentData] = useState({
+        firstName: "",
+        lastName: "",
+        preferredName: "",
+        gradeLevel: "",
+        notes: ""
+    });
+
     const handleInputChange = event => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
+
+        setStudentData({
+            ...studentData,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    const saveStudent = event => {
+        event.preventDefault();
+        props.toggle3();
+        console.log(studentData)
+
+        API.createStudent(props.id, studentData)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -26,13 +51,13 @@ const StudentModal = (props) => {
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Grade</Label>
-                        <Input type="text" name="gradeLevel" id="grade" placeholder="Student's Grade Level" />
+                        <Input type="text" name="gradeLevel" id="grade" placeholder="Student's Grade Level" onChange={handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="notes">Notes</Label>
                         <Input type="textarea" name="notes" id="notes" placeholder="Enter any notes that teachers should know about your child." onChange={handleInputChange} />
                     </FormGroup>
-                    <Button >Save</Button>
+                    <Button onClick={saveStudent}>Save</Button>
                     <Button onClick={props.toggle3} className="ml-3 mr-0">Cancel</Button>
                 </Form>
             </ModalBody>

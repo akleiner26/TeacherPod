@@ -8,11 +8,13 @@ const PodRow = (props) => {
         <tr className="vertAlign">
             <td className="vertAlign"><strong>{props.name}</strong></td>
             <td className="vertAlign">{props.grade}</td>
-            <td className="vertAlign">{props.slots}</td>
-            <td className="vertAlign">{props.price}/Child/Week</td>
             <td className="vertAlign">{props.location}</td>
+            <td className="vertAlign">{props.price}/Child/Week</td>
+            <td className="vertAlign">{props.slots}</td>
             <td className="vertAlign">{props.availability}</td>
-            <td className="vertAlign iconHvr-fade2"><i className="fa fa-book fa-2x" aria-hidden="true"></i></td>
+            <td className="vertAlign">
+                <i className="fa fa-book profileIcons hvr-fade" aria-hidden="true"></i>
+            </td>
         </tr>
     );
 };

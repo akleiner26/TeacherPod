@@ -4,7 +4,7 @@ import "./ProfileModal.css";
 
 const ProfileModal = (props) => {
     return (
-        <Modal isOpen={props.modal} toggle={props.toggle} className="">
+        <Modal isOpen={props.profileModal} toggle={props.toggle} className="">
             <ModalHeader toggle={props.toggle}>Edit Profile</ModalHeader>
             <ModalBody>
                 <Form>

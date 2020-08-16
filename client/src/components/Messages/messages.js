@@ -14,7 +14,7 @@ function Messages() {
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
     const [Convos, setConvos] = useState([]);
-    const [messages, setMessages] = useState("");
+    const [messages, setMessages] = useState([]);
     const [receiver, setReceiver] = useState("");
     const [content, setContent] = useState("");
 
@@ -74,7 +74,6 @@ function Messages() {
         })
     }
 
-    console.log(Convos);
 
 
     return (

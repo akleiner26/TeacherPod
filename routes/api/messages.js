@@ -12,7 +12,7 @@ router.route("/:username")
     .get(controller.findAllMessages)
 
 // Matches with "/api/messages/conversation"
-router.route("/conversation/")
+router.route("/conversation")
     //Takes in array through body => {participants: [username1, username2]}
     .post(controller.createConversation)
 

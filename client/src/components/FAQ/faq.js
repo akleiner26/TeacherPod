@@ -19,7 +19,7 @@ function FAQ() {
             <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Container>
                     <Card className="loginCard">
-                        <CardTitle className="text-center loginTitle darkGreyText">CONTACT
+                        <CardTitle className="text-center loginTitle darkGrayText">CONTACT
                     <hr className="line"></hr>
                         </CardTitle>
 
@@ -28,7 +28,7 @@ function FAQ() {
 
                             <div>
                                 <Button className="toggleButton" id="toggler1" style={{ marginBottom: '1rem' }}>
-                                    Toggle
+                                    How does TeachPod work?
                                 </Button>
                                 <UncontrolledCollapse toggler="#toggler1">
                                     <Card className="toggleCard">
@@ -43,7 +43,7 @@ function FAQ() {
 
                             <div>
                                 <Button className="toggleButton" id="toggler2" style={{ marginBottom: '1rem' }}>
-                                    Toggle
+                                    How can I request a pod?
                                 </Button>
                                 <UncontrolledCollapse toggler="#toggler2">
                                 <Card className="toggleCard">
@@ -58,7 +58,7 @@ function FAQ() {
 
                             <div>
                                 <Button className="toggleButton" id="toggler3" style={{ marginBottom: '1rem' }}>
-                                    Toggle
+                                    How do I pay for a pod?
                                 </Button>
                                 <UncontrolledCollapse toggler="#toggler3">
                                 <Card className="toggleCard">
@@ -73,7 +73,7 @@ function FAQ() {
 
                             <div>
                                 <Button className="toggleButton" id="toggler4" style={{ marginBottom: '1rem' }}>
-                                    Toggle
+                                    Where do classes take place?
                                 </Button>
                                 <UncontrolledCollapse toggler="#toggler4">
                                 <Card className="toggleCard">
@@ -88,7 +88,7 @@ function FAQ() {
 
                             <div>
                                 <Button className="toggleButton" id="toggler5" style={{ marginBottom: '1rem' }}>
-                                    Toggle
+                                    Another question?
                                 </Button>
                                 <UncontrolledCollapse toggler="#toggler5">
                                 <Card className="toggleCard">

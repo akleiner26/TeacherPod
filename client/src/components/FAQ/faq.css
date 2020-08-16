@@ -3,6 +3,7 @@
     color: rgba(57,180,167,1) !important;
     border-color: rgba(57,180,167,1) !important;
     margin-left: 19px;
+    min-width: 250px;
 }
 
 

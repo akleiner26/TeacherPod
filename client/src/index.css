@@ -40,6 +40,10 @@ code {
     border-color: rgba(57,180,167,1) !important;
 }
 
+#submitMessage:hover, #submitMessage:focus, #submitMessage:active {
+  border-color: white !important;
+}
+
 .darkBtnHover{
   display: inline-block !important;
   vertical-align: middle !important;
@@ -132,4 +136,8 @@ border: none;
 
 .floatRt {
   float: right;
+}
+
+.caret{
+  display:none;
 }

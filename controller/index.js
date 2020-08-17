@@ -38,7 +38,6 @@ module.exports = {
                         }
                         if (req.query.location) {
                             if (!(req.query.location == pod.location)) {
-                                pushTeacher = false;
                                 pushPod = false;
                             }  
                         }

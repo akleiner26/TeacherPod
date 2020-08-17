@@ -150,3 +150,49 @@
     overflow: scroll;
     overflow-x: hidden;
 }
+
+@media (max-width: 576px) {
+    .messageCOL {
+        max-height: 250px !important;
+    }
+
+    .mainMessageCard {
+        min-height: 250px;
+    }
+
+    .formBottom {
+        margin-left:0px ;
+        margin-top: 0;
+        margin-bottom: 120px;
+        min-width: 500px;
+        max-height: 30px
+    }
+    #messageID {
+        margin-left: -80px !important;
+        min-width: 350px;
+        /* margin-right: 100px; */
+    }
+    #submitMessage {
+        display: block;
+        margin-top: -17px !important;
+        margin-left: 30px;;
+    }
+
+    .messageTextArea {
+        max-height: 400px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .sent {
+        margin-left: 30%;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+     
+    .received {
+        margin-right: 30%;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+}

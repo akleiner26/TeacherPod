@@ -105,7 +105,7 @@ const Profile = (props) => {
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
         setPodModal(true);
-        // console.log(teacher)
+        console.log(teacher)
     }
 
     // Displays modal with form to add student (for parents only)

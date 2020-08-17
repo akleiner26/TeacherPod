@@ -178,14 +178,27 @@ function Home() {
     //Sort by Price
     const sortByPrice = () => {
         let sortedPrice = teachers.filter(teacher => teacher.pods.length > 0).sort((a, b) => {
-            const priceA = a.pods[0].price;
-            const priceB = b.pods[0].price;
+            // const priceA = a.pods[0].price;
+            // const priceB = b.pods[0].price;
+            let minPodPriceA = a.pods[0].price;
+            let minPodPriceB = b.pods[0].price;
 
+            for (let i=0; i < a.pods.length; i++) {
+                if (a.pods[i].price < minPodPriceA) {
+                    minPodPriceA = a.pods[i].price;
+                }
+            }
+
+            for (let i=0; i < b.pods.length; i++) {
+                if (b.pods[i].price < minPodPriceB) {
+                    minPodPriceB = b.pods[i].price;
+                }
+            }
 
             let comparison = 0;
-            if (priceA > priceB) {
+            if (minPodPriceA > minPodPriceB) {
                 comparison = 1;
-            } else if (priceA < priceB) {
+            } else if (minPodPriceA < minPodPriceB) {
                 comparison = -1;
             } return comparison
         })
@@ -230,7 +243,6 @@ function Home() {
         setTeachers(sortedPod);
     }
 
-
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
@@ -245,6 +257,18 @@ function Home() {
                     {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
                         let name = teacher.firstName + " " + teacher.lastName;
 
+                        let priceMin = teacher.pods[0].price;
+                        let priceMax = teacher.pods[0].price;
+            
+                        for (let i=0; i < teacher.pods.length; i++) {
+                            if (teacher.pods[i].price < priceMin) {
+                                priceMin = teacher.pods[i].price;
+                            }
+                            if (teacher.pods[i].price > priceMax) {
+                                priceMax = teacher.pods[i].price;
+                            }
+                        }
+
                         return <TeacherRow
                             loggedInUser={username}
                             teacherUsername={teacher.username}
@@ -254,7 +278,8 @@ function Home() {
                             image={teacher.image}
                             name={name}
                             gradesTaught={teacher.gradesTaught}
-                            price={teacher.pods[0].price}
+                            priceMin={priceMin}
+                            priceMax={priceMax}
                             pods={teacher.pods.length}
                             username={teacher.username} />
                     }

@@ -16,13 +16,23 @@ const PodModal = (props) => {
 
         setPodData({
             ...podData,
+            // price: props.teacher.pods ? props.teacher.pods[0].price : "",
+            // price: props.teacher.pods === [] ? "" : props.teacher.pods[0].price,
             [event.target.name]: event.target.value
         })
     }
 
+    // if (props.teacher.pods !== []) {
+    //     setPodData({
+    //         ...podData,
+    //         price: props.teacher.pods[0].price
+    //     })
+    // }
+   console.log(podData)
+
     const savePod = event => {
         event.preventDefault();
-        // console.log(podData)
+        console.log(podData)
         // console.log(`id is ${props.id}`)
         let podPrice = document.getElementById("podModalError");
 
@@ -78,6 +88,7 @@ const PodModal = (props) => {
                     <FormGroup>
                         <Label for="price">Price per week ($0-$600).</Label>
                         <Input type="number" name="price" min="0" max="600" id="price" placeholder="Price" onChange={handleInputChange} />
+                       
                         <FormText id="podModalError">
                             Price must be between $0 - $600
                         </FormText>

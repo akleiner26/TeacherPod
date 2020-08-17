@@ -36,13 +36,21 @@ const PodRow = (props) => {
                         <DropdownToggle caret className="podDropdown">
                             {props.slots}
                         </DropdownToggle>
-                        <DropdownMenu>
-                            {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
 
-                            </DropdownItem>
+                        {props.students.length > 0 ? (
+                            <DropdownMenu>
+                                {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
+
+                                </DropdownItem>
+                                )}
+
+                            </DropdownMenu>
+                        ) : (
+                                <DropdownMenu>
+                                    <DropdownItem>No students enrolled</DropdownItem>
+                                </DropdownMenu>
                             )}
 
-                        </DropdownMenu>
                     </ButtonDropdown>
                 </td>
                 <td className="vertAlign" onClick={viewStudents}>{props.availability}</td>

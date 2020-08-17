@@ -84,7 +84,7 @@ function Login() {
 
             {!isDesktopOrLaptop && <>
                 
-                <Row className="mt-5 profileCardRow loginRowSize">
+                <Row className="mt-5  loginRowSize">
                     <Col sm="12" className="loginCol">
                         <Container className="loginContainer">
                             <Card className="loginCard">

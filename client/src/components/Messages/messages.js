@@ -3,14 +3,19 @@ import Header from "../Header/header";
 import Footer from "../Footer/footer"
 import { Card, CardTitle, CardBody, Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import "./messages.css";
-import axios from "axios";
 import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard";
 import DisplayMessage from "../DisplayMessage/displayMessage";
 import MessageModal from "../MessageModal/messageModal";
+import { useMediaQuery } from 'react-responsive'
 
 
 function Messages() {
+
+    const isDesktopOrLaptop = useMediaQuery(
+        { minWidth: 576 }
+    )
+
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
@@ -26,7 +31,7 @@ function Messages() {
             return
         }
         getConvos(username);
-    }, [username, messageModal])
+    }, [username, messageModal, Convos])
 
     useEffect(() => {
         if (receiver == "") {
@@ -47,7 +52,7 @@ function Messages() {
                     return
                 }
                 setConvos(data);
-               
+
                 console.log(data.participants)
                 // setCurrentPerson(data.participants.filter(person => (person !== username)));
             })
@@ -90,14 +95,80 @@ function Messages() {
 
     return (
         // <div className="fullBackground">
-        <div className="overflowMessage fullBackground" >
+
+        <div id="messagePageHeight" className="overflowMessage fullBackground max-vh-100" >
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
-            <Row className="messageRow">
-                <Col className="messageCOL col-4">
+
+            {isDesktopOrLaptop && <>
+                <Row className="messageRow">
+                    <Col className="messageCOL col-4">
+                        <Card className="sideCard">
+                            <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
+                                Messages
+                                    <i onClick={openConversationForm} class="fa fa-plus profileIcons hvr-fade" aria-hidden="true" style={{ position: "absolute", top: 0, left: 20 }}></i>
+                            </CardTitle>
+                            <CardBody className="text-center sideBody">
+                                {Convos && Convos.map(convo => {
+                                    console.log(convo);
+                                    let personText = "";
+                                    if (!convo.participants) {
+                                        return
+                                    }
+                                    convo.participants.forEach(person => {
+                                        if (person !== username) {
+                                            // console.log("Found")
+                                            personText = person;
+                                        }
+                                    })
+                                    return <MessageCard person={personText} setReceiver={setReceiver} />
+                                }
+                                )}
+                            </CardBody>
+                        </Card>
+
+                    </Col>
+                    <Col>
+                        <Card className="mainMessageCard col-8 shadow">
+                            <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{ marginBottom: "30px" }} >
+                                {currentPerson}
+                            </CardTitle>
+                            <div className="messageTextArea">
+                                {messages == "" ?
+                                    <>
+                                    </>
+                                    :
+                                    messages && messages.map(message => {
+                                        let text = message.content;
+                                        console.log(text);
+                                        if (message.sender == username) {
+                                            return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
+                                        }
+                                        else {
+                                            return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
+                                        }
+                                    })
+                                }
+                            </div>
+                        </Card>
+                        <Form inline className="formBottom" onSubmit={postMessage}>
+                            <FormGroup inline className="messageText">
+                                <Label for="content" hidden>Message</Label>
+                                <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
+                            </FormGroup>
+                            <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
+
+                        </Form>
+                    </Col>
+
+                </Row>
+            </>}
+
+            {!isDesktopOrLaptop && <>
+                <Col className="messageCOL col-12">
                     <Card className="sideCard">
                         <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center">
                             Messages
-                            <i onClick={openConversationForm} class="fa fa-plus profileIcons hvr-fade" aria-hidden="true" style={{ position: "absolute", top: 0, left: 20 }}></i>
+                                    <i onClick={openConversationForm} class="fa fa-plus profileIcons hvr-fade" aria-hidden="true" style={{ position: "absolute", top: 0, left: 20 }}></i>
                         </CardTitle>
                         <CardBody className="text-center sideBody">
                             {Convos && Convos.map(convo => {
@@ -119,41 +190,50 @@ function Messages() {
                     </Card>
 
                 </Col>
+
                 <Col>
-                    <Card className="mainMessageCard col-8 shadow">
-                        <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{marginBottom: "30px"}} >
+                    <Card className="mainMessageCard col-12 shadow">
+                        <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{ marginBottom: "30px" }} >
                             {currentPerson}
                         </CardTitle>
-                        {messages == "" ?
-                            <>
-                                <div>
-                                    Click on a user on the left to view conversation.
-                                </div>
-                            </>
-                            :
-                            messages && messages.map(message => {
-                                let text = message.content;
-                                console.log(text);
-                                if (message.sender == username) {
-                                    return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
-                                }
-                                else {
-                                    return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
-                                }
-                            })
-                        }
+                        <div className="messageTextArea">
+                            {messages == "" ?
+                                <>
+                                </>
+                                :
+                                messages && messages.map(message => {
+                                    let text = message.content;
+                                    console.log(text);
+                                    if (message.sender == username) {
+                                        return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
+                                    }
+                                    else {
+                                        return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
+                                    }
+                                })
+                            }
+                        </div>
                     </Card>
-                    <Form inline className="formBottom" onSubmit={postMessage}>
-                        <FormGroup inline className="messageText">
-                            <Label for="content" hidden>Message</Label>
-                            <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
-                        </FormGroup>
-                        <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
+      
 
-                    </Form>
+                        <Form inline className="formBottom" onSubmit={postMessage}>
+                   
+
+                                <FormGroup inline className="messageText">
+                                    <Label for="content" hidden>Message</Label>
+                                    <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
+                                </FormGroup>
+                         
+
+
+                                <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
+
+                        </Form>
+      
+
                 </Col>
+            </>}
 
-            </Row>
 
             <div className="fixed-bottom">
                 <Footer />
@@ -163,8 +243,10 @@ function Messages() {
                     username={username}
                 />
             </div>
-        </div>
+        </div >
         // </div>
+
+
     )
 }
 

@@ -2,7 +2,7 @@
 .sideCard{
     
     width: 100%;
-    height: 100%;
+    height: 75%;
     /* position: absolute; */
     overflow: auto;
     /* margin-bottom: 100px !important; */
@@ -17,6 +17,7 @@
 
 .sideBody {
     overflow: scroll;
+    overflow-x: hidden;
     height: 1px;
 }
 
@@ -29,11 +30,12 @@
     margin-bottom: 0px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+
   
 }
 
 .messageRow {
-    height: 100%;
+    height: 80%;
     width: 100%;
     position: relative;
     /* overflow: scroll; */
@@ -44,13 +46,15 @@
 }
 
 .mainMessageCard {
-    min-height: 70%;
+    min-height: 60%;
     min-width: 100%;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 5%;
     /* margin-left: -190px; */
     border-radius: 25px;
+    /* overflow: scroll; */
+    max-height: 60%;
 }
 
 .messageText {
@@ -135,3 +139,60 @@
     /* display: none; */
   }
 
+#messagePageHeight {
+    max-height: 250vh !important;
+    overflow: hidden;
+
+    
+}
+
+.messageTextArea {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+@media (max-width: 576px) {
+    .messageCOL {
+        max-height: 250px !important;
+    }
+
+    .mainMessageCard {
+        min-height: 250px;
+    }
+
+    .formBottom {
+        margin-left:0px ;
+        margin-top: 0;
+        margin-bottom: 120px;
+        min-width: 500px;
+        max-height: 30px
+    }
+    #messageID {
+        margin-left: -80px !important;
+        min-width: 350px;
+        /* margin-right: 100px; */
+    }
+    #submitMessage {
+        display: block;
+        margin-top: -17px !important;
+        margin-left: 30px;;
+    }
+
+    .messageTextArea {
+        max-height: 400px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .sent {
+        margin-left: 30%;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+     
+    .received {
+        margin-right: 30%;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+}

@@ -39,8 +39,8 @@ function Login() {
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
             <Row className="mt-5 profileCardRow loginSignupRowSize">
-                <Col xs="8" className="offset-2">
-                    <Container className>
+                <Col sm="8" className="offset-2 loginCol">
+                    <Container className="loginContainer">
                         <Card className="loginCard">
                             <CardTitle className="text-center loginTitle darkGrayText">LOGIN
                     <hr className="line"></hr>
@@ -72,7 +72,9 @@ function Login() {
                     </Container>
                 </Col>
             </Row>
-            <Footer />
+              <div className="fixed-bottom">
+                <Footer />
+            </div>
         </>
     )
 }

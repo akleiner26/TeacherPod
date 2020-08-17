@@ -32,16 +32,12 @@ function Messages() {
             return
         }
         API.findMessageHistory(username, receiver)
-            .then(res => {
-                console.log(res.data[0].messengers)
-                setMessages(res.data[0].messengers);
-            })
+            .then(res => setMessages(res.data[0].messengers))
     }, [receiver, messages])
 
     const getConvos = (user) => {
         API.findAllMessages(user)
             .then(({ data }) => {
-                console.log(data)
                 if (typeof (data) !== "object") {
                     return
                 }
@@ -67,7 +63,6 @@ function Messages() {
                 }
             }).then(() => {
                 setContent("");
-                console.log(username, receiver)
                 API.findMessageHistory(username, receiver)
                     .then(res => {
                         console.log(res.data[0].messengers)

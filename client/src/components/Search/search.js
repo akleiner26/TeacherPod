@@ -42,12 +42,12 @@ const Search = (props) => {
                             <Label for="priceSelect"><i className="fa fa-usd" aria-hidden="true"></i> Price Range</Label>
                             <Input onChange={props.handleInputChange} type="select" placeholder="Price/Week" name="price" id="priceSelect" value={props.search.price}>
                                 <option>Select</option>
-                                <option>Less than $100/week</option>
+                                <option>$0-$100/week</option>
                                 <option>$100-$200/week</option>
                                 <option>$200-$300/week</option>
                                 <option>$300-$400/week</option>
                                 <option>$400-$500/week</option>
-                                <option>Greater than $500/week</option>
+                                <option>$500-$600/week</option>
                             </Input>
                         </FormGroup>
                         <Button onClick={props.handleFormSubmit}className="btnHover hvr-fade mr-2">Submit</Button>

@@ -26,6 +26,7 @@ function Home() {
     const [sortPod, setPod] = useState([])
 
 
+
     // console.log(loggedIn, username, id);
 
     useEffect(() => {
@@ -241,7 +242,7 @@ function Home() {
             />
             {teachers.length ? (
                 <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
-                    {teachers.map(teacher => {
+                    {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
                         let name = teacher.firstName + " " + teacher.lastName;
 
                         return <TeacherRow

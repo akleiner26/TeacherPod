@@ -47,7 +47,7 @@ function Messages() {
                     return
                 }
                 setConvos(data);
-               
+
                 console.log(data.participants)
                 // setCurrentPerson(data.participants.filter(person => (person !== username)));
             })
@@ -90,7 +90,7 @@ function Messages() {
 
     return (
         // <div className="fullBackground">
-        <div className="overflowMessage fullBackground" >
+        <div id="messagePageHeight" className="overflowMessage fullBackground max-vh-100" >
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
             <Row className="messageRow">
                 <Col className="messageCOL col-4">
@@ -121,27 +121,29 @@ function Messages() {
                 </Col>
                 <Col>
                     <Card className="mainMessageCard col-8 shadow">
-                        <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{marginBottom: "30px"}} >
+                        <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{ marginBottom: "30px" }} >
                             {currentPerson}
                         </CardTitle>
-                        {messages == "" ?
-                            <>
-                                <div>
-                                    Click on a user on the left to view conversation.
+                        <div className="messageTextArea"> 
+                            {messages == "" ?
+                                <>
+                                    <div>
+                                        Click on a user on the left to view conversation.
                                 </div>
-                            </>
-                            :
-                            messages && messages.map(message => {
-                                let text = message.content;
-                                console.log(text);
-                                if (message.sender == username) {
-                                    return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
-                                }
-                                else {
-                                    return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
-                                }
-                            })
-                        }
+                                </>
+                                :
+                                messages && messages.map(message => {
+                                    let text = message.content;
+                                    console.log(text);
+                                    if (message.sender == username) {
+                                        return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
+                                    }
+                                    else {
+                                        return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
+                                    }
+                                })
+                            }
+                        </div>
                     </Card>
                     <Form inline className="formBottom" onSubmit={postMessage}>
                         <FormGroup inline className="messageText">

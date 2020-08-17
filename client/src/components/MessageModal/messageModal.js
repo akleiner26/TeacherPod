@@ -55,7 +55,6 @@ const MessageModal = (props) => {
     }
 
     console.log(props)
-    notify.show("Your Message Has Been Sent!")
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react"
+import React from "react"
 import "./podTable.css"
 import { Table, Col, Card } from "reactstrap"
 import PodRow from "../PodRow/podRow"
@@ -30,6 +30,8 @@ function PodTable(props) {
             {props.pods && props.pods.map(pod => <PodRow className="podTable"
                     refresh={props.refresh}
                     teacher={props.teacher._id}
+                    pods={props.pods}
+                    students={pod.students}
                     id={props.id}
                     key={pod._id}
                     podId={pod._id}

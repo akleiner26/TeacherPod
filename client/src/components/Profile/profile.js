@@ -150,7 +150,7 @@ const Profile = (props) => {
     }
 
     const startConvo = () => {
-        API.createConversation({participants: [username, id]})
+        API.createConversation({ participants: [username, id] })
             .then(() => {
                 console.log("message sent");
             })
@@ -283,7 +283,7 @@ const Profile = (props) => {
         setPods(sortedLocation);
     }
 
-//Sort pod table by price
+    //Sort pod table by price
     const sortByPrice = () => {
         let sortedPrice = pods.sort((a, b) => {
             const priceA = a.price;
@@ -310,61 +310,61 @@ const Profile = (props) => {
         setPods(sortedPrice);
     }
 
-//Sort pod table by capacity
-const sortByCapacity = () => {
-    let sortedCapacity = pods.sort((a, b) => {
-        const podA = a.slots;
-        const podB = b.slots;
+    //Sort pod table by capacity
+    const sortByCapacity = () => {
+        let sortedCapacity = pods.sort((a, b) => {
+            const podA = a.slots;
+            const podB = b.slots;
 
 
-        let comparison = 0;
-        if (podA > podB) {
-            comparison = 1;
-        } else if (podA < podB) {
-            comparison = -1;
-        } return comparison
-    })
+            let comparison = 0;
+            if (podA > podB) {
+                comparison = 1;
+            } else if (podA < podB) {
+                comparison = -1;
+            } return comparison
+        })
 
-    if (sortCapacity === "DESC") {
-        sortedCapacity.reverse();
-        setCapacity("ASC");
-        hideArrows();
-        document.getElementById("podCapacityUp").style.display = "block";
-    } else {
-        setCapacity("DESC");
-        hideArrows();
-        document.getElementById("podCapacityDown").style.display = "block";
+        if (sortCapacity === "DESC") {
+            sortedCapacity.reverse();
+            setCapacity("ASC");
+            hideArrows();
+            document.getElementById("podCapacityUp").style.display = "block";
+        } else {
+            setCapacity("DESC");
+            hideArrows();
+            document.getElementById("podCapacityDown").style.display = "block";
+        }
+        setPods(sortedCapacity);
     }
-    setPods(sortedCapacity);
-}
 
-//Sort pod table by openings
-const sortByOpening = () => {
-    let sortedOpening = pods.sort((a, b) => {
-        const podA = a.slots-a.students.length;
-        const podB = b.slots-b.students.length;
+    //Sort pod table by openings
+    const sortByOpening = () => {
+        let sortedOpening = pods.sort((a, b) => {
+            const podA = a.slots - a.students.length;
+            const podB = b.slots - b.students.length;
 
 
-        let comparison = 0;
-        if (podA > podB) {
-            comparison = 1;
-        } else if (podA < podB) {
-            comparison = -1;
-        } return comparison
-    })
+            let comparison = 0;
+            if (podA > podB) {
+                comparison = 1;
+            } else if (podA < podB) {
+                comparison = -1;
+            } return comparison
+        })
 
-    if (sortOpening === "DESC") {
-        sortedOpening.reverse();
-        setOpening("ASC");
-        hideArrows();
-        document.getElementById("podOpeningUp").style.display = "block";
-    } else {
-        setOpening("DESC");
-        hideArrows();
-        document.getElementById("podOpeningDown").style.display = "block";
+        if (sortOpening === "DESC") {
+            sortedOpening.reverse();
+            setOpening("ASC");
+            hideArrows();
+            document.getElementById("podOpeningUp").style.display = "block";
+        } else {
+            setOpening("DESC");
+            hideArrows();
+            document.getElementById("podOpeningDown").style.display = "block";
+        }
+        setPods(sortedOpening);
     }
-    setPods(sortedOpening);
-}
 
     return (
         <>
@@ -404,7 +404,7 @@ const sortByOpening = () => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                    <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}
@@ -414,9 +414,14 @@ const sortByOpening = () => {
                             <Col>
                                 <Row>
                                     <Col>
-                                        <h2>
-                                            <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
-                                        </h2>
+                                        {teacher.firstName !== undefined ? (
+                                            <h2>
+                                                <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
+                                            </h2>
+                                        ) : (
+                                                <h2></h2>
+                                            )}
+
                                     </Col>
                                 </Row>
                                 {teacher.bio}

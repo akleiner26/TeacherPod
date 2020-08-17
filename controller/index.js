@@ -8,8 +8,49 @@ module.exports = {
     //Card search
     findAllTeachers: (req, res) => {
         console.log(req.query);
-        db.User.find({ gradesTaught: req.query.grades, isTeacher: true }).populate("pods")
-            .then(results => res.json(results))
+        let price = "";
+        let lowerLimit = 0;
+        let upperLimit = 1000;
+        if (req.query.price) {
+            let price = req.query.price.split("-");
+            let lowerLimit = parseInt(price[0].substring(1,4));
+            let upperLimit = parseInt(price[1].substring(1,4));
+            // console.log(lowerLimit, upperLimit)
+        }
+
+        db.User.find({ gradesTaught: req.query.grades, isTeacher: true}).populate("pods")
+            .then(teachers => {
+                teachers = teachers.filter(teacher => teacher.pods.length > 0);
+                let arrToSend = [];
+                let pods = [];
+                teachers.forEach(teacher => {
+                    // console.log(teacher)
+                    teacher.pods.forEach(pod => {
+                        // console.log("==========================================")
+                        // console.log(pod.price)
+                        // console.log(req.query.price)
+                        if(req.query.price){
+                            if (pod.price >= lowerLimit && pod.price <= upperLimit) {
+                                if (req.query.location) {
+                                    if (req.query.location == pod.location) {
+                                        pods.push(pod);
+                                    }
+                                }
+                                else {
+                                    pods.push(pod);
+                                }
+                            }
+                        }  
+                        else {
+                            pods.push(pod);
+                        }
+                    })
+                    teacher.pods = pods;
+                    arrToSend.push(teacher);
+                })
+                // console.log(arrToSend)
+                res.json(arrToSend);
+            })
             .catch(err => res.json(err))
     },
     findAllTeachersUnsearched: (req, res) => {

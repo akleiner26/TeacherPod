@@ -5,7 +5,7 @@ import Notifications, {notify} from "react-notify-toast"
 
 const MessageModal = (props) => {
     const [msgData, setMsgData] = useState({
-        receiver: props.receiver || "",
+        receiver: "",
         content: "",
         sender: props.username
     });
@@ -28,14 +28,26 @@ const MessageModal = (props) => {
         console.log(props.receiver)
         let myColor = { background: "#ececec", text: "#FFFFFF"}
         notify.show("Your Message Has Been Sent!")
+        let receiver = "";
+        if (props.receiver){
+            receiver = props.receiver;
+        }
+        if (msgData.receiver !== ""){
+            receiver = msgData.receiver;
+        }
 
-        // , "custom", 2000, myColor
-
-        API.createConversation({participants: [props.username, props.receiver || msgData.receiver]})
+        API.createConversation({participants: [props.username, receiver]})
             .then(res => {
                 if (msgData.content !== "") {
-                    API.createMessage({message: msgData})
-                        .then(res => console.log(res))
+                    API.createMessage({message: {
+                        sender: props.username,
+                        receiver: receiver,
+                        content: msgData.content
+                    }
+                })
+                        .then(res => {
+                            console.log(res);
+                        })
                 }
                 props.toggle();
             })
@@ -59,7 +71,7 @@ const MessageModal = (props) => {
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Send with a message</Label>
-                        <Input type="text" name="content" value={msgData.content} id="grade" placeholder="Optional" onChange={handleInputChange} />
+                        <Input type="text" name="content" value={msgData.content} id="grade" placeholder="Message" onChange={handleInputChange} />
                     </FormGroup>
                     <Button className="hvr-fade btnHover" onClick={sendMsg}>Send</Button>
                     <Button onClick={props.toggle} className="ml-3 mr-0 hvr-fade btnHover">Cancel</Button>

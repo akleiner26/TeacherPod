@@ -4,15 +4,6 @@ import "./ProfileModal.css";
 
 const ProfileModal = (props) => {
 
-    // Captures edits made in modal form
-    const handleInputChange = event => {
-        console.log(event.target.value)
-
-        props.setProfileData({
-            ...props.profileData,
-            [event.target.name]: event.target.value
-        })
-    }
     return (
         <Modal isOpen={props.profileModal} toggle={props.toggle} className="">
             <ModalHeader toggle={props.toggle}>Edit Profile</ModalHeader>
@@ -20,26 +11,26 @@ const ProfileModal = (props) => {
                 <Form>
                     <FormGroup>
                         <Label for="prefix">Prefix</Label>
-                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={props.profileData.prefix} />
+                        <Input type="text" name="prefix" id="prefix" placeholder="(Mr, Miss, Mrs, etc.)" value={(props.teacher.prefix) ? props.teacher.prefix : ""} onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="firstName">First Name</Label>
-                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.profileData.firstName} onChange={props.handleInputChange} />
+                        <Input type="type" name="firstName" id="firstName" placeholder="First Name" value={props.teacher.firstName} onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="lastName">Last Name</Label>
-                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.profileData.lastName} />
+                        <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.teacher.lastName} onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="image">Profile Image</Label>
-                        <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.profileData.image} />
+                        <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.teacher.image} onChange={props.handleInputChange} />
                         <FormText color="muted">
                             Provide url to image.
                         </FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Grade Level</Label>
-                        <Input type="select" name="gradesTaught" id="grade" value={props.profileData.gradesTaught} >
+                        <Input type="select" name="gradesTaught" id="grade" value={props.gradesTaught} onChange={props.handleInputChange} >
                             <option value="">Select</option>
                             <option>PreSchool</option>
                             <option>Kindergarten</option>
@@ -59,16 +50,16 @@ const ProfileModal = (props) => {
                     </FormGroup>
                     <FormGroup>
                         <Label for="location">Location</Label>
-                        <Input type="type" name="location" id="location" placeholder="Location" value={props.profileData.location} />
+                        <Input type="type" name="location" id="location" placeholder="Location" value={props.teacher.location} onChange={props.handleInputChange} />
                         <FormText color="muted">
                             Location must be entered as "remote" or by zip code.
                         </FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="bio">About</Label>
-                        <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.profileData.bio} />
+                        <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.teacher.bio} onChange={props.handleInputChange} />
                     </FormGroup>
-                    <Button className="btnHover hvr-fade" >Save</Button>
+                    <Button className="btnHover hvr-fade" onClick={props.saveEdits}>Save</Button>
                     <Button onClick={props.toggle} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>
             </ModalBody>

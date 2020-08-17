@@ -1,5 +1,6 @@
 .loginCard {
     margin: 10%;
+    margin-bottom: 120px !important;
 }
 
 .loginTitle {
@@ -10,6 +11,12 @@
     margin-left: 2em;
     margin-right: 2em;
 
+}
+
+
+.loginRowSize{
+    overflow: hidden;
+    text-align: center;
 }
 
 

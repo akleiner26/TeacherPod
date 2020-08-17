@@ -15,10 +15,7 @@ const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
-    const [teacher, setTeacher] = useState({})
-    const [pods, setPods] = useState([]);
-    let key = props.match.params.id;
-    const [profileData, setProfileData] = useState({
+    const [teacher, setTeacher] = useState({
         prefix: "",
         firstName: "",
         lastName: "",
@@ -27,6 +24,8 @@ const Profile = (props) => {
         location: "",
         bio: ""
     })
+    const [pods, setPods] = useState([]);
+    let key = props.match.params.id;
     console.log(teacher)
     // For modal
     const { buttonLabel } = props;
@@ -49,25 +48,18 @@ const Profile = (props) => {
     const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
+    
         API.getTeacher(key)
+            
             .then(res => {
                 // console.log(res);
+                document.body.style.background = "#fff";
                 setTeacher(res.data[0])
                 console.log(teacher)
                 setPods(res.data[0].pods)
-
-                setProfileData({
-                    prefix: teacher.prefix,
-                    firstName: teacher.firstName,
-                    lastName: teacher.lastName,
-                    image: teacher.image,
-                    gradesTaught: teacher.gradesTaught,
-                    location: teacher.location,
-                    bio: teacher.bio
-                })
             }
             ).catch(err => console.log(err));
-    }, [key])
+    }, [])
 
     const refresh = () => {
         API.getTeacher(key)
@@ -76,16 +68,6 @@ const Profile = (props) => {
                 setTeacher(res.data[0])
                 console.log(teacher)
                 setPods(res.data[0].pods)
-
-                setProfileData({
-                    prefix: teacher.prefix,
-                    firstName: teacher.firstName,
-                    lastName: teacher.lastName,
-                    image: teacher.image,
-                    gradesTaught: teacher.gradesTaught,
-                    location: teacher.location,
-                    bio: teacher.bio
-                })
             }
             ).catch(err => console.log(err));
     }
@@ -94,48 +76,36 @@ const Profile = (props) => {
     const openProfileEditor = event => {
         setProfileModal(true);
         // console.log("==========================")
-        // console.log(profileData)
+        console.log(teacher)
     }
 
     // Captures edits made in modal form
     const handleInputChange = event => {
         console.log(event.target.value)
 
-        setProfileData({
-            ...profileData,
+        setTeacher({
+            ...teacher,
             [event.target.name]: event.target.value
         })
     }
 
-    // const saveEdits = event => {
-    //     event.preventDefault();
-
-    //     toggle()
-
-    //     // console.log(event.target.data)
-
-    //     let updatedProfileData = {
-    //         prefix: "",
-    //         firstName: "",
-    //         lastName: "",
-    //         location: "",
-    //         image: "",
-    //         gradesTaught: "",
-    //         bio: ""
-    //     }
-
-    //     API.updateTeacherProfile(updatedProfileData)
-    //         .then(res => {
-    //             // console.log(res);
-    //             // console.log("profile updated!")
-    //         })
-    //         .catch(err => console.log(err));
-    // }
+    const saveEdits = event => {
+        event.preventDefault();
+        console.log(teacher)
+        toggle()
+        
+        API.updateTeacherProfile(id, teacher)
+            .then(res => {
+                console.log(res);
+                console.log("profile updated!")
+            })
+            .catch(err => console.log(err));
+    }
 
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
         setPodModal(true);
-        // console.log(teacher)
+        console.log(teacher)
     }
 
     // Displays modal with form to add student (for parents only)
@@ -377,7 +347,7 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
 
-                            <Col className="proPicCol text-center" xs="6">
+                            <Col className="proPicCol text-center" xs="12" md="5" lg="3">
                                 {teacher.image !== "" ? (
                                     <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
                                 ) : (
@@ -389,7 +359,7 @@ const Profile = (props) => {
                                         <>
                                             <Col></Col>
                                             <Col className="text-center">
-                                                <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
+                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
                                                 {teacher.isTeacher === true ? (
@@ -404,18 +374,18 @@ const Profile = (props) => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}
                                 </Row>
                             </Col>
 
-                            <Col>
+                            <Col xs="12" md="7" lg="9">
                                 <Row>
                                     <Col>
                                         {teacher.firstName !== undefined ? (
-                                            <h2>
+                                            <h2 className="text-center text-md-left">
                                                 <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
                                             </h2>
                                         ) : (
@@ -444,10 +414,8 @@ const Profile = (props) => {
                 profileModal={profileModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
-                // saveEdits={saveEdits}
+                saveEdits={saveEdits}
                 handleInputChange={handleInputChange}
-                profileData={profileData}
-                setProfileData={setProfileData}
             />
 
             <PodModal

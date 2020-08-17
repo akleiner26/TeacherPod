@@ -168,14 +168,16 @@
         max-height: 30px
     }
     #messageID {
-        margin-left: -80px !important;
-        min-width: 350px;
-        /* margin-right: 100px; */
+        margin-left: -90px !important;
+        min-width: 220px;
+        margin-right: 20px !important;
+
+
     }
     #submitMessage {
         display: block;
-        margin-top: -17px !important;
-        margin-left: 30px;;
+        margin-top: -16px !important;
+        margin-left: -80px;
     }
 
     .messageTextArea {
@@ -184,6 +186,10 @@
         overflow: scroll;
         overflow-x: hidden;
     }
+
+    /* .messageText {
+        display: block;
+    } */
 
     .sent {
         margin-left: 30%;

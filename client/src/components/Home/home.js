@@ -25,6 +25,11 @@ function Home() {
     const [sortPrice, setPrice] = useState([])
     const [sortPod, setPod] = useState([])
 
+//     function undefinedPrice (){
+//     if (!price){
+//        price = 0
+//     }
+// } undefinedPrice()
 
     // console.log(loggedIn, username, id);
 
@@ -241,7 +246,7 @@ function Home() {
             />
             {teachers.length ? (
                 <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
-                    {teachers.map(teacher => {
+                    {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
                         let name = teacher.firstName + " " + teacher.lastName;
 
                         return <TeacherRow
@@ -253,7 +258,7 @@ function Home() {
                             image={teacher.image}
                             name={name}
                             gradesTaught={teacher.gradesTaught}
-                            price={teacher.pods[0].price}
+                            podprice={teacher.pods[0].price}
                             pods={teacher.pods.length}
                             username={teacher.username} />
                     }

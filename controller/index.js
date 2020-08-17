@@ -7,8 +7,6 @@ module.exports = {
     //Used in GET Routes
     //Card search
     findAllTeachers: (req, res) => {
-        console.log(req.query);
-        let price = "";
         let lowerLimit = 0;
         let upperLimit = 10000;
         if (req.query.price) {
@@ -20,9 +18,7 @@ module.exports = {
                 lowerLimit = parseInt(price[0].substring(1,4));
             }
             upperLimit = parseInt(price[1].substring(1,4));
-            console.log(lowerLimit, upperLimit)
         }
-
         db.User.find({ isTeacher: true }).populate("pods")
             .then(teachers => {
                 teachers = teachers.filter(teacher => teacher.pods.length > 0);
@@ -32,12 +28,8 @@ module.exports = {
                 let arrToSend = [];
                 teachers.forEach(teacher => {
                     let pods = [];
-                //     // console.log(teacher)
                     let pushTeacher = true;
                     teacher.pods.forEach(pod => {
-                        console.log("==========================================")
-                        console.log(pod.location)
-                        console.log(req.query.location)
                         let pushPod = true;
                         if(req.query.price){
                             if (!(parseInt(pod.price) >= lowerLimit && parseInt(pod.price) <= upperLimit)) {
@@ -45,7 +37,6 @@ module.exports = {
                             }
                         }
                         if (req.query.location) {
-                            console.log("searching by location")
                             if (!(req.query.location == pod.location)) {
                                 pushTeacher = false;
                                 pushPod = false;
@@ -60,7 +51,6 @@ module.exports = {
                         arrToSend.push(teacher);
                     }
                 })
-                // console.log(arrToSend)
                 res.json(arrToSend);
             })
             .catch(err => res.json(err))

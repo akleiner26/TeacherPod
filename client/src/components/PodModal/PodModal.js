@@ -16,16 +16,23 @@ const PodModal = (props) => {
 
         setPodData({
             ...podData,
-            grade: props.teacher.gradesTaught,
             [event.target.name]: event.target.value
         })
     }
 
     const savePod = event => {
         event.preventDefault();
-        props.toggle2();
         // console.log(podData)
         // console.log(`id is ${props.id}`)
+        let podPrice = document.getElementById("podModalError");
+
+        if (podData.price > 600) {
+            podPrice.style.display = "block";
+            return;
+        }
+
+        podPrice.style.display = "none";
+        props.toggle2();
 
         API.createPod(props.id, podData)
             .then(res => {
@@ -45,16 +52,35 @@ const PodModal = (props) => {
                         <Input type="text" name="name" id="podName" placeholder="Pod Name" onChange={handleInputChange} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="grade">Grade</Label>
-                        <Input type="text" name="grade" id="grade" placeholder="Grade" defaultValue={props.teacher.gradesTaught} />
+                        <Label for="grade">Grade Level</Label>
+                        <Input type="select" name="grade" id="grade" placeholder="Grade" onChange={handleInputChange}>
+                            <option value="">Select</option>
+                            <option>PreSchool</option>
+                            <option>Kindergarten</option>
+                            <option>1st Grade</option>
+                            <option>2nd Grade</option>
+                            <option>3rd Grade</option>
+                            <option>4th Grade</option>
+                            <option>5th Grade</option>
+                            <option>6th Grade</option>
+                            <option>7th Grade</option>
+                            <option>8th Grade</option>
+                            <option>9th Grade</option>
+                            <option>10th Grade</option>
+                            <option>11th Grade</option>
+                            <option>12th Grade</option>
+                        </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="slots">Slots</Label>
                         <Input type="number" name="slots" id="slots" placeholder="Pod size" onChange={handleInputChange} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="price">Price per week</Label>
-                        <Input type="number" name="price" id="price" placeholder="Price" onChange={handleInputChange} />
+                        <Label for="price">Price per week ($0-$600).</Label>
+                        <Input type="number" name="price" min="0" max="600" id="price" placeholder="Price" onChange={handleInputChange} />
+                        <FormText id="podModalError">
+                            Price must be between $0 - $600
+                        </FormText>
                     </FormGroup>
                     <FormGroup>
                         <Label for="location">Location</Label>

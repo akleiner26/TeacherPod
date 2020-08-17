@@ -19,6 +19,7 @@ function Messages() {
     const [receiver, setReceiver] = useState("");
     const [content, setContent] = useState("");
     const [messageModal, setMessageModal] = useState(false);
+    const [currentPerson, setCurrentPerson] = useState("");
 
     useEffect(() => {
         if (username == "") {
@@ -32,18 +33,27 @@ function Messages() {
             return
         }
         API.findMessageHistory(username, receiver)
-            .then(res => setMessages(res.data[0].messengers))
+            .then(res => {
+                setCurrentPerson(res.data[0].participants.filter(person => person !== username)[0]);
+                setMessages(res.data[0].messengers)
+            })
     }, [receiver, messages])
 
     const getConvos = (user) => {
         API.findAllMessages(user)
             .then(({ data }) => {
+                console.log(data)
                 if (typeof (data) !== "object") {
                     return
                 }
                 setConvos(data);
+               
+                console.log(data.participants)
+                // setCurrentPerson(data.participants.filter(person => (person !== username)));
             })
     }
+
+    console.log(currentPerson)
 
     const handleInputChange = event => {
         setContent(event.target.value);
@@ -111,6 +121,9 @@ function Messages() {
                 </Col>
                 <Col>
                     <Card className="mainMessageCard col-8 shadow">
+                        <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{marginBottom: "30px"}} >
+                            {currentPerson}
+                        </CardTitle>
                         {messages == "" ?
                             <>
                                 <div>

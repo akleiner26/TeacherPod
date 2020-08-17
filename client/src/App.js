@@ -7,7 +7,6 @@ import Signup from "./components/Signup/signup"
 import Home from "./components/Home/home"
 import Contact from "./components/Contact/contact"
 import Profile from "./components/Profile/profile"
-import TeacherProfile from "./components/TeacherProfile/teacherProfile"
 import FAQ from "./components/FAQ/faq"
 
 function App() {

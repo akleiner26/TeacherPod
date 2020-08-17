@@ -15,10 +15,7 @@ const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
-    const [teacher, setTeacher] = useState({})
-    const [pods, setPods] = useState([]);
-    let key = props.match.params.id;
-    const [profileData, setProfileData] = useState({
+    const [teacher, setTeacher] = useState({
         prefix: "",
         firstName: "",
         lastName: "",
@@ -27,7 +24,9 @@ const Profile = (props) => {
         location: "",
         bio: ""
     })
-
+    const [pods, setPods] = useState([]);
+    let key = props.match.params.id;
+    console.log(teacher)
     // For modal
     const { buttonLabel } = props;
     const [profileModal, setProfileModal] = useState(false);
@@ -53,40 +52,19 @@ const Profile = (props) => {
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
-
-                setProfileData({
-                    prefix: teacher.prefix,
-                    firstName: teacher.firstName,
-                    lastName: teacher.lastName,
-                    image: teacher.image,
-                    gradesTaught: teacher.gradesTaught,
-                    location: teacher.location,
-                    bio: teacher.bio
-                })
             }
             ).catch(err => console.log(err));
-    // }, [key])
-    }, [key])
+    }, [])
 
     const refresh = () => {
         API.getTeacher(key)
             .then(res => {
                 // console.log(res);
                 setTeacher(res.data[0])
-                // console.log(teacher)
+                console.log(teacher)
                 setPods(res.data[0].pods)
-
-                setProfileData({
-                    prefix: teacher.prefix,
-                    firstName: teacher.firstName,
-                    lastName: teacher.lastName,
-                    image: teacher.image,
-                    gradesTaught: teacher.gradesTaught,
-                    location: teacher.location,
-                    bio: teacher.bio
-                })
             }
             ).catch(err => console.log(err));
     }
@@ -95,43 +73,31 @@ const Profile = (props) => {
     const openProfileEditor = event => {
         setProfileModal(true);
         // console.log("==========================")
-        // console.log(profileData)
+        console.log(teacher)
     }
 
     // Captures edits made in modal form
     const handleInputChange = event => {
         console.log(event.target.value)
 
-        setProfileData({
-            ...profileData,
+        setTeacher({
+            ...teacher,
             [event.target.name]: event.target.value
         })
     }
 
-    // const saveEdits = event => {
-    //     event.preventDefault();
-
-    //     toggle()
-
-    //     // console.log(event.target.data)
-
-    //     let updatedProfileData = {
-    //         prefix: "",
-    //         firstName: "",
-    //         lastName: "",
-    //         location: "",
-    //         image: "",
-    //         gradesTaught: "",
-    //         bio: ""
-    //     }
-
-    //     API.updateTeacherProfile(updatedProfileData)
-    //         .then(res => {
-    //             // console.log(res);
-    //             // console.log("profile updated!")
-    //         })
-    //         .catch(err => console.log(err));
-    // }
+    const saveEdits = event => {
+        event.preventDefault();
+        console.log(teacher)
+        toggle()
+        
+        API.updateTeacherProfile(id, teacher)
+            .then(res => {
+                console.log(res);
+                console.log("profile updated!")
+            })
+            .catch(err => console.log(err));
+    }
 
     // Displays modal with form to add pod (for teachers only)
     const openPodForm = event => {
@@ -151,9 +117,9 @@ const Profile = (props) => {
     }
 
     const startConvo = () => {
-        API.createConversation({participants: [username, id]})
+        API.createConversation({ participants: [username, id] })
             .then(() => {
-                window.location.redirect("/messages")
+                console.log("message sent");
             })
     }
 
@@ -284,7 +250,7 @@ const Profile = (props) => {
         setPods(sortedLocation);
     }
 
-//Sort pod table by price
+    //Sort pod table by price
     const sortByPrice = () => {
         let sortedPrice = pods.sort((a, b) => {
             const priceA = a.price;
@@ -311,61 +277,61 @@ const Profile = (props) => {
         setPods(sortedPrice);
     }
 
-//Sort pod table by capacity
-const sortByCapacity = () => {
-    let sortedCapacity = pods.sort((a, b) => {
-        const podA = a.slots;
-        const podB = b.slots;
+    //Sort pod table by capacity
+    const sortByCapacity = () => {
+        let sortedCapacity = pods.sort((a, b) => {
+            const podA = a.slots;
+            const podB = b.slots;
 
 
-        let comparison = 0;
-        if (podA > podB) {
-            comparison = 1;
-        } else if (podA < podB) {
-            comparison = -1;
-        } return comparison
-    })
+            let comparison = 0;
+            if (podA > podB) {
+                comparison = 1;
+            } else if (podA < podB) {
+                comparison = -1;
+            } return comparison
+        })
 
-    if (sortCapacity === "DESC") {
-        sortedCapacity.reverse();
-        setCapacity("ASC");
-        hideArrows();
-        document.getElementById("podCapacityUp").style.display = "block";
-    } else {
-        setCapacity("DESC");
-        hideArrows();
-        document.getElementById("podCapacityDown").style.display = "block";
+        if (sortCapacity === "DESC") {
+            sortedCapacity.reverse();
+            setCapacity("ASC");
+            hideArrows();
+            document.getElementById("podCapacityUp").style.display = "block";
+        } else {
+            setCapacity("DESC");
+            hideArrows();
+            document.getElementById("podCapacityDown").style.display = "block";
+        }
+        setPods(sortedCapacity);
     }
-    setPods(sortedCapacity);
-}
 
-//Sort pod table by openings
-const sortByOpening = () => {
-    let sortedOpening = pods.sort((a, b) => {
-        const podA = a.slots-a.students.length;
-        const podB = b.slots-b.students.length;
+    //Sort pod table by openings
+    const sortByOpening = () => {
+        let sortedOpening = pods.sort((a, b) => {
+            const podA = a.slots - a.students.length;
+            const podB = b.slots - b.students.length;
 
 
-        let comparison = 0;
-        if (podA > podB) {
-            comparison = 1;
-        } else if (podA < podB) {
-            comparison = -1;
-        } return comparison
-    })
+            let comparison = 0;
+            if (podA > podB) {
+                comparison = 1;
+            } else if (podA < podB) {
+                comparison = -1;
+            } return comparison
+        })
 
-    if (sortOpening === "DESC") {
-        sortedOpening.reverse();
-        setOpening("ASC");
-        hideArrows();
-        document.getElementById("podOpeningUp").style.display = "block";
-    } else {
-        setOpening("DESC");
-        hideArrows();
-        document.getElementById("podOpeningDown").style.display = "block";
+        if (sortOpening === "DESC") {
+            sortedOpening.reverse();
+            setOpening("ASC");
+            hideArrows();
+            document.getElementById("podOpeningUp").style.display = "block";
+        } else {
+            setOpening("DESC");
+            hideArrows();
+            document.getElementById("podOpeningDown").style.display = "block";
+        }
+        setPods(sortedOpening);
     }
-    setPods(sortedOpening);
-}
 
     return (
         <>
@@ -405,7 +371,7 @@ const sortByOpening = () => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                    <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}
@@ -415,9 +381,14 @@ const sortByOpening = () => {
                             <Col>
                                 <Row>
                                     <Col>
-                                        <h2>
-                                            <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
-                                        </h2>
+                                        {teacher.firstName !== undefined ? (
+                                            <h2>
+                                                <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
+                                            </h2>
+                                        ) : (
+                                                <h2></h2>
+                                            )}
+
                                     </Col>
                                 </Row>
                                 {teacher.bio}
@@ -428,7 +399,7 @@ const sortByOpening = () => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
+                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}
@@ -440,10 +411,8 @@ const sortByOpening = () => {
                 profileModal={profileModal}
                 buttonLabe={buttonLabel}
                 teacher={teacher}
-                // saveEdits={saveEdits}
+                saveEdits={saveEdits}
                 handleInputChange={handleInputChange}
-                profileData={profileData}
-                setProfileData={setProfileData}
             />
 
             <PodModal
@@ -466,7 +435,7 @@ const sortByOpening = () => {
                     toggle={toggle4}
                     messageModal={messageModal}
                     username={username}
-                    receiver={id}
+                    receiver={teacher.username}
             />
         </>
     )

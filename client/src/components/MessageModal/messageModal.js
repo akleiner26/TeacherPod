@@ -4,19 +4,10 @@ import API from "../../utils/API";
 
 const MessageModal = (props) => {
     const [msgData, setMsgData] = useState({
-        receiver: "",
+        receiver: props.receiver || "",
         content: "",
         sender: props.username
     });
-
-    useEffect(() => {
-        if (props.receiver) {
-            setMsgData({
-                ...msgData,
-                receiver: props.receiver
-            })
-        }
-    }, [])
 
     const handleInputChange = event => {
         setMsgData({
@@ -28,8 +19,9 @@ const MessageModal = (props) => {
     const sendMsg = event => {
         event.preventDefault();
         props.toggle();
+        console.log(props.receiver)
 
-        API.createConversation({participants: [props.username,msgData.receiver]})
+        API.createConversation({participants: [props.username, props.receiver || msgData.receiver]})
             .then(res => {
                 if (msgData.content !== "") {
                     API.createMessage({message: msgData})
@@ -39,6 +31,7 @@ const MessageModal = (props) => {
             .catch(err => console.log(err));
     }
 
+    console.log(props)
 
     return (
         <Modal isOpen={props.messageModal} toggle={props.toggle}>
@@ -47,7 +40,7 @@ const MessageModal = (props) => {
                 <Form>
                     <FormGroup>
                         <Label for="podName">Receipients's Email</Label>
-                        <Input type="text" name="receiver" value={msgData.receiver} id="podName" placeholder="Email" onChange={handleInputChange} />
+                        <Input type="text" name="receiver" value={props.receiver || msgData.receiver} id="podName" placeholder="Email" onChange={handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="grade">Send with a message</Label>

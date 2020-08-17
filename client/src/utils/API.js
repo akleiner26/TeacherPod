@@ -5,7 +5,17 @@ export default {
     // ==================================================
     // Gets all teachers based on grade taught and location (optional: default is "remote")
     getTeachers: function (searchData) {
-        return axios.get("/api/users" + `?grades=${searchData.grades}`);
+        let query = `?base=true`;
+        if (searchData.grades) {
+            query += `&grades=${searchData.grades}`
+        }
+        if (searchData.location) {
+            query += `&location=${searchData.location}`
+        }
+        if (searchData.price) {
+            query += `&price=${searchData.price}`
+        }
+        return axios.get("/api/users" + query);
     },
 
     // Gets all teachers with no specified criteria
@@ -42,7 +52,7 @@ export default {
     
     // Creates a new teacher account
     createTeacher: function (userData) {
-        return axios.post("/api/users/teacher", userData);
+        return axios.post("/api/users/teachers", userData);
     },
 
     // Sends the user login information

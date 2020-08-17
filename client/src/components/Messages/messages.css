@@ -123,7 +123,7 @@
 
 }
 
-.sideBody::-webkit-scrollbar {
+/* .sideBody::-webkit-scrollbar {
     width: .75em;
   }
    
@@ -137,7 +137,7 @@
     outline: 1px solid slategrey;
     border-radius: 8px;
     /* display: none; */
-  }
+
 
 #messagePageHeight {
     max-height: 250vh !important;
@@ -180,6 +180,7 @@
 
     .messageTextArea {
         max-height: 400px;
+        min-height: 300px;
         overflow: scroll;
         overflow-x: hidden;
     }

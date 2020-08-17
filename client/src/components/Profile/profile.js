@@ -48,9 +48,12 @@ const Profile = (props) => {
     const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
+    
         API.getTeacher(key)
+            
             .then(res => {
                 // console.log(res);
+                document.body.style.background = "#fff";
                 setTeacher(res.data[0])
                 console.log(teacher)
                 setPods(res.data[0].pods)

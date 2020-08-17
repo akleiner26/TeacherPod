@@ -18,7 +18,7 @@
     /* text-align: center !important; */
 }
 
-.profileCardRow{
+/* .profileCardRow{
         margin-top: -40px !important;
         padding-top: 40px !important;
         background: rgb(236,236,236);
@@ -26,7 +26,7 @@
         background: -webkit-linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
         background: linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#36cbbb",GradientType=1);
-    }
+    } */
 
 .profileIcons {
     border: 1px solid #dedede;

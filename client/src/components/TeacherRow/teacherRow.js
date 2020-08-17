@@ -10,7 +10,10 @@ import API from "../../utils/API";
 const TeacherRow = (props) => {
     const [messageModal, setMessageModal] = useState(false);
     
-    const toggle = () => setMessageModal(!messageModal);
+    const toggle = () => {
+        console.log("HEY YOU GUYS")
+        setTimeout(function () {setMessageModal(!messageModal)},2000)
+    };
     // Displays modal with form to add conversation
     const openConversationForm = event => {
         setMessageModal(true);

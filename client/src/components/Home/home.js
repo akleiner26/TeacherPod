@@ -7,6 +7,7 @@ import TeacherTable from "../TeacherTable/teacherTable";
 import TeacherRow from "../TeacherRow/teacherRow";
 import Search from "../Search/search";
 import API from "../../utils/API"
+import Notifications, {notify} from "react-notify-toast"
 // import { Container, Table } from "reactstrap";
 // import style from "./home.css";
 
@@ -234,6 +235,7 @@ function Home() {
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
+            <Notifications/>
             <Search
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}

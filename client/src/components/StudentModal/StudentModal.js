@@ -57,8 +57,8 @@ const StudentModal = (props) => {
                         <Label for="notes">Notes</Label>
                         <Input type="textarea" name="notes" id="notes" placeholder="Enter any notes that teachers should know about your child." onChange={handleInputChange} />
                     </FormGroup>
-                    <Button onClick={saveStudent}>Save</Button>
-                    <Button onClick={props.toggle3} className="ml-3 mr-0">Cancel</Button>
+                    <Button className="btnHover hvr-fade" onClick={saveStudent}>Save</Button>
+                    <Button onClick={props.toggle3} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>
             </ModalBody>
         </Modal>

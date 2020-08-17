@@ -7,6 +7,7 @@ import API from "../../utils/API";
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 // import Home from "../Home/home"
+import Notifications, {notify} from "react-notify-toast"
 
 function Login() {
     const [loggedIn, setLogin] = useState("");
@@ -38,6 +39,7 @@ function Login() {
     return (
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
+            <Notifications/>
             <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Col xs="8" className="offset-2">
                     <Container className>

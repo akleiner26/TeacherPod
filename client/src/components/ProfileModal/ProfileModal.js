@@ -68,8 +68,8 @@ const ProfileModal = (props) => {
                         <Label for="bio">About</Label>
                         <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.profileData.bio} />
                     </FormGroup>
-                    <Button >Save</Button>
-                    <Button onClick={props.toggle} className="ml-3 mr-0">Cancel</Button>
+                    <Button className="btnHover hvr-fade" >Save</Button>
+                    <Button onClick={props.toggle} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>
             </ModalBody>
         </Modal>

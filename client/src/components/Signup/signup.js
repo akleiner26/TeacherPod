@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import API from "../../utils/API"
+import Notifications, { notify } from "react-notify-toast"
 
 function Signup() {
     const [loggedIn, setLogin] = useState("");
@@ -19,6 +20,9 @@ function Signup() {
         isTeacher: false
     })
 
+    let myColor = { background: "#ececec", text: "#FFFFFF"}
+
+
     const handleInputChange = event => {
         setInput({
             ...signupInput,
@@ -30,8 +34,12 @@ function Signup() {
         event.preventDefault();
         if (signupInput.isTeacher === "true") {
             signupInput.isTeacher = true;
+            let myColor = { background: "#ececec", text: "#FFFFFF"}
+            notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
         } else {
             signupInput.isTeacher = false;
+            let myColor = { background: "#ececec", text: "#FFFFFF"}
+            notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
         }
         console.log(signupInput);
         if (signupInput.confirmed !== signupInput.password) {
@@ -43,14 +51,17 @@ function Signup() {
             API.createTeacher(signupInput)
             .then (({ data }) => {
                 if (data.message === "Signed up and logged in"){
-                    window.location.replace("/")
+                    notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
+                    setTimeout(function() {window.location.replace("/")},2000)
                 }
             })
         } else {
             API.createParent(signupInput)
             .then (({ data }) => {
                 if (data.message === "Signed up and logged in"){
-                    window.location.replace("/")
+                    notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
+                    setTimeout(function() {window.location.replace("/")},2000)
+
                 }
             })
         }
@@ -60,6 +71,7 @@ function Signup() {
     return (
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
+            <Notifications/>
             <Row className="mt-5 profileCardRow loginSignupRowSize">
                 <Col xs="8" className="offset-2">
                     <Container>

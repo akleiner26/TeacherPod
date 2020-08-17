@@ -12,11 +12,12 @@ router.route("/")
 // Matches with "/api/users/teachers"
 router.route("/teachers")
     .get(controller.findAllTeachersUnsearched)
-
-// Matches with "/api/users/signup/teacher"
-router.route("/signup/teacher")
     //Requires body object => {username, password}, isTeacher boolean is added in controller
     .post(controller.createTeacher)
+// Matches with "/api/users/signup/teacher"
+// router.route("/signup/teacher")
+//     //Requires body object => {username, password}, isTeacher boolean is added in controller
+//     .post(controller.createTeacher)
 
 // Matches with "/api/users/signup"
 router.route("/signup")

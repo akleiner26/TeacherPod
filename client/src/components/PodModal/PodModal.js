@@ -63,8 +63,8 @@ const PodModal = (props) => {
                             Note: Location must be entered as "remote" or by zip code.
                         </FormText>
                     </FormGroup>
-                    <Button onClick={savePod}>Save</Button>
-                    <Button onClick={props.toggle2} className="ml-3 mr-0">Cancel</Button>
+                    <Button className="btnHover hvr-fade" onClick={savePod}>Save</Button>
+                    <Button onClick={props.toggle2} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>
             </ModalBody>
         </Modal>

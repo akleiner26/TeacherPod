@@ -7,7 +7,7 @@ import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard";
 import DisplayMessage from "../DisplayMessage/displayMessage";
 import MessageModal from "../MessageModal/messageModal";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
 
 
 function Messages() {

@@ -32,26 +32,32 @@ const PodRow = (props) => {
                 <td className="vertAlign" onClick={viewStudents}>{props.location}</td>
                 <td className="vertAlign" onClick={viewStudents}>${props.price}/Week</td>
                 <td className="vertAlign" onClick={viewStudents}>
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggleS} >
-                        <DropdownToggle caret className="podDropdown">
-                            {props.slots}
-                        </DropdownToggle>
+                    {props.teacher === props.id ? (
+                        <ButtonDropdown isOpen={dropdownOpen} toggle={toggleS} >
+                            <DropdownToggle caret className="podDropdown">
+                                {props.slots}
+                            </DropdownToggle>
 
-                        {props.students.length > 0 ? (
-                            <DropdownMenu>
-                                {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
-
-                                </DropdownItem>
+                            {props.students.length > 0 ? (
+                                <DropdownMenu>
+                                    {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
+                                    </DropdownItem>
+                                    )}
+                                </DropdownMenu>
+                            ) : (
+                                    <DropdownMenu>
+                                        <DropdownItem>No students enrolled</DropdownItem>
+                                    </DropdownMenu>
                                 )}
 
-                            </DropdownMenu>
-                        ) : (
-                                <DropdownMenu>
-                                    <DropdownItem>No students enrolled</DropdownItem>
-                                </DropdownMenu>
-                            )}
+                        </ButtonDropdown>
+                    ) : (
+                            <>
+                                {props.slots}
+                            </>
+                        )}
 
-                    </ButtonDropdown>
+
                 </td>
                 <td className="vertAlign" onClick={viewStudents}>{props.availability}</td>
                 {props.teacher === props.id ? (

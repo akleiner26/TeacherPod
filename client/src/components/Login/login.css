@@ -1,5 +1,6 @@
 .loginCard {
     margin: 10%;
+    margin-bottom: 120px !important;
 }
 
 .loginTitle {
@@ -12,48 +13,12 @@
 
 }
 
-@media (max-width: 454px) {
-    .loginContainer{
-        /* background-color: black !important; */
-        /* margin-left: -8px !important;
-        margin-right: 0px !important;
-        text-align: center !important;
-        min-width: 240px; */
-        /* min-width: 300px; */
-        text-align: center;
-        /* margin-left: 0px !important; */
-        /* margin-right: 20px !important; */
-        
-        
-    }
-   /* .loginCol {
-        min-width: 500px;
-        height: 220%;
-        margin-left: 0%;
-        margin-bottom: 0px;
 
-   } */
+.loginRowSize{
+    overflow: hidden;
+    text-align: center;
+}
 
-   /* .loginSignupRowSize {
-    width: 170%;
-    /* margin-top: -40px;
-    padding-top: 40px; */
-    /* margin-bottom: -40px; */
-    /* padding-bottom: -40px; */
-    /* background: rgb(236,236,236);
-    background: -moz-linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
-    background: -webkit-linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
-    background: linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#36cbbb",GradientType=1); */
 
-   /* } */ */
-   .footer {
-       /* width: 600px !important; */
-       /* margin-top: 0em; */
-       margin: 0px;
-       
-       
-   }
-  }
 
  

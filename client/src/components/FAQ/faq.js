@@ -18,7 +18,7 @@ function FAQ() {
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
 
-                <Row className="mt-5 profileCardRow loginSignupRowSize2">
+                <Row className="mt-5 profileCardRow faqRowSize">
                     <Container>
                         <Card className="loginCard">
                             <CardTitle className="text-center loginTitle darkGrayText">FAQ

@@ -27,7 +27,7 @@ const Profile = (props) => {
         location: "",
         bio: ""
     })
-
+    console.log(teacher)
     // For modal
     const { buttonLabel } = props;
     const [profileModal, setProfileModal] = useState(false);
@@ -152,7 +152,7 @@ const Profile = (props) => {
     const startConvo = () => {
         API.createConversation({ participants: [username, id] })
             .then(() => {
-                window.location.redirect("/messages")
+                console.log("message sent");
             })
     }
 
@@ -467,10 +467,10 @@ const Profile = (props) => {
             />
 
             <MessageModal
-                toggle={toggle4}
-                messageModal={messageModal}
-                username={username}
-                receiver={id}
+                    toggle={toggle4}
+                    messageModal={messageModal}
+                    username={username}
+                    receiver={teacher.username}
             />
         </>
     )

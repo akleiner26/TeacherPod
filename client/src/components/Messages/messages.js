@@ -26,7 +26,7 @@ function Messages() {
             return
         }
         getConvos(username);
-    }, [username, messageModal])
+    }, [username, messageModal, Convos])
 
     useEffect(() => {
         if (receiver == "") {
@@ -126,9 +126,6 @@ function Messages() {
                         </CardTitle>
                         {messages == "" ?
                             <>
-                                <div>
-                                    Click on a user on the left to view conversation.
-                                </div>
                             </>
                             :
                             messages && messages.map(message => {

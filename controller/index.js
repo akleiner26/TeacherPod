@@ -22,8 +22,8 @@ module.exports = {
             .then(teachers => {
                 teachers = teachers.filter(teacher => teacher.pods.length > 0);
                 let arrToSend = [];
-                let pods = [];
                 teachers.forEach(teacher => {
+                    let pods = [];
                     // console.log(teacher)
                     teacher.pods.forEach(pod => {
                         // console.log("==========================================")

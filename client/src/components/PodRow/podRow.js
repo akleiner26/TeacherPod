@@ -1,31 +1,53 @@
 import React, { useState } from 'react';
 import EnrollStudentModal from "../EnrollStudentModal/EnrollStudentModal";
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import "./podRow.css"
 
 const PodRow = (props) => {
     console.log(props)
+    console.log(props.students)
 
     const { buttonLabel } = props;
     const [enrollStudentModal, setEnrollStudentModal] = useState(false);
+    const [dropdownOpen, setOpen] = useState(false);
 
     const toggle4 = () => setEnrollStudentModal(!enrollStudentModal);
+    const toggleS = () => setOpen(!dropdownOpen);
 
+    // Opens modal form to enroll a student in a pod
     const openEnrollForm = event => {
-        // console.log("clicked")
         setEnrollStudentModal(true);
+    }
+
+    // Opens dropdown with list of students enrolled in pod
+    const viewStudents = event => {
+        toggleS();
     }
 
     return (
         <>
             <tr className="vertAlign">
-                <td className="vertAlign"><strong>{props.name}</strong></td>
-                <td className="vertAlign">{props.grade}</td>
-                <td className="vertAlign">{props.location}</td>
-                <td className="vertAlign">${props.price}/Week</td>
-                <td className="vertAlign">{props.slots}</td>
-                <td className="vertAlign">{props.availability}</td>
+                <td className="vertAlign" onClick={viewStudents} ><strong>{props.name}</strong></td>
+                <td className="vertAlign" onClick={viewStudents}>{props.grade}</td>
+                <td className="vertAlign" onClick={viewStudents}>{props.location}</td>
+                <td className="vertAlign" onClick={viewStudents}>${props.price}/Week</td>
+                <td className="vertAlign" onClick={viewStudents}>
+                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggleS} >
+                        <DropdownToggle caret className="podDropdown">
+                            {props.slots}
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
+
+                            </DropdownItem>
+                            )}
+
+                        </DropdownMenu>
+                    </ButtonDropdown>
+                </td>
+                <td className="vertAlign" onClick={viewStudents}>{props.availability}</td>
                 {props.teacher === props.id ? (
-                    <td className="vertAlign">
+                    <td className="vertAlign" onClick={viewStudents}>
                         <i className="fa fa-book profileIcons hvr-fade" aria-hidden="true" onClick={openEnrollForm}></i>
                     </td>
                 ) : (
@@ -39,7 +61,7 @@ const PodRow = (props) => {
                 enrollStudentModal={enrollStudentModal}
                 buttonLabe={buttonLabel}
                 refresh={props.refresh}
-                />
+            />
         </>
     );
 };

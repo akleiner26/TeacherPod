@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./teacherRow.css";
 import {
     Button
 } from 'reactstrap';
 import { Link } from "react-router-dom";
+import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API";
 
 const TeacherRow = (props) => {
+    const [messageModal, setMessageModal] = useState(false);
+    
+    const toggle = () => setMessageModal(!messageModal);
+    // Displays modal with form to add conversation
+    const openConversationForm = event => {
+        setMessageModal(true);
+    }
 
     const startConvo = () => {
         API.createConversation({participants: [props.loggedInUser, props.teacherUsername]})
@@ -16,7 +24,7 @@ const TeacherRow = (props) => {
     }
 
     return (
-
+        <>
         <tr className="vertAlign">
             <td className="vertAlign">
                 <div className="image-cropper">
@@ -35,8 +43,15 @@ const TeacherRow = (props) => {
             <td className="vertAlign">{props.gradesTaught}</td>
             <td className="vertAlign">${props.price}</td>
             <td className="vertAlign">{props.pods}</td>
-            <td className="vertAlign"><Button onClick={startConvo} data-username={props.username} className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i className="fa fa-comments" aria-hidden="true"></i></Button></td>
+            <td className="vertAlign"><Button onClick={openConversationForm} data-username={props.username} className="cardBtn cardInfo vertAlign darkHtnHover darkHvr-fade"><i className="fa fa-comments" aria-hidden="true"></i></Button></td>
         </tr>
+        <MessageModal
+        toggle={toggle}
+        messageModal={messageModal}
+        username={props.loggedInUser}
+        receiver={props.teacherUsername}
+        />
+        </>
     );
 };
 

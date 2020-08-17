@@ -496,7 +496,43 @@ db.Student.deleteMany({})
                                     .then(data => {
                                         console.log("===============================")
                                         console.log(data.result.n + " conversations inserted!")
-                                        process.exit(0);
+                                        let messageSeed = [
+                                            {
+                                                message: {
+                                                    sender: "dkleiner",
+                                                    receiver: "lwoods@email.com",
+                                                    content: "I'm interested in enrolling my child in your pod, their name is Andy Kleiner."
+                                                }
+                                            },
+                                            {
+                                                message: {
+                                                    sender: "gbergman@email.com",
+                                                    receiver: "lwoods@email.com",
+                                                    content: "I'm interested in enrolling my child in your pod, their name is Gareth Bergman."
+                                                }
+                                            },
+                                            {
+                                                message: {
+                                                    sender: "rmin@email.com",
+                                                    receiver: "lwoods@email.com",
+                                                    content: "I'm interested in enrolling my child in your pod, their name is Estor Min"
+                                                }
+                                            },
+                                            {
+                                                message: {
+                                                    sender: "wtejeda@email.com",
+                                                    receiver: "lwoods@email.com",
+                                                    content: "I'm interested in enrolling my child in your pod, their name is Weston Tejeda"
+                                                }
+                                            }
+                                        ]
+                                        db.Messenger.deleteMany({})
+                                            .then(() => db.Messenger.collection.insertMany(messageSeed))
+                                            .then(data => {
+                                                console.log("===============================")
+                                                console.log(data.result.n + " messages inserted!")
+                                                process.exit(0);
+                                            });
                             })
                         })
                     })

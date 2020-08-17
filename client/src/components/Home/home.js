@@ -177,9 +177,9 @@ function Home() {
 
     //Sort by Price
     const sortByPrice = () => {
-        let sortedPrice = teachers.sort((a, b) => {
-            const priceA = a.price;
-            const priceB = b.price;
+        let sortedPrice = teachers.filter(teacher => teacher.pods.length > 0).sort((a, b) => {
+            const priceA = a.pods[0].price;
+            const priceB = b.pods[0].price;
 
 
             let comparison = 0;
@@ -204,9 +204,9 @@ function Home() {
     }
 
     const sortByPod = () => {
-        let sortedPod = teachers.sort((a, b) => {
-            const podA = a.pod;
-            const podB = b.pod;
+        let sortedPod = teachers.filter(teacher => teacher.pods.length > 0).sort((a, b) => {
+            const podA = a.pods.length;
+            const podB = b.pods.length;
 
 
             let comparison = 0;

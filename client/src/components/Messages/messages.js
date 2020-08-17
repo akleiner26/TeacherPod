@@ -3,7 +3,6 @@ import Header from "../Header/header";
 import Footer from "../Footer/footer"
 import { Card, CardTitle, CardBody, Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import "./messages.css";
-import axios from "axios";
 import API from "../../utils/API";
 import MessageCard from "../MessageCard/messageCard";
 import DisplayMessage from "../DisplayMessage/displayMessage";
@@ -26,7 +25,7 @@ function Messages() {
             return
         }
         getConvos(username);
-    }, [username, messageModal])
+    }, [username, messageModal, Convos])
 
     useEffect(() => {
         if (receiver == "") {
@@ -127,9 +126,6 @@ function Messages() {
                         <div className="messageTextArea"> 
                             {messages == "" ?
                                 <>
-                                    <div>
-                                        Click on a user on the left to view conversation.
-                                </div>
                                 </>
                                 :
                                 messages && messages.map(message => {
@@ -144,6 +140,21 @@ function Messages() {
                                 })
                             }
                         </div>
+                        {messages == "" ?
+                            <>
+                            </>
+                            :
+                            messages && messages.map(message => {
+                                let text = message.content;
+                                console.log(text);
+                                if (message.sender == username) {
+                                    return <DisplayMessage text={text} class={"sent align-items-center d-flex justify-content-center shadow"} />
+                                }
+                                else {
+                                    return <DisplayMessage text={text} class={"received align-items-center d-flex justify-content-center shadow"} />
+                                }
+                            })
+                        }
                     </Card>
                     <Form inline className="formBottom" onSubmit={postMessage}>
                         <FormGroup inline className="messageText">

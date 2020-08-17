@@ -31,6 +31,7 @@ function Home() {
 
     useEffect(() => {
         loadTeachers();
+        document.body.style.background = "#fff";
         // console.log(teachers)
     }, [])
 

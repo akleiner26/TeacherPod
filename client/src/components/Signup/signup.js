@@ -79,7 +79,8 @@ function Signup() {
 
 
             {isDesktopOrLaptop && <>
-                <Row className="mt-5 profileCardRow ">
+
+                <Row className="mt-5  ">
                     <Col xs="8" className="offset-2">
                         <Container>
                             <Card className="signupCard">
@@ -139,8 +140,8 @@ function Signup() {
 
             {!isDesktopOrLaptop && <>
                 
-                <Row className="mt-5 profileCardRow ">
-                    <Col xs="12" className="text-center" >
+                    <Row className="mt-5">
+                    <Col xs="10" className="text-center offset-1">
                         <Container>
                             <Card className="signupCard">
                                 <CardTitle className="text-center loginTitle darkGrayText">SIGNUP
@@ -184,7 +185,7 @@ function Signup() {
                                         </FormGroup>
                                         <p id="error" style={{ display: "none" }}>Passwords don't match. Please try again.</p>
                                         <Button className="btnHover hvr-fade" onClick={handleFormSubmit}>Submit</Button>
-                                        <div>
+                                        <div >
                                             Already a member? <a className="iconHvr-fade2" href="/login">Login </a>
                                         </div>
                                     </Form>

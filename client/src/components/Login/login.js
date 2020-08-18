@@ -39,11 +39,10 @@ function Login() {
                     let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
                     notify.show("Welcome Back to TeachPod!", "custom", 5000, myColor)
                     setTimeout(function(){window.location.replace("/")},2000);
-                } else if (data.message !== "Logged in") {
-                    let myColor = {background: "#FF0000", text: "#FFFFFF"}
-                    notify.show("Login failed, please check your credentials and try again.", "custom", 5000, myColor)
                 }
-            })
+            }) .catch(() => {let myColor = {background: "#FF0000", text: "#FFFFFF"}
+            notify.show("Login failed, please check your credentials and try again.", "custom", 5000, myColor)
+        })
     }
 
     return (
@@ -52,8 +51,9 @@ function Login() {
 
 
             {isDesktopOrLaptop && <>
-                <Row className="mt-5 profileCardRow loginSignupRowSize">
-                    <Col sm="8" className="offset-2 loginCol">
+                
+                <Row className="mt-5">
+                    <Col >
                         <Container className="loginContainer">
                             <Card className="loginCard">
                                 <CardTitle className="text-center loginTitle darkGrayText">LOGIN
@@ -90,8 +90,8 @@ function Login() {
 
             {!isDesktopOrLaptop && <>
                 
-                <Row className="mt-5  loginRowSize">
-                    <Col sm="12" className="loginCol">
+                <Row className="mt-5 text-center">
+                    <Col >
                         <Container className="loginContainer">
                             <Card className="loginCard">
                                 <CardTitle className="text-center loginTitle darkGrayText">LOGIN

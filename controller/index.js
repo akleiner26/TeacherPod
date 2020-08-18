@@ -88,12 +88,12 @@ module.exports = {
             .then(user => {
                 console.log(user);
                 if (!user) {
-                    res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                    res.status(304).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                 }
                 else {
                     let login = bcrypt.compareSync(req.body.password, user.password);
                     if(!login){
-                        res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                        res.status(304).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                     }
                     console.log("matched staging for cookie")
                     //Save session id

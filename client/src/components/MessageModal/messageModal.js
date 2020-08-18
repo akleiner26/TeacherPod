@@ -35,24 +35,29 @@ const MessageModal = (props) => {
         if (msgData.receiver !== ""){
             receiver = msgData.receiver;
         }
-
-        API.createConversation({participants: [props.username, receiver]})
-            .then(res => {
-                if (msgData.content !== "") {
-                    API.createMessage({message: {
-                        sender: props.username,
-                        receiver: receiver,
-                        content: msgData.content
-                    }
-                })
-                        .then(res => {
-                            console.log(res);
+        if (!props.username || receiver == "" || msgData.content == ""){
+            return
+        }
+        else {
+            API.createConversation({participants: [props.username, receiver]})
+                .then(res => {
+                    if (msgData.content !== "") {
+                        API.createMessage({message: {
+                            sender: props.username,
+                            receiver: receiver,
+                            content: msgData.content
+                        }
                         })
-                }
-                props.toggle();
-            })
-            .catch(err => console.log(err));
-    }
+                            .then(res => {
+                                console.log(res);
+                            })
+                    }
+                    props.toggle();
+                })
+                .catch(err => console.log(err));
+            }
+        }
+        
 
     console.log(props)
 

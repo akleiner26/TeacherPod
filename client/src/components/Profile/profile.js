@@ -74,6 +74,7 @@ const Profile = (props) => {
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
+        refresh(key);
         setProfileModal(true);
         // console.log("==========================")
         console.log(teacher)
@@ -349,7 +350,7 @@ const Profile = (props) => {
 
                             <Col className="proPicCol text-center" xs="12" md="5" lg="3">
                                 {teacher.image !== "" ? (
-                                    <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
+                                    <img className="img-fluid teacherImage" alt="" src={teacher.image}></img>
                                 ) : (
                                         <img className="img-fluid profileImage" alt="" src="../images/fullSize/profile-placeholder.png"></img>
                                     )}
@@ -386,7 +387,7 @@ const Profile = (props) => {
                                     <Col>
                                         {teacher.firstName !== undefined ? (
                                             <h2 className="text-center text-md-left">
-                                                <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
+                                                <strong className="aquaText">{teacher.prefix + " " + teacher.firstName + " " + teacher.lastName}</strong>
                                             </h2>
                                         ) : (
                                                 <h2></h2>

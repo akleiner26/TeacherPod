@@ -7,8 +7,8 @@ import API from "../../utils/API";
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
 // import Home from "../Home/home"
-import Notifications, {notify} from "react-notify-toast"
 import { useMediaQuery } from 'react-responsive';
+import { notify } from "react-notify-toast"
 
 function Login() {
 
@@ -36,9 +36,13 @@ function Login() {
         axios.post("/api/users/login", loginInput)
             .then(({ data }) => {
                 if (data.message === "Logged in") {
-                    window.location.replace("/");
+                    let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                    notify.show("Welcome Back to TeachPod!", "custom", 5000, myColor)
+                    setTimeout(function(){window.location.replace("/")},2000);
                 }
-            })
+            }) .catch(() => {let myColor = {background: "#FF0000", text: "#FFFFFF"}
+            notify.show("Login failed, please check your credentials and try again.", "custom", 5000, myColor)
+        })
     }
 
     return (

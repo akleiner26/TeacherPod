@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import API from "../../utils/API";
-import Notifications, {notify} from "react-notify-toast"
+import {notify} from "react-notify-toast"
 
 const MessageModal = (props) => {
     const [msgData, setMsgData] = useState({
@@ -17,17 +17,9 @@ const MessageModal = (props) => {
         })
     }
 
-    // const toast = () => {
-    //     let myColor = { background: "#ececec", text: "#FFFFFF"}
-    //     notify.show("Your Message Has Been Sent!", "custom", 4000, myColor)
-    //     props.toggle()
-    // }
     
     const sendMsg = event => {
         event.preventDefault();
-        console.log(props.receiver)
-        let myColor = { background: "#ececec", text: "#FFFFFF"}
-        notify.show("Your Message Has Been Sent!")
         let receiver = "";
         if (props.receiver){
             receiver = props.receiver;
@@ -36,6 +28,10 @@ const MessageModal = (props) => {
             receiver = msgData.receiver;
         }
         if (!props.username || receiver == "" || msgData.content == ""){
+            let myColor = { background: "#FF0000", text: "#FFFFFF"}
+            notify.show("Please login or create an account to send a message.", "custom", 5000, myColor)
+
+
             return
         }
         else {
@@ -49,12 +45,17 @@ const MessageModal = (props) => {
                         }
                         })
                             .then(res => {
+                                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                                notify.show("Your message has been sent!", "custom", 5000, myColor)
                                 console.log(res);
+                                props.toggle();
                             })
                     }
-                    props.toggle();
                 })
-                .catch(err => console.log(err));
+                .catch(function (){
+                    let myColor = { background: "#FF0000", text: "#FFFFFF"}
+                    notify.show("Conversation already exists. Please go to messages to contact your teacher.", "custom", 5000, myColor)
+                });
             }
         }
         
@@ -63,7 +64,6 @@ const MessageModal = (props) => {
 
     return (
         <>
-     <Notifications/>
         <Modal isOpen={props.messageModal} toggle={props.toggle}>
             <ModalHeader toggle={props.toggle}>Start a conversation!</ModalHeader>
             <ModalBody>

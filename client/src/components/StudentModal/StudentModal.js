@@ -22,12 +22,12 @@ const StudentModal = (props) => {
 
     const saveStudent = event => {
         event.preventDefault();
-        props.toggle3();
         console.log(studentData)
 
         API.createStudent(props.id, studentData)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data);
+                props.toggle3();
             })
             .catch(err => console.log(err));
     }

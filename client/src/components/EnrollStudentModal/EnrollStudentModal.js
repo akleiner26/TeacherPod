@@ -22,11 +22,11 @@ const EnrollStudentModal = (props) => {
     const enrollStudent = event => {
         event.preventDefault();
         props.toggle4();
-        console.log(studentData)
+        // console.log(studentData)
 
         API.addStudentToPod(props.podId, studentData)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 props.refresh()
             })
             .catch(err => console.log(err));

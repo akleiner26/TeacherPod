@@ -158,6 +158,13 @@ module.exports = {
             .then(results => res.json(results))
             .catch(err => res.json(err))
     },
+    updateAccountSettings: (req, res) => {
+        console.log(req.body.password)
+        let hashedPW = bcrypt.hashSync(req.body.password);
+        db.User.findOneAndUpdate({ _id: req.params.id }, { $set: {password: hashedPW} }, { upsert: true })
+            .then(results => res.json(results))
+            .catch(err => res.json(err))
+    },
     createPod: (req, res) => {
         db.Pod.create(req.body)
             .then(({ _id }) => {

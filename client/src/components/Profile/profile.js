@@ -22,7 +22,9 @@ const Profile = (props) => {
         image: "",
         gradesTaught: "",
         location: "",
-        bio: ""
+        bio: "",
+        password: "",
+        newPassword: ""
     })
     const [pods, setPods] = useState([]);
     let key = props.match.params.id;
@@ -82,8 +84,7 @@ const Profile = (props) => {
 
     // Captures edits made in modal form
     const handleInputChange = event => {
-        console.log(event.target.value)
-
+        console.log(teacher)
         setTeacher({
             ...teacher,
             [event.target.name]: event.target.value
@@ -94,8 +95,23 @@ const Profile = (props) => {
         event.preventDefault();
         console.log(teacher)
         toggle()
+        let updated = {
+            prefix: teacher.prefix,
+            firstName: teacher.firstName,
+            lastName: teacher.lastName,
+            image: teacher.image,
+            gradesTaught: teacher.gradesTaught,
+            location: teacher.location,
+            bio: teacher.bio
+        }
+        if (teacher.newPassword && teacher.newPassword !== "" && teacher.newPassword.length >= 6){
+            console.log(true)
+            API.updatePassword(id, {password: teacher.newPassword})
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
         
-        API.updateTeacherProfile(id, teacher)
+        API.updateTeacherProfile(id, updated)
             .then(res => {
                 console.log(res);
                 console.log("profile updated!")

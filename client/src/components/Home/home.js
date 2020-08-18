@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/header";
-// import Search from "../Search/search"
-// import TeacherTable from "../TeacherTable/teacherTable"
 import Footer from "../Footer/footer";
 import TeacherTable from "../TeacherTable/teacherTable";
 import TeacherRow from "../TeacherRow/teacherRow";
 import Search from "../Search/search";
 import API from "../../utils/API"
-import Notifications, { notify } from "react-notify-toast"
-// import { Container, Table } from "reactstrap";
-// import "./home.css";
 import { useMediaQuery } from 'react-responsive';
 
 function Home() {

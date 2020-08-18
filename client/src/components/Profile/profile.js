@@ -413,7 +413,6 @@ const Profile = (props) => {
                                         ) : (
                                                 <h2></h2>
                                             )}
-
                                     </Col>
                                 </Row>
                                 {teacher.bio}

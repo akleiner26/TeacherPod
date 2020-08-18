@@ -94,7 +94,6 @@ function Messages() {
     }
 
     return (
-        // <div className="fullBackground">
 
         <div id="messagePageHeight" className="overflowMessage fullBackground max-vh-100" >
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
@@ -125,8 +124,8 @@ function Messages() {
                                 )}
                             </CardBody>
                         </Card>
-
                     </Col>
+
                     <Col>
                         <Card className="mainMessageCard col-8 shadow">
                             <CardTitle className="text-center topSpace align-items-center d-flex justify-content-center" style={{ marginBottom: "30px" }} >
@@ -156,10 +155,8 @@ function Messages() {
                                 <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
                             </FormGroup>
                             <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
-
                         </Form>
                     </Col>
-
                 </Row>
             </>}
 
@@ -188,7 +185,6 @@ function Messages() {
                             )}
                         </CardBody>
                     </Card>
-
                 </Col>
 
                 <Col>
@@ -210,25 +206,15 @@ function Messages() {
                             }
                         </div>
                     </Card>
-      
-
                         <Form inline className="formBottom" onSubmit={postMessage}>
-                   
-
                                 <FormGroup inline className="messageText">
                                     <Label for="content" hidden>Message</Label>
                                     <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
                                 </FormGroup>
-          
-
                                 <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
-
                         </Form>
-      
-
                 </Col>
             </>}
-
 
             <div className="fixed-bottom">
                 <Footer />
@@ -239,9 +225,6 @@ function Messages() {
                 />
             </div>
         </div >
-        // </div>
-
-
     )
 }
 

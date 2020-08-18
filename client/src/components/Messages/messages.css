@@ -1,18 +1,8 @@
-
 .sideCard{
-    
     width: 100%;
     height: 75%;
-    /* position: absolute; */
     overflow: auto;
-    /* margin-bottom: 100px !important; */
-    /* border: 3px solid black */
-    /* margin-top: 10; */
-    /* padding-bottom: -20px; */
     border-radius: 25px;
-    /* border-top-right-radius: 25px; */
-
-
 }
 
 .sideBody {
@@ -20,7 +10,6 @@
     overflow-x: hidden;
     height: 1px;
 }
-
 
 .topSpace {
     padding-top: 20px;
@@ -30,15 +19,12 @@
     margin-bottom: 0px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-
-  
 }
 
 .messageRow {
     height: 80%;
     width: 100%;
     position: relative;
-    /* overflow: scroll; */
 }
 
 .messageCOL {
@@ -51,9 +37,7 @@
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 5%;
-    /* margin-left: -190px; */
     border-radius: 25px;
-    /* overflow: scroll; */
     max-height: 60%;
 }
 
@@ -62,24 +46,9 @@
     margin-left: 20%;
 }
 
-.messageText:active, .messageText:focus, messageText:hover {
-    /* border-color: white !important;
-    border: 3px dashed white */
-    /* border-color: white; */
-}
 #messageID {
     width: 99%
 }
-
-/* .form-control:active, .form-control:focus {
-    border-color: grey;
-    box-shadow: blueviolet;
-} */
-
-/* .form-control:focus {
-    border-color: #ff80ff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.075) inset, 0px 0px 412px rgba(255, 100, 255, 0.5);
-} */
 
 .cardPaddingMargin {
     margin-top: 0 !important;
@@ -91,7 +60,6 @@
 
 .received {
     min-height: 50px !important;
-    /* width: 50%; */
     margin-right: 54%;
     margin-left: 2%;
     text-align: center;
@@ -103,12 +71,11 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     border-top-left-radius: 25px;
-    /* border-color: ; */
+    padding: 20px;
 }
 
 .sent{
     min-height: 50px !important;
-    /* width: 50%; */
     margin-left: 54%;
     margin-right: 2%;
     text-align: center;
@@ -116,34 +83,16 @@
     margin-bottom: 1% !important;
     background-color: #30DAC7;
     color: white;
-    /* border-radius: 50%; */
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
+    padding: 20px;
 
 }
-
-/* .sideBody::-webkit-scrollbar {
-    width: .75em;
-  }
-   
-  .sideBody::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-  }
-   
-  .sideBody::-webkit-scrollbar-thumb {
-    background-color: #30DAC7;
-    outline: 1px solid slategrey;
-    border-radius: 8px;
-    /* display: none; */
-
 
 #messagePageHeight {
     max-height: 250vh !important;
     overflow: hidden;
-
-    
 }
 
 .messageTextArea {
@@ -186,10 +135,6 @@
         overflow: scroll;
         overflow-x: hidden;
     }
-
-    /* .messageText {
-        display: block;
-    } */
 
     .sent {
         margin-left: 30%;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, FormText, Row, CardText, Col } from "reactstrap";
+import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
 import "./signup.css";
-import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import API from "../../utils/API"
@@ -25,7 +24,7 @@ function Signup() {
         isTeacher: false
     })
 
-    let myColor = { background: "#ececec", text: "#FFFFFF"}
+    let myColor = { background: "#ececec", text: "#FFFFFF" }
 
 
     const handleInputChange = event => {
@@ -39,12 +38,12 @@ function Signup() {
         event.preventDefault();
         if (signupInput.isTeacher === "true") {
             signupInput.isTeacher = true;
-            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
-            notify.show("Welcome to TeachPod " + signupInput.firstName + " " +signupInput.lastName, "custom", 5000, myColor)
+            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+            notify.show("Welcome to TeachPod " + signupInput.firstName + " " + signupInput.lastName, "custom", 5000, myColor)
         } else {
             signupInput.isTeacher = false;
-            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
-            notify.show("Welcome to TeachPod " + signupInput.firstName + " " +signupInput.lastName, "custom", 5000, myColor)
+            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+            notify.show("Welcome to TeachPod " + signupInput.firstName + " " + signupInput.lastName, "custom", 5000, myColor)
         }
         console.log(signupInput);
         if (signupInput.confirmed !== signupInput.password) {
@@ -55,28 +54,26 @@ function Signup() {
             API.createTeacher(signupInput)
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
-                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
                         notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 3000, myColor)
-                        setTimeout(function (){window.location.replace("/")},1000)
+                        setTimeout(function () { window.location.replace("/") }, 1000)
                     }
                 })
         } else {
             API.createParent(signupInput)
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
-                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
                         notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 3000, myColor)
-                        setTimeout(function() {window.location.replace("/")},1000)
+                        setTimeout(function () { window.location.replace("/") }, 1000)
                     }
                 })
         }
     }
 
-
     return (
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
-
 
             {isDesktopOrLaptop && <>
 
@@ -134,13 +131,11 @@ function Signup() {
                         </Container>
                     </Col>
                 </Row>
-
-                </>}
-
+            </>}
 
             {!isDesktopOrLaptop && <>
-                
-                    <Row className="mt-5">
+
+                <Row className="mt-5">
                     <Col xs="10" className="text-center offset-1">
                         <Container>
                             <Card className="signupCard">
@@ -194,12 +189,12 @@ function Signup() {
                         </Container>
                     </Col>
                 </Row>
-                    
-                    </>}
-                    <div className="fixed-bottom">
-                        <Footer />
-                    </div>
-                </>
+
+            </>}
+            <div className="fixed-bottom">
+                <Footer />
+            </div>
+        </>
     )
 }
 

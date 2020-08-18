@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table, Col, Card } from "reactstrap";
 import StudentRow from "../StudentRow/StudentRow";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 function StudentTable(props) {
     const [students, setStudents] = useState([]);

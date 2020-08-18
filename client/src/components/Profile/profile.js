@@ -360,13 +360,13 @@ const Profile = (props) => {
                                         <>
                                             <Col></Col>
                                             <Col className="text-center">
-                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4" aria-hidden="true" onClick={openProfileEditor}></i>
+                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4 hvr-sink" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
                                                 {teacher.isTeacher === true ? (
-                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade hvr-sink" aria-hidden="true"></i>
                                                 ) : (
-                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade hvr-sink" aria-hidden="true"></i>
                                                     )}
 
                                             </Col>
@@ -375,7 +375,7 @@ const Profile = (props) => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4 hvr-sink" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}

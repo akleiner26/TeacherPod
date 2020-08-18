@@ -40,7 +40,7 @@ const PodRow = (props) => {
 
                             {props.students.length > 0 ? (
                                 <DropdownMenu>
-                                    {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
+                                    {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName} (Grade: {student.gradeLevel})
                                     </DropdownItem>
                                     )}
                                 </DropdownMenu>
@@ -62,7 +62,7 @@ const PodRow = (props) => {
                 <td className="vertAlign" onClick={viewStudents}>{props.availability}</td>
                 {props.teacher === props.id ? (
                     <td className="vertAlign" onClick={viewStudents}>
-                        <i className="fa fa-book profileIcons hvr-fade" aria-hidden="true" onClick={openEnrollForm}></i>
+                        <i className="fa fa-book profileIcons hvr-fade hvr-sink" aria-hidden="true" onClick={openEnrollForm}></i>
                     </td>
                 ) : (
                         ""

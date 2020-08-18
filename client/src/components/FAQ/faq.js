@@ -71,7 +71,7 @@ function FAQ() {
                                 <UncontrolledCollapse toggler="#toggler3">
                                     <Card className="toggleCard">
                                         <CardBody className="toggleText">
-                                            Currently, payments will be made via electronic payment directly to the teacher. Once you join a pod, the instructor will send out a message with payment instructions. We are working on adding a PayPal payment system directly to the site. Be on the look out for that soon!
+                                            Currently, payments will be made via electronic payment directly to the teacher. Once you join a pod, the teacher will send out a message with payment instructions. We are working on adding a PayPal payment system directly to the site. Be on the look out for that soon!
                                         </CardBody>
                                     </Card>
                                 </UncontrolledCollapse>

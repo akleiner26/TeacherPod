@@ -353,12 +353,17 @@ const Profile = (props) => {
         setPods(sortedOpening);
     }
 
+    let changeWidth = "option2";
+    if (id === key) {
+        changeWidth = "option1"
+    }
+
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
-            <Row className="mt-5 profileCardRow">
+            <Row className="mt-5 " className={changeWidth}>
                 <Col xs="8" className="offset-2 ">
-                    <Card className="profileCard">
+                    <Card >
                         <CardTitle className="text-center loginTitle darkGrayText">PROFILE
                     <hr className="line"></hr>
                         </CardTitle>

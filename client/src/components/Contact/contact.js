@@ -113,7 +113,7 @@ function Contact() {
 			{!isDesktopOrLaptop && <>
 
 				{/* <Row className="mt-5 profileCardRow contactRowSize"> */}
-				<Container mb-5 className="smallCardHeight">
+				<Container mb-5 className="smallCardHeight" id="containerSmall">
 					<Card >
 						<CardTitle className="text-center loginTitle darkGrayText">CONTACT
     <hr className="line"></hr>

@@ -32,3 +32,8 @@
     border-right: solid rgba(57,180,167,1) 2px;
 }
 
+@media (max-width: 400px) {
+    #containerSmall{
+        margin-top: -35px !important;
+    }
+}

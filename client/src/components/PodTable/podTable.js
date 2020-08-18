@@ -64,7 +64,7 @@ function PodTable(props) {
 
             {!isDesktopOrLaptop && <>
 
-                <Col xs="12" className=" mt-4 smallTable">
+                <Col xs="12" className=" mt-4 mb-0 smallPodTable">
                     {/* <Card className="tableMargin text-center"> */}
                         <Table hover >
                             <thead className="tableHead">

@@ -5,6 +5,10 @@ div.card {
 
 .teacherTable{
     border-right: solid white 1px !important;
+    /* margin: auto;
+    background-color: #000;
+    width: 2000px; */
+
 }
 
 
@@ -14,5 +18,6 @@ div.card {
 
 .smallTable {
     margin-bottom: 100px;
- 
+  
+
 }

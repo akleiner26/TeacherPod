@@ -44,7 +44,7 @@ function Header(props) {
                 }
             })
     }
-    console.log(props);
+    // console.log(props);
 
     let myColor = { background: "#ececec", text: "#FFFFFF"}
 

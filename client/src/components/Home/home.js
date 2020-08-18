@@ -248,7 +248,6 @@ function Home() {
     return (
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
-            <Notifications/>
             <Search
                 handleInputChange={handleInputChange}
                 handleFormSubmit={handleFormSubmit}

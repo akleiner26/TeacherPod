@@ -88,12 +88,12 @@ module.exports = {
             .then(user => {
                 console.log(user);
                 if (!user) {
-                    res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                    res.status(304).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                 }
                 else {
                     let login = bcrypt.compareSync(req.body.password, user.password);
                     if(!login){
-                        res.status(500).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
+                        res.status(304).json({error: "Could not find an account with that username and password combination. Please try again with the correct credentials."})
                     }
                     console.log("matched staging for cookie")
                     //Save session id
@@ -164,9 +164,9 @@ module.exports = {
                 db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { pods: _id } }, { new: true })
                     .then(results => {
                         res.json(results);
-                    })
+                    }).catch(err => res.status(500).json({message:"Not all required fields were met"}))
             })
-            .catch(err => res.json(err))
+            .catch(err => res.status(500))
     },
     removePod: (req, res) => {
         db.Pod.remove({ _id: req.params.id })

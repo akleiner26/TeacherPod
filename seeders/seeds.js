@@ -1,6 +1,7 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 const bcrypt = require("bcryptjs");
+require("dotenv").config()
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/teacher-pod", {
     useNewUrlParser: true,

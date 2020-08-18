@@ -3,11 +3,19 @@ import "./podTable.css"
 import { Table, Col, Card } from "reactstrap"
 import PodRow from "../PodRow/podRow"
 import API from "../../utils/API"
+import { useMediaQuery } from 'react-responsive';
 
 
 function PodTable(props) {
 
+    const isDesktopOrLaptop = useMediaQuery(
+		{ minWidth: 497 }
+	)
+
     return (
+
+        // { isDesktopOrLaptop && <>
+            
         <Col xs="10" className="offset-1 mt-4">
             <Card className="tableMargin text-center">
                 <Table hover >

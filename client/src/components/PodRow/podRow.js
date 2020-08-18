@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import EnrollStudentModal from "../EnrollStudentModal/EnrollStudentModal";
+import RemoveStudentModal from "../RemoveStudentModal/RemoveStudentModal";
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import "./podRow.css"
 
@@ -9,14 +10,22 @@ const PodRow = (props) => {
 
     const { buttonLabel } = props;
     const [enrollStudentModal, setEnrollStudentModal] = useState(false);
+    const [removeStudentModal, setRemoveStudentModal] = useState(false);
     const [dropdownOpen, setOpen] = useState(false);
 
     const toggle4 = () => setEnrollStudentModal(!enrollStudentModal);
+    const toggle5 = () => setRemoveStudentModal(!removeStudentModal);
     const toggleS = () => setOpen(!dropdownOpen);
 
     // Opens modal form to enroll a student in a pod
     const openEnrollForm = event => {
         setEnrollStudentModal(true);
+    }
+
+    // Opens modal form to enroll a student in a pod
+    const openRemoveStudentForm = event => {
+        console.log(props.students)
+        setRemoveStudentModal(true);
     }
 
     // Opens dropdown with list of students enrolled in pod
@@ -40,7 +49,7 @@ const PodRow = (props) => {
 
                             {props.students.length > 0 ? (
                                 <DropdownMenu>
-                                    {props.students && props.students.map(student => <DropdownItem>{student.firstName} {student.lastName}
+                                    {props.students && props.students.map(student => <DropdownItem key={student._id}>{student.firstName} {student.lastName} (Grade: {student.gradeLevel})
                                     </DropdownItem>
                                     )}
                                 </DropdownMenu>
@@ -61,9 +70,15 @@ const PodRow = (props) => {
                 </td>
                 <td className="vertAlign" onClick={viewStudents}>{props.availability}</td>
                 {props.teacher === props.id ? (
-                    <td className="vertAlign" onClick={viewStudents}>
-                        <i className="fa fa-book profileIcons hvr-fade" aria-hidden="true" onClick={openEnrollForm}></i>
-                    </td>
+                    <>
+                        <td className="vertAlign">
+                            <i className="fa fa-book profileIcons hvr-fade hvr-sink" aria-hidden="true" onClick={openEnrollForm}></i>
+                        </td>
+                        <td className="vertAlign">
+                        <i className="fa fa-minus profileIcons hvr-fade hvr-sink" aria-hidden="true" onClick={openRemoveStudentForm}></i>
+                           
+                        </td>
+                    </>
                 ) : (
                         ""
                     )}
@@ -75,6 +90,15 @@ const PodRow = (props) => {
                 enrollStudentModal={enrollStudentModal}
                 buttonLabe={buttonLabel}
                 refresh={props.refresh}
+            />
+
+            <RemoveStudentModal
+                podId={props.podId}
+                toggle5={toggle5}
+                removeStudentModal={removeStudentModal}
+                buttonLabe={buttonLabel}
+                refresh={props.refresh}
+                students={props.students}
             />
         </>
     );

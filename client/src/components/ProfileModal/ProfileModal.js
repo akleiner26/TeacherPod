@@ -28,37 +28,49 @@ const ProfileModal = (props) => {
                             Provide url to image.
                         </FormText>
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="grade">Grade Level</Label>
-                        <Input type="select" name="gradesTaught" id="grade" value={props.gradesTaught} onChange={props.handleInputChange} >
-                            <option value="">Select</option>
-                            <option>PreSchool</option>
-                            <option>Kindergarten</option>
-                            <option>1st Grade</option>
-                            <option>2nd Grade</option>
-                            <option>3rd Grade</option>
-                            <option>4th Grade</option>
-                            <option>5th Grade</option>
-                            <option>6th Grade</option>
-                            <option>7th Grade</option>
-                            <option>8th Grade</option>
-                            <option>9th Grade</option>
-                            <option>10th Grade</option>
-                            <option>11th Grade</option>
-                            <option>12th Grade</option>
-                        </Input>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="location">Location</Label>
-                        <Input type="type" name="location" id="location" placeholder="Location" value={props.teacher.location} onChange={props.handleInputChange} />
-                        <FormText color="muted">
-                            Location must be entered as "remote" or by zip code.
+                    {props.teacher.isTeacher ? (
+                        <>
+                            <FormGroup>
+                                <Label for="grade">Grade Level</Label>
+                                <Input type="select" name="gradesTaught" id="grade" value={props.teacher.gradesTaught} onChange={props.handleInputChange} >
+                                    <option value="">Select</option>
+                                    <option>PreSchool</option>
+                                    <option>Kindergarten</option>
+                                    <option>1st Grade</option>
+                                    <option>2nd Grade</option>
+                                    <option>3rd Grade</option>
+                                    <option>4th Grade</option>
+                                    <option>5th Grade</option>
+                                    <option>6th Grade</option>
+                                    <option>7th Grade</option>
+                                    <option>8th Grade</option>
+                                    <option>9th Grade</option>
+                                    <option>10th Grade</option>
+                                    <option>11th Grade</option>
+                                    <option>12th Grade</option>
+                                </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="location">Location</Label>
+                                <Input type="type" name="location" id="location" placeholder="Location" value={props.teacher.location} onChange={props.handleInputChange} />
+                                <FormText color="muted">
+                                    Location must be entered as "remote" or by zip code.
                         </FormText>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="bio">About</Label>
-                        <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.teacher.bio} onChange={props.handleInputChange} />
-                    </FormGroup>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="bio">About</Label>
+                                <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.teacher.bio} onChange={props.handleInputChange} />
+                            </FormGroup>
+                        </>
+                    ) : (
+                            <FormGroup>
+                                <Label for="bio">About</Label>
+                                <Input type="textarea" name="bio" id="bio" placeholder="Tell us about yourself!" value={props.teacher.bio} onChange={props.handleInputChange} />
+                            </FormGroup>
+
+                        )}
+
+
                     <Button className="btnHover hvr-fade" onClick={props.saveEdits}>Save</Button>
                     <Button onClick={props.toggle} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>

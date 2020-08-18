@@ -222,17 +222,31 @@ module.exports = {
     },
     //Teacher Profile remove student from pod, take in teacher data and id of student to delete
     removeOneStudentFromPod: (req, res) => {
-        db.Pod.find({ _id: req.params.id }).populate("students")
+        console.log("ABOUT TO REMOVE ONE STUDENT FROM POD!!!")
+        db.Pod.findById(req.params.id).populate("students")
             .then(results => {
-                let students = results[0].students;
+                console.log(results)
+                let students = results.students;
+                console.log("==========================================")
+                console.log(req)
+                console.log(req.body)
                 students.forEach(student => {
+                    console.log("INSIDE FOR LOOP")
+                    console.log(student._id)
+                    console.log(req.body.idToDelete)
+
                     if (student._id == req.body.idToDelete) {
-                        db.Pod.findOneAndUpdate({ _id: req.params.id }, { $pull: { students: student._id } })
+                        db.Pod.findByIdAndUpdate(req.params.id, { $pull: { students: student._id } })
                             .then(results => res.json(results))
                             .catch(err => res.json(err))
                     }
                 })
+                res.json({message: "No students found."})
             })
+            .catch(err => {
+                console.log("*****************************************")
+                console.log(err)
+                res.json(err)})
     },
     ////////// MESSAGING //////////////////
     // Used in Get routes

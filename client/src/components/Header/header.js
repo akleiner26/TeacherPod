@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 import "./header.css";
 import axios from "axios";
-import Notifications, { notify } from 'react-notify-toast'
+import { notify } from 'react-notify-toast'
 // import API from "../../utils/API";
 
 function Header(props) {
@@ -38,14 +38,14 @@ function Header(props) {
     const logOut = event => {
         event.preventDefault();
         axios.post("/api/users/logout")
-            .then( ({ data }) => {
-                if (data.message === "User logged out"){
-                    window.location.replace("/home");
+            .then(({ data }) => {
+                if (data.message === "User logged out") {
+                    let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+                    notify.show("You have successfully logged out!", "custom", 5000, myColor)
+                    setTimeout(function(){window.location.replace("/home")},1000);
                 }
             })
     };
-
-    let myColor = { background: "#ececec", text: "#FFFFFF"}
 
     return (
         <>
@@ -59,50 +59,50 @@ function Header(props) {
                                 <NavLink href="/faq">FAQ</NavLink>
                             </NavItem>
                             <NavItem>
-                            {props.loggedIn ?
-                                <NavLink 
-                                href="/messages">Messages</NavLink>
-                                :
-                                <NavLink href="/login">Messages</NavLink>
-                            }
+                                {props.loggedIn ?
+                                    <NavLink
+                                        href="/messages">Messages</NavLink>
+                                    :
+                                    <NavLink href="/login">Messages</NavLink>
+                                }
                             </NavItem>
                             {!props.loggedIn ?
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Account
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
+                                        Account
                                 </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem href="/signup">
-                                        Sign up
+                                    <DropdownMenu right>
+                                        <DropdownItem href="/signup">
+                                            Sign up
                                     </DropdownItem>
-                                    <DropdownItem href="/login">
-                                        Login
+                                        <DropdownItem href="/login">
+                                            Login
                                      </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem href="/contact">
-                                        Contact
+                                        <DropdownItem divider />
+                                        <DropdownItem href="/contact">
+                                            Contact
                                      </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                            :
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Account
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                                :
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
+                                        Account
                                 </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem href={`/profile/${props.id}`}>
-                                        Profile
+                                    <DropdownMenu right>
+                                        <DropdownItem href={`/profile/${props.id}`}>
+                                            Profile
                                     </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem onClick={logOut}>
-                                        Logout
+                                        <DropdownItem divider />
+                                        <DropdownItem onClick={logOut}>
+                                            Logout
                                     </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem href="/contact">
-                                        Contact
+                                        <DropdownItem divider />
+                                        <DropdownItem href="/contact">
+                                            Contact
                                      </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
                             }
                         </Nav>
                     </Collapse>

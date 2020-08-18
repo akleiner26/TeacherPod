@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import API from "../../utils/API"
+import { notify } from "react-notify-toast"
 
 const StudentModal = (props) => {
     const [studentData, setStudentData] = useState({
@@ -26,10 +27,14 @@ const StudentModal = (props) => {
 
         API.createStudent(props.id, studentData)
             .then(res => {
-                console.log(res.data);
-                props.toggle3();
+                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+                notify.show("Your child has been added to your profile!", "custom", 5000, myColor)
+                setTimeout(function(){props.toggle3()},3000);
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                let myColor = {background: "#FF0000", text: "#FFFFFF"}
+                notify.show("We were unable to add your child to your profile.", "custom", 5000, myColor) 
+            });
     }
 
     return (

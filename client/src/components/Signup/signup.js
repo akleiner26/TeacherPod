@@ -56,8 +56,8 @@ function Signup() {
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
                         let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
-                        notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 5000, myColor)
-                        setTimeout(function (){window.location.replace("/")},2000)
+                        notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 3000, myColor)
+                        setTimeout(function (){window.location.replace("/")},1000)
                     }
                 })
         } else {
@@ -65,8 +65,8 @@ function Signup() {
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
                         let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
-                        notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 5000, myColor)
-                        setTimeout(function() {window.location.replace("/")},2000)
+                        notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 3000, myColor)
+                        setTimeout(function() {window.location.replace("/")},1000)
                     }
                 })
         }

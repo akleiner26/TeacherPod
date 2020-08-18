@@ -74,6 +74,7 @@ const Profile = (props) => {
 
     // Displays modal with form to edit profile
     const openProfileEditor = event => {
+        refresh(key);
         setProfileModal(true);
         // console.log("==========================")
         console.log(teacher)

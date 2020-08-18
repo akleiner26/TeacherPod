@@ -47,8 +47,6 @@ function Header(props) {
             })
     };
 
-    let myColor = { background: "#ececec", text: "#FFFFFF" }
-
     return (
         <>
             <header className="topNav">

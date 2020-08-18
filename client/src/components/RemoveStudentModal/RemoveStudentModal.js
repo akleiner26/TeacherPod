@@ -26,10 +26,7 @@ const RemoveStudentModal = (props) => {
             .then(res => {
                 let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
                 notify.show("Student successfuly removed from pod!", "custom", 5000, myColor )
-                setStudentData({
-                    ...studentData,
-                    [event.target.name]: event.target.value
-                })
+                setTimeout(function () {window.location.reload()},1000)
             })
             .catch(() => {
                 let myColor = {background: "#FF0000", text: "#FFFFFF"}

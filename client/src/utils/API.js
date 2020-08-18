@@ -92,6 +92,11 @@ export default {
         return axios.put("/api/pods/" + id, studentData);
     },
 
+    //Update users password, takes in {password: ""} & user id
+    updatePassword: function (id, password) {
+        return axios.put("/api/users/" + id, password )
+    },
+
     // DELETE ROUTES
     // ==================================================
     // Deletes a student from db based on parent id

@@ -354,8 +354,12 @@ const Profile = (props) => {
     }
 
     let changeWidth = "option2";
-    if (id === key) {
+    if (id === key && teacher.isTeacher === true) {
+        console.log("user is viewing own profile")
         changeWidth = "option1"
+    }
+    else if (id === key && teacher.isTeacher === false) {
+        changeWidth = "option3"
     }
 
     return (

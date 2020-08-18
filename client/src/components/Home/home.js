@@ -15,7 +15,7 @@ import { useMediaQuery } from 'react-responsive';
 function Home() {
 
     const isDesktopOrLaptop = useMediaQuery(
-        { minWidth: 497 }
+        { minWidth: 800 }
     )
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
@@ -255,112 +255,63 @@ function Home() {
 
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
 
-            {isDesktopOrLaptop && <>
-                <Notifications />
-                <Search
-                    handleInputChange={handleInputChange}
-                    handleFormSubmit={handleFormSubmit}
-                    clearSearch={clearSearch}
-                    search={search}
-                />
-                {teachers.length ? (
-                    <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
-                        {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
-                            let name = teacher.firstName + " " + teacher.lastName;
 
-                            let priceMin = teacher.pods[0].price;
-                            let priceMax = teacher.pods[0].price;
+            <Notifications />
+            <Search
+                handleInputChange={handleInputChange}
+                handleFormSubmit={handleFormSubmit}
+                clearSearch={clearSearch}
+                search={search}
+            />
+            {teachers.length ? (
+                <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
+                    {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
+                        let name = teacher.firstName + " " + teacher.lastName;
 
-                            for (let i = 0; i < teacher.pods.length; i++) {
-                                if (teacher.pods[i].price < priceMin) {
-                                    priceMin = teacher.pods[i].price;
-                                }
-                                if (teacher.pods[i].price > priceMax) {
-                                    priceMax = teacher.pods[i].price;
-                                }
+                        let priceMin = teacher.pods[0].price;
+                        let priceMax = teacher.pods[0].price;
+
+                        for (let i = 0; i < teacher.pods.length; i++) {
+                            if (teacher.pods[i].price < priceMin) {
+                                priceMin = teacher.pods[i].price;
                             }
-
-                            return <TeacherRow
-                                loggedInUser={username}
-                                teacherUsername={teacher.username}
-                                key={teacher._id}
-                                id={teacher._id}
-                                teacherId={teacher._id}
-                                image={teacher.image}
-                                name={name}
-                                gradesTaught={teacher.gradesTaught}
-                                priceMin={priceMin}
-                                priceMax={priceMax}
-                                pods={teacher.pods.length}
-                                username={teacher.username} />
+                            if (teacher.pods[i].price > priceMax) {
+                                priceMax = teacher.pods[i].price;
+                            }
                         }
-                        )}
-                    </TeacherTable>
-                ) : (
-                        <TeacherTable>
-                            <tr>
-                                <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
-                            </tr>
-                        </TeacherTable>
 
+                        return <TeacherRow
+                            loggedInUser={username}
+                            teacherUsername={teacher.username}
+                            key={teacher._id}
+                            id={teacher._id}
+                            teacherId={teacher._id}
+                            image={teacher.image}
+                            name={name}
+                            gradesTaught={teacher.gradesTaught}
+                            priceMin={priceMin}
+                            priceMax={priceMax}
+                            pods={teacher.pods.length}
+                            username={teacher.username} />
+                    }
                     )}
+                </TeacherTable>
+            ) : (
+                    <TeacherTable>
+                        <tr>
+                            <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                        </tr>
+                    </TeacherTable>
+                )}
+            {isDesktopOrLaptop && <>
+                <Footer />
             </>}
 
             {!isDesktopOrLaptop && <>
-                <Notifications />
-                <Search
-                    handleInputChange={handleInputChange}
-                    handleFormSubmit={handleFormSubmit}
-                    clearSearch={clearSearch}
-                    search={search}
-                />
-                {teachers.length ? (
-                    <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
-                        {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
-                            let name = teacher.firstName + " " + teacher.lastName;
-
-                            let priceMin = teacher.pods[0].price;
-                            let priceMax = teacher.pods[0].price;
-
-                            for (let i = 0; i < teacher.pods.length; i++) {
-                                if (teacher.pods[i].price < priceMin) {
-                                    priceMin = teacher.pods[i].price;
-                                }
-                                if (teacher.pods[i].price > priceMax) {
-                                    priceMax = teacher.pods[i].price;
-                                }
-                            }
-
-                            return <TeacherRow
-                                loggedInUser={username}
-                                teacherUsername={teacher.username}
-                                key={teacher._id}
-                                id={teacher._id}
-                                teacherId={teacher._id}
-                                image={teacher.image}
-                                name={name}
-                                gradesTaught={teacher.gradesTaught}
-                                priceMin={priceMin}
-                                priceMax={priceMax}
-                                pods={teacher.pods.length}
-                                username={teacher.username} />
-                        }
-                        )}
-                    </TeacherTable>
-                ) : (
-                        <TeacherTable>
-                            <tr>
-                                <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
-                            </tr>
-                        </TeacherTable>
-
-                    )}
-
-
+                <div className="fixed-bottom">
+                    <Footer />
+                </div>
             </>}
-
-
-            <Footer />
         </>
     )
 }

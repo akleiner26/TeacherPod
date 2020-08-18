@@ -9,6 +9,10 @@ router.route("/")
     //Requires body object => {username, password}
     .post(controller.createUser)
 
+router.route("/:id")
+    //Requires body object => {password} & params = id
+    .put(controller.updateAccountSettings)
+
 // Matches with "/api/users/teachers"
 router.route("/teachers")
     .get(controller.findAllTeachersUnsearched)

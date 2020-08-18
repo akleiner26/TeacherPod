@@ -22,6 +22,13 @@ const ProfileModal = (props) => {
                         <Input type="type" name="lastName" id="lastName" placeholder="Last Name" value={props.teacher.lastName} onChange={props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
+                        <Label for="newPassword">Edit password</Label>
+                        <Input type="password" name="newPassword" id="password" placeholder="Enter New Password" value={props.teacher.newPassword} onChange={props.handleInputChange} />
+                        <FormText color="muted">
+                            Requirements: 6 characters or longer.
+                        </FormText>
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="image">Profile Image</Label>
                         <Input type="type" name="image" id="image" placeholder="Enter URL" value={props.teacher.image} onChange={props.handleInputChange} />
                         <FormText color="muted">

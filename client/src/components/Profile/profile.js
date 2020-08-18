@@ -24,7 +24,9 @@ const Profile = (props) => {
         image: "",
         gradesTaught: "",
         location: "",
-        bio: ""
+        bio: "",
+        password: "",
+        newPassword: ""
     })
     const [pods, setPods] = useState([]);
     let key = props.match.params.id;
@@ -78,13 +80,10 @@ const Profile = (props) => {
     const openProfileEditor = event => {
         refresh(key);
         setProfileModal(true);
-        // console.log("==========================")
-        console.log(teacher)
     }
 
     // Captures edits made in modal form
     const handleInputChange = event => {
-
         setTeacher({
             ...teacher,
             [event.target.name]: event.target.value
@@ -94,8 +93,22 @@ const Profile = (props) => {
     const saveEdits = event => {
         event.preventDefault();
         toggle()
-
-        API.updateTeacherProfile(id, teacher)
+        let updated = {
+            prefix: teacher.prefix,
+            firstName: teacher.firstName,
+            lastName: teacher.lastName,
+            image: teacher.image,
+            gradesTaught: teacher.gradesTaught,
+            location: teacher.location,
+            bio: teacher.bio
+        }
+        if (teacher.newPassword && teacher.newPassword !== "" && teacher.newPassword.length >= 6){
+            API.updatePassword(id, {password: teacher.newPassword})
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
+        
+        API.updateTeacherProfile(id, updated)
             .then(res => {
                 let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
                 notify.show("Profile successfully updated!", "custom", 5000, myColor)

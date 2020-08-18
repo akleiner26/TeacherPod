@@ -197,11 +197,7 @@ function Messages() {
                             {currentPerson}
                         </CardTitle>
                         <div className="messageTextArea">
-                            {messages == "" ?
-                                <>
-                                </>
-                                :
-                                messages && messages.map(message => {
+                            {messages && messages.map(message => {
                                     let text = message.content;
                                     console.log(text);
                                     if (message.sender == username) {

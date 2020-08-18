@@ -1,16 +1,13 @@
-import React from "react"
+import React from "react";
 import "./teacherTable.css";
 import { Table, Col, Card } from "reactstrap";
 import { useMediaQuery } from 'react-responsive';
-
-
 
 function TeacherTable(props) {
 
     const isDesktopOrLaptop = useMediaQuery(
         { minWidth: 800 }
     )
-
 
     return (
         <>
@@ -39,7 +36,6 @@ function TeacherTable(props) {
 
             {!isDesktopOrLaptop && <>
                 <Col xs="12" className="mt-4 smallTable">
-                    {/* <Card className="tableMargin"> */}
                         <Table className="teacherTable" hover >
                             <thead className="teacherHeadRow">
                                 <tr className="tableHead">
@@ -55,7 +51,6 @@ function TeacherTable(props) {
                                 {props.children}
                             </tbody>
                         </Table>
-                    {/* </Card> */}
                 </Col>
             </>}
         </>

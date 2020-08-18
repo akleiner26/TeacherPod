@@ -27,26 +27,6 @@
     padding: 15px;
 }
 
-/* //bottom top gradient */
-/* .searchArea{
-    margin-top: -40px !important;
-    padding-top: 40px;
-    background: linear-gradient(180deg, rgba(48,218,199,.1) 20%, rgba(17,120,64,.8) 100%);
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-} */
-
-/* //Green teal hard line gradient */
-/* .searchArea {
-    margin-top: -40px !important;
-    padding-top: 40px;
-    background: rgb(48,218,199);
-    background: -moz-linear-gradient(135deg, rgba(48,218,199,0.1) 50%, rgba(17,120,64,.8) 50%);
-    background: -webkit-linear-gradient(135deg, rgba(48,218,199,0.1) 50%, rgba(17,120,64,.8) 50%);
-    background: linear-gradient(135deg, rgba(48,218,199,0.1) 50%, rgba(17,120,64,.8) 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#30dac7",endColorstr="#117840",GradientType=1);
-} */
-
 .searchArea{
     margin-top: -40px;
     padding-top: 40px;
@@ -58,10 +38,6 @@
 }
 
 .searchAreaSmall{
-    /* text-align: center;
-    margin-left: 0;
-    margin-right: 0; */
-    /* width: 200vw; */
     min-width: 600px;
     margin-top: -40px;
     padding-top: 40px;
@@ -71,12 +47,5 @@
     background: linear-gradient(135deg, rgba(236,236,236,1) 50%, rgba(57,180,167,1) 50%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#36cbbb",GradientType=1);
 }
-
-/* .smallColSearch {
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-} */
-
 
   

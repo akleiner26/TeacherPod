@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import "./teacherRow.css";
-import {
-    Button
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import { Link } from "react-router-dom";
 import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API";

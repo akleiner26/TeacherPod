@@ -14,7 +14,7 @@ router.route("/byparent/:id")
 
 // Matches with "/api/students/pod/:id"
 router.route("/pod/:id")
-    //Takes in params where id is teacher id, requires body object => {idToDelete} which corresponds to the students id up for deletion
+    //Takes in params where id is pod id, requires body object => {idToDelete} which corresponds to the students id up for deletion
     .delete(controller.removeOneStudentFromPod);
 
 module.exports = router;

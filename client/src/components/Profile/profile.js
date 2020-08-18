@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react"
-import "./profile.css"
-import { Card, Col, Row, CardTitle } from "reactstrap"
-import Header from "../Header/header"
-import Footer from "../Footer/footer"
-import PodTable from "../PodTable/podTable"
-import StudentTable from "../StudentTable/StudentTable"
+import React, { useState, useEffect } from "react";
+import "./profile.css";
+import { Card, Col, Row, CardTitle } from "reactstrap";
+import Header from "../Header/header";
+import Footer from "../Footer/footer";
+import PodTable from "../PodTable/podTable";
+import StudentTable from "../StudentTable/StudentTable";
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
 import MessageModal from "../MessageModal/messageModal";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import { notify } from "react-notify-toast";
 
 const Profile = (props) => {
+
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
@@ -50,9 +52,9 @@ const Profile = (props) => {
     const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
-    
+
         API.getTeacher(key)
-            
+
             .then(res => {
                 // console.log(res);
                 document.body.style.background = "#fff";
@@ -78,13 +80,10 @@ const Profile = (props) => {
     const openProfileEditor = event => {
         refresh(key);
         setProfileModal(true);
-        // console.log("==========================")
-        console.log(teacher)
     }
 
     // Captures edits made in modal form
     const handleInputChange = event => {
-        console.log(teacher)
         setTeacher({
             ...teacher,
             [event.target.name]: event.target.value
@@ -93,7 +92,6 @@ const Profile = (props) => {
 
     const saveEdits = event => {
         event.preventDefault();
-        console.log(teacher)
         toggle()
         let updated = {
             prefix: teacher.prefix,
@@ -105,7 +103,6 @@ const Profile = (props) => {
             bio: teacher.bio
         }
         if (teacher.newPassword && teacher.newPassword !== "" && teacher.newPassword.length >= 6){
-            console.log(true)
             API.updatePassword(id, {password: teacher.newPassword})
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
@@ -113,10 +110,13 @@ const Profile = (props) => {
         
         API.updateTeacherProfile(id, updated)
             .then(res => {
-                console.log(res);
-                console.log("profile updated!")
+                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+                notify.show("Profile successfully updated!", "custom", 5000, myColor)
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                let myColor = { background: "#FF0000", text: "#FFFFFF" }
+                notify.show("Profile failed to update.", "custom", 5000, myColor)
+            });
     }
 
     // Displays modal with form to add pod (for teachers only)
@@ -357,7 +357,7 @@ const Profile = (props) => {
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
             <Row className="mt-5 profileCardRow">
-                <Col xs="8" className="offset-2">
+                <Col xs="8" className="offset-2 ">
                     <Card className="profileCard">
                         <CardTitle className="text-center loginTitle darkGrayText">PROFILE
                     <hr className="line"></hr>
@@ -376,13 +376,13 @@ const Profile = (props) => {
                                         <>
                                             <Col></Col>
                                             <Col className="text-center">
-                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4" aria-hidden="true" onClick={openProfileEditor}></i>
+                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4 hvr-sink" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
                                                 {teacher.isTeacher === true ? (
-                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                    <i onClick={openPodForm} className="fa fa-plus profileIcons hvr-fade hvr-sink" aria-hidden="true"></i>
                                                 ) : (
-                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade" aria-hidden="true"></i>
+                                                        <i onClick={openStudentForm} className="fa fa-plus profileIcons hvr-fade hvr-sink" aria-hidden="true"></i>
                                                     )}
 
                                             </Col>
@@ -391,7 +391,7 @@ const Profile = (props) => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4 hvr-sink" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}
@@ -424,7 +424,9 @@ const Profile = (props) => {
                     <StudentTable teacher={teacher} id={id} />
                 )}
 
-            <Footer />
+            <div className="fixed-bottom">
+                <Footer />
+            </div>
 
             <ProfileModal
                 toggle={toggle}
@@ -452,10 +454,10 @@ const Profile = (props) => {
             />
 
             <MessageModal
-                    toggle={toggle4}
-                    messageModal={messageModal}
-                    username={username}
-                    receiver={teacher.username}
+                toggle={toggle4}
+                messageModal={messageModal}
+                username={username}
+                receiver={teacher.username}
             />
         </>
     )

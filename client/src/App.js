@@ -8,9 +8,12 @@ import Home from "./components/Home/home"
 import Contact from "./components/Contact/contact"
 import Profile from "./components/Profile/profile"
 import FAQ from "./components/FAQ/faq"
+import Notifications from "react-notify-toast"
 
 function App() {
   return (
+    <>
+    <Notifications options={{zIndex: 2000, top: "50px"}}/>
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -23,6 +26,7 @@ function App() {
         <Route exact path="/faq" component={FAQ} />
       </Switch>
     </Router>
+    </>
   );
 }
 

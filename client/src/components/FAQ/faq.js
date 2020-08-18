@@ -97,7 +97,7 @@ function FAQ() {
                                 <UncontrolledCollapse toggler="#toggler5">
                                     <Card className="toggleCard">
                                         <CardBody className="toggleText">
-                                            You can expect classes to mimic a standard school schedule. Unless otherwise indicated by the pod teacher, all classes will take place Monday-Friday 9am-4pm local time.
+                                            You can expect classes to mimic a standard school schedule. Unless otherwise indicated by the pod teacher, all classes will take place Monday-Friday, 9am-4pm local time.
                                         </CardBody>
                                     </Card>
                                 </UncontrolledCollapse>

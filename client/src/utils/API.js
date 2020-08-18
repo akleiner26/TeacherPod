@@ -106,7 +106,7 @@ export default {
 
     // Deletes a student from a pod based on pod id, but leaves student in db under parent
     deleteStudentFromPod: function (id, idToDelete) {
-        return axios.delete("/api/students/pod/" + id, idToDelete);
+        return axios.delete("/api/students/pod/" + id, {data: {idToDelete: idToDelete}});
     },
 
     // Deletes a pod from db based on pod id

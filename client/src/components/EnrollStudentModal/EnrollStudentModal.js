@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import API from "../../utils/API"
+import { notify } from "react-notify-toast"
 
 const EnrollStudentModal = (props) => {
     const [studentData, setStudentData] = useState({
@@ -22,14 +23,17 @@ const EnrollStudentModal = (props) => {
     const enrollStudent = event => {
         event.preventDefault();
         props.toggle4();
-        console.log(studentData)
 
         API.addStudentToPod(props.podId, studentData)
             .then(res => {
-                console.log(res.data)
+                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                notify.show("Student successfully added!", "custom", 5000, myColor )
                 props.refresh()
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                let myColor = {background: "#FF0000", text: "#FFFFFF"}
+                notify.show("Student could not be added.", "custom", 5000, myColor) 
+            });
     }
 
     return (

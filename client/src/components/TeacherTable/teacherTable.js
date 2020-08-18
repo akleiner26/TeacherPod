@@ -38,7 +38,7 @@ function TeacherTable(props) {
 
 
             {!isDesktopOrLaptop && <>
-                <Col xs="12" className=" mt-4 smallTable">
+                <Col xs="12" className="mt-4 smallTable">
                     {/* <Card className="tableMargin"> */}
                         <Table className="teacherTable" hover >
                             <thead className="teacherHeadRow">

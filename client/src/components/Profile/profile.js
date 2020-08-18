@@ -10,13 +10,13 @@ import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
 import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API";
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 const Profile = (props) => {
 
-    const isDesktopOrLaptop = useMediaQuery(
-		{ minWidth: 497 }
-	)
+    // const isDesktopOrLaptop = useMediaQuery(
+	// 	{ minWidth: 700 }
+	// )
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
@@ -346,7 +346,7 @@ const Profile = (props) => {
         <>
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
             <Row className="mt-5 profileCardRow">
-                <Col xs="8" className="offset-2">
+                <Col xs="8" className="offset-2 ">
                     <Card className="profileCard">
                         <CardTitle className="text-center loginTitle darkGrayText">PROFILE
                     <hr className="line"></hr>
@@ -413,7 +413,9 @@ const Profile = (props) => {
                     <StudentTable teacher={teacher} id={id} />
                 )}
 
-            <Footer />
+<div className="fixed-bottom">
+				<Footer />
+			</div>
 
             <ProfileModal
                 toggle={toggle}

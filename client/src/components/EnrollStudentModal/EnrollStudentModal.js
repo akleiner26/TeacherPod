@@ -49,8 +49,8 @@ const EnrollStudentModal = (props) => {
                         <Label for="parentUsername">Parent's Username</Label>
                         <Input type="text" name="parentUsername" id="parentUsername" placeholder="Parent's Username" onChange={handleInputChange} />
                     </FormGroup>
-                    <Button onClick={enrollStudent}>Save</Button>
-                    <Button onClick={props.toggle4} className="ml-3 mr-0">Cancel</Button>
+                    <Button onClick={enrollStudent} className="btnHover hvr-fade">Save</Button>
+                    <Button onClick={props.toggle4} className="ml-3 mr-0 btnHover hvr-fade">Cancel</Button>
                 </Form>
             </ModalBody>
         </Modal>

@@ -219,8 +219,7 @@ function Messages() {
                                     <Label for="content" hidden>Message</Label>
                                     <Input type="text" value={content} name="content" id="messageID" placeholder="Write Message Here" onChange={handleInputChange} />
                                 </FormGroup>
-                         
-
+          
 
                                 <Button id="submitMessage" className="btnHover hvr-fade">Send</Button>
 

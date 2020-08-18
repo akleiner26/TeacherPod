@@ -47,9 +47,9 @@ function Login() {
 
 
             {isDesktopOrLaptop && <>
-                <Notifications/>
-                <Row className="mt-5 profileCardRow loginSignupRowSize">
-                    <Col sm="8" className="offset-2 loginCol">
+                
+                <Row className="mt-5">
+                    <Col >
                         <Container className="loginContainer">
                             <Card className="loginCard">
                                 <CardTitle className="text-center loginTitle darkGrayText">LOGIN
@@ -86,8 +86,8 @@ function Login() {
 
             {!isDesktopOrLaptop && <>
                 
-                <Row className="mt-5  loginRowSize">
-                    <Col sm="12" className="loginCol">
+                <Row className="mt-5 text-center">
+                    <Col >
                         <Container className="loginContainer">
                             <Card className="loginCard">
                                 <CardTitle className="text-center loginTitle darkGrayText">LOGIN

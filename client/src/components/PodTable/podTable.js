@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 function PodTable(props) {
 
     const isDesktopOrLaptop = useMediaQuery(
-        { minWidth: 768 }
+        { minWidth: 900 }
     )
 
     return (

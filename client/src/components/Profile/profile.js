@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react"
-import "./profile.css"
-import { Card, Col, Row, CardTitle } from "reactstrap"
-import Header from "../Header/header"
-import Footer from "../Footer/footer"
-import PodTable from "../PodTable/podTable"
-import StudentTable from "../StudentTable/StudentTable"
+import React, { useState, useEffect } from "react";
+import "./profile.css";
+import { Card, Col, Row, CardTitle } from "reactstrap";
+import Header from "../Header/header";
+import Footer from "../Footer/footer";
+import PodTable from "../PodTable/podTable";
+import StudentTable from "../StudentTable/StudentTable";
 import ProfileModal from "../ProfileModal/ProfileModal";
 import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
 import MessageModal from "../MessageModal/messageModal";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import { useMediaQuery } from 'react-responsive';
 
 const Profile = (props) => {
+
+    const isDesktopOrLaptop = useMediaQuery(
+		{ minWidth: 497 }
+	)
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");

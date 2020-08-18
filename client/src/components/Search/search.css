@@ -57,5 +57,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ececec",endColorstr="#36cbbb",GradientType=1);
 }
 
+.smallColSearch {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
 
   

@@ -7,11 +7,16 @@ import TeacherTable from "../TeacherTable/teacherTable";
 import TeacherRow from "../TeacherRow/teacherRow";
 import Search from "../Search/search";
 import API from "../../utils/API"
-import Notifications, {notify} from "react-notify-toast"
+import Notifications, { notify } from "react-notify-toast"
 // import { Container, Table } from "reactstrap";
-// import style from "./home.css";
+// import "./home.css";
+import { useMediaQuery } from 'react-responsive';
 
 function Home() {
+
+    const isDesktopOrLaptop = useMediaQuery(
+        { minWidth: 497 }
+    )
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [search, setSearch] = useState({
@@ -185,13 +190,13 @@ function Home() {
             let minPodPriceA = a.pods[0].price;
             let minPodPriceB = b.pods[0].price;
 
-            for (let i=0; i < a.pods.length; i++) {
+            for (let i = 0; i < a.pods.length; i++) {
                 if (a.pods[i].price < minPodPriceA) {
                     minPodPriceA = a.pods[i].price;
                 }
             }
 
-            for (let i=0; i < b.pods.length; i++) {
+            for (let i = 0; i < b.pods.length; i++) {
                 if (b.pods[i].price < minPodPriceB) {
                     minPodPriceB = b.pods[i].price;
                 }
@@ -247,55 +252,114 @@ function Home() {
 
     return (
         <>
+
             <Header loggedIn={loggedIn} username={username} id={id} func={{ setLogin, setUsername, setId }} />
-            <Notifications/>
-            <Search
-                handleInputChange={handleInputChange}
-                handleFormSubmit={handleFormSubmit}
-                clearSearch={clearSearch}
-                search={search}
-            />
-            {teachers.length ? (
-                <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
-                    {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
-                        let name = teacher.firstName + " " + teacher.lastName;
 
-                        let priceMin = teacher.pods[0].price;
-                        let priceMax = teacher.pods[0].price;
-            
-                        for (let i=0; i < teacher.pods.length; i++) {
-                            if (teacher.pods[i].price < priceMin) {
-                                priceMin = teacher.pods[i].price;
+            {isDesktopOrLaptop && <>
+                <Notifications />
+                <Search
+                    handleInputChange={handleInputChange}
+                    handleFormSubmit={handleFormSubmit}
+                    clearSearch={clearSearch}
+                    search={search}
+                />
+                {teachers.length ? (
+                    <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
+                        {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
+                            let name = teacher.firstName + " " + teacher.lastName;
+
+                            let priceMin = teacher.pods[0].price;
+                            let priceMax = teacher.pods[0].price;
+
+                            for (let i = 0; i < teacher.pods.length; i++) {
+                                if (teacher.pods[i].price < priceMin) {
+                                    priceMin = teacher.pods[i].price;
+                                }
+                                if (teacher.pods[i].price > priceMax) {
+                                    priceMax = teacher.pods[i].price;
+                                }
                             }
-                            if (teacher.pods[i].price > priceMax) {
-                                priceMax = teacher.pods[i].price;
-                            }
+
+                            return <TeacherRow
+                                loggedInUser={username}
+                                teacherUsername={teacher.username}
+                                key={teacher._id}
+                                id={teacher._id}
+                                teacherId={teacher._id}
+                                image={teacher.image}
+                                name={name}
+                                gradesTaught={teacher.gradesTaught}
+                                priceMin={priceMin}
+                                priceMax={priceMax}
+                                pods={teacher.pods.length}
+                                username={teacher.username} />
                         }
-
-                        return <TeacherRow
-                            loggedInUser={username}
-                            teacherUsername={teacher.username}
-                            key={teacher._id}
-                            id={teacher._id}
-                            teacherId={teacher._id}
-                            image={teacher.image}
-                            name={name}
-                            gradesTaught={teacher.gradesTaught}
-                            priceMin={priceMin}
-                            priceMax={priceMax}
-                            pods={teacher.pods.length}
-                            username={teacher.username} />
-                    }
-                    )}
-                </TeacherTable>
-            ) : (
-                    <TeacherTable>
-                        <tr>
-                            <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
-                        </tr>
+                        )}
                     </TeacherTable>
+                ) : (
+                        <TeacherTable>
+                            <tr>
+                                <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                            </tr>
+                        </TeacherTable>
 
-                )}
+                    )}
+            </>}
+
+            {!isDesktopOrLaptop && <>
+                <Notifications />
+                <Search
+                    handleInputChange={handleInputChange}
+                    handleFormSubmit={handleFormSubmit}
+                    clearSearch={clearSearch}
+                    search={search}
+                />
+                {teachers.length ? (
+                    <TeacherTable sortByName={sortByName} sortByGrade={sortByGrade} sortByPrice={sortByPrice} sortByPod={sortByPod}>
+                        {teachers.filter(teacher => teacher.pods.length > 0).map(teacher => {
+                            let name = teacher.firstName + " " + teacher.lastName;
+
+                            let priceMin = teacher.pods[0].price;
+                            let priceMax = teacher.pods[0].price;
+
+                            for (let i = 0; i < teacher.pods.length; i++) {
+                                if (teacher.pods[i].price < priceMin) {
+                                    priceMin = teacher.pods[i].price;
+                                }
+                                if (teacher.pods[i].price > priceMax) {
+                                    priceMax = teacher.pods[i].price;
+                                }
+                            }
+
+                            return <TeacherRow
+                                loggedInUser={username}
+                                teacherUsername={teacher.username}
+                                key={teacher._id}
+                                id={teacher._id}
+                                teacherId={teacher._id}
+                                image={teacher.image}
+                                name={name}
+                                gradesTaught={teacher.gradesTaught}
+                                priceMin={priceMin}
+                                priceMax={priceMax}
+                                pods={teacher.pods.length}
+                                username={teacher.username} />
+                        }
+                        )}
+                    </TeacherTable>
+                ) : (
+                        <TeacherTable>
+                            <tr>
+                                <td colSpan="6" className="text-center"> <h4 className="mt-5 mb-5">No pods returned from search</h4></td>
+                            </tr>
+                        </TeacherTable>
+
+                    )}
+
+
+            </>}
+
+
             <Footer />
         </>
     )

@@ -164,9 +164,9 @@ module.exports = {
                 db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { pods: _id } }, { new: true })
                     .then(results => {
                         res.json(results);
-                    })
+                    }).catch(err => res.status(500).json({message:"Not all required fields were met"}))
             })
-            .catch(err => res.json(err))
+            .catch(err => res.status(500))
     },
     removePod: (req, res) => {
         db.Pod.remove({ _id: req.params.id })

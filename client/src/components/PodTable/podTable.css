@@ -1,3 +1,10 @@
 .podTable{
     text-align: center;
 }
+
+.smallPodTable {
+    margin-bottom: 100px !important;
+    /* overflow: scroll; */
+  
+
+}

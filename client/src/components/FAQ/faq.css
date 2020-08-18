@@ -13,28 +13,11 @@
   }
   
 
-
-/* .toggleCard {
-
-} */
-
-/* .toggleText {
-    
-} */
-
 .toggleCardOuter {
     max-height: 500px;
     overflow: scroll;
     overflow-x: hidden;
 }
-/* 
-.faqRowSize {
-    height: 860px;
-    width: 103%;
-    overflow: hidden;
-
-} */
-
 
 @media (max-width: 400px) {
     .toggleButton {
@@ -46,14 +29,6 @@
         
         
     }
-/* 
-    .faqRowSize {
-        height: 860px;
-        width: 120%;
-        overflow: hidden;
-    
-    } */
-
     .container {
         padding: 0px;
         margin-bottom: 10px;

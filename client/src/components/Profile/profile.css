@@ -1,5 +1,6 @@
 .teacherImage{
     margin: 0 auto;
+    border-radius: 4px;
 }
 
 .profileImage {
@@ -11,6 +12,12 @@
     border-right: solid;
     border-width: thin;
     border-color: rgba(190, 190, 190, 0.63);
+}
+
+@media (max-width: 768px) {
+    .proPicCol{
+        border: none;
+    }
 }
 
 .mailIcon{

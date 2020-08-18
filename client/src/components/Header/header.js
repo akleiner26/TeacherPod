@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import "./header.css";
 import axios from "axios";
+import Notifications, { notify } from 'react-notify-toast'
 // import API from "../../utils/API";
 
 function Header(props) {
@@ -45,9 +46,12 @@ function Header(props) {
     }
     console.log(props);
 
+    let myColor = { background: "#ececec", text: "#FFFFFF"}
+
     return (
         <>
             <header className="topNav">
+                <Notifications/>
                 <Navbar color="light" light expand="md" className="nav fixed-top shadow-sm headerNav">
                     <NavbarBrand href="/"><span className="teach">Teach</span><span className="pod">Pod</span> <img className="logo" src="../images/icons/peas.png"></img></NavbarBrand>
                     <NavbarToggler onClick={toggle} />

@@ -6,6 +6,8 @@ import axios from "axios";
 import API from "../../utils/API";
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
+// import Home from "../Home/home"
+import Notifications, {notify} from "react-notify-toast"
 import { useMediaQuery } from 'react-responsive';
 
 function Login() {

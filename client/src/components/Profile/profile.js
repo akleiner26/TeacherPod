@@ -347,7 +347,7 @@ const Profile = (props) => {
                         </CardTitle>
                         <Row className="m-3">
 
-                            <Col className="proPicCol text-center" xs="6">
+                            <Col className="proPicCol text-center" xs="12" md="5" lg="3">
                                 {teacher.image !== "" ? (
                                     <img className="img-fluid teacherImage" alt="" src={`../${teacher.image}`}></img>
                                 ) : (
@@ -359,7 +359,7 @@ const Profile = (props) => {
                                         <>
                                             <Col></Col>
                                             <Col className="text-center">
-                                                <i className="fa fa-pencil profileIcons hvr-fade" aria-hidden="true" onClick={openProfileEditor}></i>
+                                                <i className="fa fa-pencil profileIcons hvr-fade mb-4" aria-hidden="true" onClick={openProfileEditor}></i>
                                             </Col>
                                             <Col className="text-center">
                                                 {teacher.isTeacher === true ? (
@@ -374,18 +374,18 @@ const Profile = (props) => {
                                     ) : (
                                             <Col className="text-center">
                                                 {/* <a href="/messages" className="iconHvr-fade"> */}
-                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade" aria-hidden="true"></i>
+                                                <i onClick={openMessageForm} className="fa fa-envelope profileIcons mailIcon hvr-fade mb-4" aria-hidden="true"></i>
                                                 {/* </a> */}
                                             </Col>
                                         )}
                                 </Row>
                             </Col>
 
-                            <Col>
+                            <Col xs="12" md="7" lg="9">
                                 <Row>
                                     <Col>
                                         {teacher.firstName !== undefined ? (
-                                            <h2>
+                                            <h2 className="text-center text-md-left">
                                                 <strong className="aquaText">{teacher.firstName + " " + teacher.lastName}</strong>
                                             </h2>
                                         ) : (

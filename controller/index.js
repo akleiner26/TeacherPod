@@ -7,48 +7,49 @@ module.exports = {
     //Used in GET Routes
     //Card search
     findAllTeachers: (req, res) => {
-        console.log(req.query);
-        let price = "";
         let lowerLimit = 0;
-        let upperLimit = 1000;
+        let upperLimit = 10000;
         if (req.query.price) {
             let price = req.query.price.split("-");
-            let lowerLimit = parseInt(price[0].substring(1,4));
-            let upperLimit = parseInt(price[1].substring(1,4));
-            // console.log(lowerLimit, upperLimit)
+            if(price[0].length > 4){
+                lowerLimit = parseInt(price[0].splice(0,1));
+            }
+            else {
+                lowerLimit = parseInt(price[0].substring(1,4));
+            }
+            upperLimit = parseInt(price[1].substring(1,4));
         }
-
-        db.User.find({ gradesTaught: req.query.grades, isTeacher: true}).populate("pods")
+        db.User.find({ isTeacher: true }).populate("pods")
             .then(teachers => {
                 teachers = teachers.filter(teacher => teacher.pods.length > 0);
+                if (req.query.grades){
+                    teachers = teachers.filter(teacher => teacher.gradesTaught == req.query.grades)
+                }
                 let arrToSend = [];
-                let pods = [];
                 teachers.forEach(teacher => {
-                    // console.log(teacher)
+                    let pods = [];
+                    let pushTeacher = true;
                     teacher.pods.forEach(pod => {
-                        // console.log("==========================================")
-                        // console.log(pod.price)
-                        // console.log(req.query.price)
+                        let pushPod = true;
                         if(req.query.price){
-                            if (pod.price >= lowerLimit && pod.price <= upperLimit) {
-                                if (req.query.location) {
-                                    if (req.query.location == pod.location) {
-                                        pods.push(pod);
-                                    }
-                                }
-                                else {
-                                    pods.push(pod);
-                                }
+                            if (!(parseInt(pod.price) >= lowerLimit && parseInt(pod.price) <= upperLimit)) {
+                                pushPod = false
                             }
-                        }  
-                        else {
+                        }
+                        if (req.query.location) {
+                            if (!(req.query.location == pod.location)) {
+                                pushPod = false;
+                            }  
+                        }
+                        if (pushPod){
                             pods.push(pod);
                         }
                     })
                     teacher.pods = pods;
-                    arrToSend.push(teacher);
+                    if (pushTeacher && pods.length !== 0){
+                        arrToSend.push(teacher);
+                    }
                 })
-                // console.log(arrToSend)
                 res.json(arrToSend);
             })
             .catch(err => res.json(err))

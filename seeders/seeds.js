@@ -238,6 +238,7 @@ db.Student.deleteMany({})
 
                         let teacherSeed = [
                             {
+                                prefix: "Ms.",
                                 firstName: "Lillian",
                                 lastName: "Woods",
                                 username: "lwoods@email.com",
@@ -249,6 +250,7 @@ db.Student.deleteMany({})
                                 bio: "Hello! I'm Ms. Woods and I have been teaching the third grade in Chandler district since 2012. My bachelor's and master's degrees are from Penn State University. I am all about teaching from the heart and providing students with the skills and tools that they will need to develop into bright, young, successful adults!"
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Angela",
                                 lastName: "Davidson",
                                 username: "adavidson@email.com",
@@ -260,6 +262,7 @@ db.Student.deleteMany({})
                                 bio: "Hi there, I'm Ms. Davidson from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help students hone and develop them."
                             },
                             {
+                                prefix: "Mr.",
                                 firstName: "Ted",
                                 lastName: "Kelly",
                                 username: "tkelly@email.com",
@@ -272,6 +275,7 @@ db.Student.deleteMany({})
                                 bio: "Hi there! I'm Ted Kelly. I'm all about creating an encouraging and engaging environment that fosters creativity and confidence! I am all about challenging students, but I also focus on creating a safe space where they learn and grow."
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Margo",
                                 lastName: "Burns",
                                 username: "mburns@email.com",
@@ -284,6 +288,7 @@ db.Student.deleteMany({})
                                 bio: "Welcome! I believe in a learning environment in which students feel comfortable, but I'm also clearcut on setting expectations and rules. I give my best in ensuring each student's growth, and I expect the same in return from my students and will not accept anything less. Success does not come without motivation and effort. It's all about grit!"
                             },
                             {
+                                prefix: "Mr.",
                                 firstName: "Roger",
                                 lastName: "Horne",
                                 username: "rhorne@email.com",
@@ -296,6 +301,7 @@ db.Student.deleteMany({})
                                 bio: "Hi, I'm Mr. Horne and teaching has always been a passion of mine. I'm all about creating an environment that fosters diversity and growth, and I think that each student learns in a different way and at a different pace, so I take pride in designing my curriculum to fit each student's particular needs. If you are looking a personalized learning experience for your child, you are in the right place!"
                             },
                             {
+                                prefix: "Mr.",
                                 firstName: "Billy",
                                 lastName: "Myers",
                                 username: "bmyers@email.com",
@@ -308,6 +314,7 @@ db.Student.deleteMany({})
                                 bio: "Hey, Bill Myers here. I come from a family of teachers so I've always felt that teaching was my calling. My job is to motivate each student and to give them an education that is both solid in foundation but also fun and interesting. My pods are smaller because I really invest in each student's growth and development. If you are looking for a personalized learning experience for your child, contact me today!"
                             },
                             {
+                                prefix: "Mr.",
                                 firstName: "Erick",
                                 lastName: "Collier",
                                 username: "ecollier@email.com",
@@ -320,6 +327,7 @@ db.Student.deleteMany({})
                                 bio: "What's up, it's Erick Collier. My background is in design, and I began working at Wishockon Elementary in 2000 as a part-time art teacher before moving on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Lena",
                                 lastName: "Woods",
                                 username: "lwoods2@email.com",
@@ -332,6 +340,7 @@ db.Student.deleteMany({})
                                 bio: "Hi, I'm Miss Woods from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help students hone and develop them."
                             },
                             {
+                                prefix: "Mrs.",
                                 firstName: "Brigitte",
                                 lastName: "Jordan",
                                 username: "bjordan@email.com",
@@ -344,6 +353,7 @@ db.Student.deleteMany({})
                                 bio: "Hi, I'm Brigitte and teaching has always been a passion of mine. I'm all about creating an environment that fosters diversity and growth, and I think that each student learns in a different way and at a different pace, so I take pride in designing my curriculum to fit each student's particular needs. If you are looking a personalized learning experience for your child, you are in the right place!"
                             },
                             {
+                                prefix: "Mr.",
                                 firstName: "Ken",
                                 lastName: "Best",
                                 username: "kbest@email.com",
@@ -356,6 +366,7 @@ db.Student.deleteMany({})
                                 bio: "Hey, Ken Best here. I come from a family of teachers so I've always felt that teaching was my calling. My job is to motivate each student and to give them an education that is both solid in foundation but also fun and interesting. My pods are smaller because I really invest in each student's growth and development. If you are looking for a personalized learning experience for your child, contact me today!"
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Isabel",
                                 lastName: "Browning",
                                 username: "ibrowning@email.com",
@@ -368,6 +379,7 @@ db.Student.deleteMany({})
                                 bio: "Welcome! I am Miss Browning and I've taught the first grade since 2001. First grade is usually a huge adjustment for children as it really kicks off their educational journey. I understand each day can be filled with many challenges and responsibilities, and I believe that as a teacher, my job is to motive and guide them in the right direction."
                             },
                             {
+                                prefix: "Mrs.",
                                 firstName: "Polly",
                                 lastName: "Shaffer",
                                 username: "pshaffer@email.com",
@@ -379,6 +391,7 @@ db.Student.deleteMany({})
                                 bio: "Hi there, I'm Mrs. Shaffer from Wishockon. I began working at Wishockon Elementary in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Joann",
                                 lastName: "McMahon",
                                 username: "jmcmahon@email.com",
@@ -390,6 +403,7 @@ db.Student.deleteMany({})
                                 bio: "Hi there! I'm Joann McMahon. I'm all about creating an encouraging and engaging environment that fosters creativity and confidence! My talent is bringing out each student's unique character and personality so that they can learn at a pace that is comfortable for them."
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Bonita",
                                 lastName: "Wilcox",
                                 username: "bwilcox@email.com",
@@ -401,6 +415,7 @@ db.Student.deleteMany({})
                                 bio: "Welcome! I am Miss Wilcox and I've taught the first grade since 2001. First grade is usually a huge adjustment for children as it really kicks off their educational journey. I understand each day can be filled with many challenges and responsibilities, and I believe that as a teacher, my job is to motive and guide them in the right direction."
                             },
                             {
+                                prefix: "Mrs.",
                                 firstName: "Marva",
                                 lastName: "Franklin",
                                 username: "mfranklin@email.com",
@@ -412,6 +427,7 @@ db.Student.deleteMany({})
                                 bio: "Hi there, I'm Mrs. Franklin from Wishockon. I began working at Wishockon High in 2000 as a substitute teacher and moved on to teach full-time in 2006. I believe that every child is gifted in their own way and my goal is help identify those gifts so that we can support and develop them."
                             },
                             {
+                                prefix: "Ms.",
                                 firstName: "Sophia",
                                 lastName: "Calderon",
                                 username: "scalderon@email.com",

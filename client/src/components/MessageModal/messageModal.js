@@ -15,7 +15,7 @@ const MessageModal = (props) => {
             [event.target.name]: event.target.value
         })
     }
-
+    console.log(props.username)
     const sendMsg = event => {
         event.preventDefault();
         props.toggle();
@@ -27,23 +27,28 @@ const MessageModal = (props) => {
         if (msgData.receiver !== ""){
             receiver = msgData.receiver;
         }
-
-        API.createConversation({participants: [props.username, receiver]})
-            .then(res => {
-                if (msgData.content !== "") {
-                    API.createMessage({message: {
-                        sender: props.username,
-                        receiver: receiver,
-                        content: msgData.content
+        if (!props.username || receiver == "" || msgData.content == ""){
+            return
+        }
+        else {
+            API.createConversation({participants: [props.username, receiver]})
+                .then(res => {
+                    if (msgData.content !== "") {
+                        API.createMessage({message: {
+                            sender: props.username,
+                            receiver: receiver,
+                            content: msgData.content
+                        }
+                    })
+                            .then(res => {
+                                console.log(res);
+                            })
                     }
                 })
-                        .then(res => {
-                            console.log(res);
-                        })
-                }
-            })
-            .catch(err => console.log(err));
-    }
+                .catch(err => console.log(err));
+            }
+        }
+        
 
     console.log(props)
 

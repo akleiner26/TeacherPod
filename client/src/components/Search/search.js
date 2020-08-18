@@ -73,7 +73,7 @@ const Search = (props) => {
 
             {!isDesktopOrLaptop && <>
 
-                <Col className="col-12 searchArea">
+                <Col className="col-12 searchAreaSmall">
                     {/* <Card className="mb-3"> */}
                     {/* <Row> */}
                         {/* <Col className="offset-1" xs="5"> */}

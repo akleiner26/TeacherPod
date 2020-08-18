@@ -1,5 +1,4 @@
 .footer {
-   /* position: fixed; */
    bottom: 0;
    width: 100%;
    background-color: white !important;
@@ -7,15 +6,11 @@
    border-width: 1px;
    border-color: #ECECEC;
    margin-top: auto;
-   /* margin-bottom: 0px !important;
-   padding-bottom: 0px !important; */
-
 }
 
 a.contactLink.nav-link {
     color: #30DAC7;
     text-align: left;
-   
 }
 
 a.contactLink.nav-link:hover {

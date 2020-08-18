@@ -3,19 +3,12 @@
     font-size: larger;
 }
 
-.contactRowSize {
-        /* height: 860px;
-    width: 103%;
-    overflow: hidden; */
-}
-
 .smallCard {
     margin-bottom: 200px;
 }
 
 .smallCardHeight {
     margin-bottom: 100px;
-    /* padding-bottom: 200px; */
 }
 
 
@@ -32,3 +25,8 @@
     border-right: solid rgba(57,180,167,1) 2px;
 }
 
+@media (max-width: 400px) {
+    #containerSmall{
+        margin-top: -35px !important;
+    }
+}

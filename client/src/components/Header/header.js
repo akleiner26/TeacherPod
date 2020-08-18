@@ -15,7 +15,6 @@ import {
 import "./header.css";
 import axios from "axios";
 import { notify } from 'react-notify-toast'
-// import API from "../../utils/API";
 
 function Header(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -108,8 +107,6 @@ function Header(props) {
                     </Collapse>
                 </Navbar>
             </header>
-
-
         </>
     );
 }

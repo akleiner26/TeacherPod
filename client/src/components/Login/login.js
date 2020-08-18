@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-// import Header from "../Header/header"
 import { Container, Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
 import "./login.css";
 import axios from "axios";
-import API from "../../utils/API";
 import Header from "../Header/header"
 import Footer from "../Footer/footer"
-// import Home from "../Home/home"
 import { useMediaQuery } from 'react-responsive';
 import { notify } from "react-notify-toast"
 
@@ -49,7 +46,6 @@ function Login() {
         <>
             <Header loggedIn={loggedIn} id={id} username={username} func={{ setLogin, setUsername, setId }} />
 
-
             {isDesktopOrLaptop && <>
                 
                 <Row className="mt-5">
@@ -75,11 +71,6 @@ function Login() {
                                         <div className="floatRt">
                                             Don't have an account yet?<a className="iconHvr-fade2" href="/signup"> Signup</a>
                                         </div>
-
-
-
-
-
                                     </Form>
                                 </CardBody>
                             </Card>
@@ -98,7 +89,6 @@ function Login() {
                     <hr className="line"></hr>
                                 </CardTitle>
                                 <CardBody>
-
                                     <Form>
                                         <FormGroup>
                                             <Label for="exampleEmail">Email</Label>

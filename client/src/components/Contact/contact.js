@@ -27,8 +27,6 @@ function Contact() {
 							<CardTitle className="text-center loginTitle darkGrayText">CONTACT
                     <hr className="line"></hr>
 							</CardTitle>
-
-							{/* <Col xs="10" className="offset-1 mt-4"> */}
 							<CardBody className="text-center">
 								<Card className="tableMargin">
 									<Table className="teacherTable" hover>
@@ -103,7 +101,6 @@ function Contact() {
 									</Table>
 								</Card>
 							</CardBody>
-							{/* </Col> */}
 						</Card>
 					</Container>
 				</Row>
@@ -111,9 +108,7 @@ function Contact() {
 			</>}
 
 			{!isDesktopOrLaptop && <>
-
-				{/* <Row className="mt-5 profileCardRow contactRowSize"> */}
-				<Container mb-5 className="smallCardHeight">
+				<Container mb-5 className="smallCardHeight" id="containerSmall">
 					<Card >
 						<CardTitle className="text-center loginTitle darkGrayText">CONTACT
     <hr className="line"></hr>
@@ -121,7 +116,6 @@ function Contact() {
 
 
 						<CardBody className="text-center ">
-							{/* <Card className="tableMargin"> */}
 								<Table className="teacherTable" hover>
 						
 									<tbody className="border">
@@ -239,10 +233,8 @@ function Contact() {
 												<a href="mailto:wesley.tejeda95@gmail.com"><i className="fa fa-envelope contactIcons iconHvr-fade2"
 													aria-hidden="true"></i> </a>
 											</td>
-
 									</tbody>
 								</Table>
-							{/* </Card> */}
 						</CardBody>
 					</Card>
 				</Container >

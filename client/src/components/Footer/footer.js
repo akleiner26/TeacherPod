@@ -1,6 +1,6 @@
 import React from "react";
-import { Nav, Container, NavItem, NavLink } from "reactstrap";
-import style from "./footer.css"
+import { Nav,  NavItem, NavLink } from "reactstrap";
+import "./footer.css"
 
 
 function Footer() {
@@ -8,11 +8,9 @@ function Footer() {
         <>
             <footer>
                 <Nav className="navbar footer footer-fixed shadow" >
-                    {/* <Container> */}
                         <NavItem href="/container">
                             <NavLink className="contactLink" href="/contact">Contact</NavLink>
                         </NavItem>
-                    {/* </Container> */}
                 </Nav>
             </footer>
         </>

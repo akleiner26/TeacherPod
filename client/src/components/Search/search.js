@@ -1,7 +1,7 @@
-import React from "react"
-import { Form, Label, Input, FormGroup, Button, Card, Col, Row } from "reactstrap"
-import "./search.css"
-import ImgCarousel from "../Carousel/carousel"
+import React from "react";
+import { Form, Label, Input, FormGroup, Button, Card, Col, Row } from "reactstrap";
+import "./search.css";
+import ImgCarousel from "../Carousel/carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useMediaQuery } from 'react-responsive';
 
@@ -15,7 +15,6 @@ const Search = (props) => {
         <>
             {isDesktopOrLaptop && <>
                 <Col className="col-12 searchArea">
-                    {/* <Card className="mb-3"> */}
                     <Row>
                         <Col className="offset-1" xs="5">
                             <h3 className="m-2"><span className="aquaText">Pod</span> Search</h3>
@@ -58,7 +57,6 @@ const Search = (props) => {
                                         </Input>
                                     </FormGroup>
                                     <Button onClick={props.handleFormSubmit} className="btnHover hvr-fade mr-2">Submit</Button>
-
                                     <Button onClick={props.clearSearch} className="btnHover hvr-fade">Clear</Button>
                                 </Form>
                             </Card>
@@ -67,18 +65,14 @@ const Search = (props) => {
                             <ImgCarousel className="carousel" />
                         </Col>
                     </Row>
-                    {/* </Card> */}
                 </Col>
             </>}
 
             {!isDesktopOrLaptop && <>
 
                 <Col className="col-12 searchAreaSmall">
-                    {/* <Card className="mb-3"> */}
-                    {/* <Row> */}
-                        {/* <Col className="offset-1" xs="5"> */}
                     <h3 className="m-2"><span className="aquaText">Pod</span> Search</h3>
-                    {/* <Row> */}
+
                         <Card className="m-2 mb-4">
                             <Form className="m-2 podSearchForm">
                                 <FormGroup>
@@ -122,22 +116,13 @@ const Search = (props) => {
                                 <Button onClick={props.clearSearch} className="btnHover hvr-fade">Clear</Button>
                             </Form>
                         </Card>
-                    {/* </Col> */}
-                    {/* </Row> */}
-                        {/* <Row> */}
                             <Col className="m-2 mt-5 smallColSearch" xs="auto">
                                 <ImgCarousel className="carousel" />
                             </Col>
-                        {/* </Row> */}
-                    {/* </Row> */}
-                    {/* </Card> */}
                 </Col>
-
             </>}
         </>
-
     );
-
 }
 
 export default Search

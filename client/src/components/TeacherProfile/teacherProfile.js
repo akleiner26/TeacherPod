@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react"
-// import "./teacherProfile.css"
-import { Card, Col, Row, CardTitle } from "reactstrap"
-import Header from "../Header/header"
-import Footer from "../Footer/footer"
-import PodTable from "../PodTable/podTable"
-import API from "../../utils/API"
-import { useParams } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { Card, Col, Row, CardTitle } from "reactstrap";
+import Header from "../Header/header";
+import Footer from "../Footer/footer";
+import PodTable from "../PodTable/podTable";
+import API from "../../utils/API";
 
 const Profile = (props) => {
     const [loggedIn, setLogin] = useState("");

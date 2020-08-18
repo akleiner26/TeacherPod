@@ -2,20 +2,17 @@ import React from "react"
 import "./podTable.css"
 import { Table, Col, Card } from "reactstrap"
 import PodRow from "../PodRow/podRow"
-import API from "../../utils/API"
 import { useMediaQuery } from 'react-responsive';
-
 
 function PodTable(props) {
 
     const isDesktopOrLaptop = useMediaQuery(
-        { minWidth: 768 }
+        { minWidth: 900 }
     )
 
     return (
 
         <>
-
             {isDesktopOrLaptop && <>
 
                 <Col xs="10" className="offset-1 mt-4">
@@ -61,11 +58,9 @@ function PodTable(props) {
 
             </>}
 
-
             {!isDesktopOrLaptop && <>
 
-                <Col xs="12" className=" mt-4 smallTable">
-                    {/* <Card className="tableMargin text-center"> */}
+                <Col xs="12" className=" mt-4 mb-0 smallPodTable">
                         <Table hover >
                             <thead className="tableHead">
                                 <tr className="darkGrayText">
@@ -102,11 +97,8 @@ function PodTable(props) {
                                     availability={pod.slots - pod.students.length} />)}
                             </tbody>
                         </Table>
-                    {/* </Card> */}
                 </Col>
-
             </>}
-
         </>
     )
 }

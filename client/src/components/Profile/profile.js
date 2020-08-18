@@ -10,13 +10,10 @@ import PodModal from "../PodModal/PodModal";
 import StudentModal from "../StudentModal/StudentModal";
 import MessageModal from "../MessageModal/messageModal";
 import API from "../../utils/API";
-// import { useMediaQuery } from 'react-responsive';
+import { notify } from "react-notify-toast";
 
 const Profile = (props) => {
 
-    // const isDesktopOrLaptop = useMediaQuery(
-	// 	{ minWidth: 700 }
-	// )
     const [loggedIn, setLogin] = useState("");
     const [username, setUsername] = useState("");
     const [id, setId] = useState("");
@@ -53,9 +50,9 @@ const Profile = (props) => {
     const [sortOpening, setOpening] = useState([])
 
     useEffect(() => {
-    
+
         API.getTeacher(key)
-            
+
             .then(res => {
                 // console.log(res);
                 document.body.style.background = "#fff";
@@ -87,7 +84,6 @@ const Profile = (props) => {
 
     // Captures edits made in modal form
     const handleInputChange = event => {
-        console.log(event.target.value)
 
         setTeacher({
             ...teacher,
@@ -97,15 +93,17 @@ const Profile = (props) => {
 
     const saveEdits = event => {
         event.preventDefault();
-        console.log(teacher)
         toggle()
-        
+
         API.updateTeacherProfile(id, teacher)
             .then(res => {
-                console.log(res);
-                console.log("profile updated!")
+                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)" }
+                notify.show("Profile successfully updated!", "custom", 5000, myColor)
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                let myColor = { background: "#FF0000", text: "#FFFFFF" }
+                notify.show("Profile failed to update.", "custom", 5000, myColor)
+            });
     }
 
     // Displays modal with form to add pod (for teachers only)
@@ -413,9 +411,9 @@ const Profile = (props) => {
                     <StudentTable teacher={teacher} id={id} />
                 )}
 
-<div className="fixed-bottom">
-				<Footer />
-			</div>
+            <div className="fixed-bottom">
+                <Footer />
+            </div>
 
             <ProfileModal
                 toggle={toggle}
@@ -443,10 +441,10 @@ const Profile = (props) => {
             />
 
             <MessageModal
-                    toggle={toggle4}
-                    messageModal={messageModal}
-                    username={username}
-                    receiver={teacher.username}
+                toggle={toggle4}
+                messageModal={messageModal}
+                username={username}
+                receiver={teacher.username}
             />
         </>
     )

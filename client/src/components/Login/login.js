@@ -47,7 +47,6 @@ function Login() {
 
 
             {isDesktopOrLaptop && <>
-                <Notifications/>
                 <Row className="mt-5 profileCardRow loginSignupRowSize">
                     <Col sm="8" className="offset-2 loginCol">
                         <Container className="loginContainer">

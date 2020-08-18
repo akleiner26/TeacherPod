@@ -58,7 +58,6 @@ const MessageModal = (props) => {
 
     return (
         <>
-     <Notifications/>
         <Modal isOpen={props.messageModal} toggle={props.toggle}>
             <ModalHeader toggle={props.toggle}>Start a conversation!</ModalHeader>
             <ModalBody>

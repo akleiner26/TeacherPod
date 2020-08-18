@@ -5,7 +5,7 @@ import axios from "axios";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import API from "../../utils/API"
-import Notifications, { notify } from "react-notify-toast"
+import { notify } from "react-notify-toast"
 import { useMediaQuery } from 'react-responsive';
 
 function Signup() {
@@ -39,31 +39,32 @@ function Signup() {
         event.preventDefault();
         if (signupInput.isTeacher === "true") {
             signupInput.isTeacher = true;
-            let myColor = { background: "#ececec", text: "#FFFFFF"}
-            notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
+            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+            notify.show("Welcome to TeachPod " + signupInput.firstName + " " +signupInput.lastName, "custom", 2000, myColor)
         } else {
             signupInput.isTeacher = false;
-            let myColor = { background: "#ececec", text: "#FFFFFF"}
-            notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
+            let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+            notify.show("Welcome to TeachPod " + signupInput.firstName + " " +signupInput.lastName, "custom", 2000, myColor)
         }
         console.log(signupInput);
         if (signupInput.confirmed !== signupInput.password) {
             document.getElementById("error").style.display = "block"
             return
         }
-        console.log(event)
         if (signupInput.isTeacher === true) {
             API.createTeacher(signupInput)
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
+                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
                         notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
-                        setTimeout(function(){window.location.replace("/")},2000)
+                        setTimeout(function (){window.location.replace("/")},2000)
                     }
                 })
         } else {
             API.createParent(signupInput)
                 .then(({ data }) => {
                     if (data.message === "Signed up and logged in") {
+                        let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
                         notify.show("Welcome to TeachPod " + signupInput.firstName + signupInput.lastName, "custom", 2000, myColor)
                         setTimeout(function() {window.location.replace("/")},2000)
                     }
@@ -78,7 +79,6 @@ function Signup() {
 
 
             {isDesktopOrLaptop && <>
-                <Notifications/>
                 <Row className="mt-5 profileCardRow ">
                     <Col xs="8" className="offset-2">
                         <Container>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import API from "../../utils/API"
+import { notify } from "react-notify-toast"
 
 const RemoveStudentModal = (props) => {
     const [studentData, setStudentData] = useState({
@@ -19,18 +20,21 @@ const RemoveStudentModal = (props) => {
     const removeStudent = event => {
         event.preventDefault();
         props.toggle5();
-        console.log(studentData.studentId)
-        console.log(props.podId)
+
 
         API.deleteStudentFromPod(props.podId, studentData.studentId)
             .then(res => {
-                console.log("About to console log deleted students from pod....")
-                console.log(res)
-                console.log("Just console logged deleted students.")
-                console.log(res.data)
-                props.refresh()
+                let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
+                notify.show("Student successfuly removed from pod!", "custom", 5000, myColor )
+                setStudentData({
+                    ...studentData,
+                    [event.target.name]: event.target.value
+                })
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                let myColor = {background: "#FF0000", text: "#FFFFFF"}
+                notify.show("Unable to remove student from pod.", "custom", 5000, myColor)
+            });
     }
 
     return (

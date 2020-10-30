@@ -423,7 +423,7 @@ const Profile = (props) => {
             </Row>
 
             {teacher.isTeacher === true ? (
-                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening} />
+                <PodTable pods={pods} teacher={teacher} id={id} refresh={refresh} sortByName={sortByName} sortByGrade={sortByGrade} sortByLocation={sortByLocation} sortByPrice={sortByPrice} sortByCapacity={sortByCapacity} sortByOpening={sortByOpening}/>
             ) : (
                     <StudentTable teacher={teacher} id={id} />
                 )}

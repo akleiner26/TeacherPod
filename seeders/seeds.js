@@ -73,7 +73,7 @@ db.Student.deleteMany({})
                 firstName: "Ray",
                 lastName: "Min",
                 username: "rmin@email.com",
-                password: bcrypt.hashSync("password"),
+                password: bcrypt.hashSync("secret123789"),
                 students: [mongoose.Types.ObjectId(data.ops[4]._id)]
             }
         ]
@@ -332,7 +332,7 @@ db.Student.deleteMany({})
                                 firstName: "Lena",
                                 lastName: "Woods",
                                 username: "lwoods2@email.com",
-                                password: bcrypt.hashSync("password"),
+                                password: bcrypt.hashSync("secret123789"),
                                 isTeacher: true,
                                 location: "19128",
                                 image: "../images/fullSize/lenaWoodsImg.jpg",
@@ -457,9 +457,6 @@ db.Student.deleteMany({})
                                         participants: ["gbergman@email.com", "lwoods@email.com"]
                                     },
                                     {
-                                        participants: ["rmin@email.com", "lwoods@email.com"]
-                                    },
-                                    {
                                         participants: ["wtejeda@email.com", "lwoods2@email.com"]
                                     },
                                     {
@@ -528,13 +525,7 @@ db.Student.deleteMany({})
                                                     content: "I'm interested in enrolling my child in your pod, their name is Gareth Bergman."
                                                 }
                                             },
-                                            {
-                                                message: {
-                                                    sender: "rmin@email.com",
-                                                    receiver: "lwoods@email.com",
-                                                    content: "I'm interested in enrolling my child in your pod, their name is Estor Min"
-                                                }
-                                            },
+                                
                                             {
                                                 message: {
                                                     sender: "wtejeda@email.com",

@@ -45,7 +45,7 @@ const MessageModal = (props) => {
                         })
                             .then(res => {
                                 let myColor = { background: "#ececec", text: "rgba(40,120,111,1)"}
-                                notify.show("Your message has been sent!", "custom", 5000, myColor)
+                                notify.show("Your message has been sent!", "custom", 3000, myColor)
                                 console.log(res);
                                 props.toggle();
                             })
@@ -53,7 +53,7 @@ const MessageModal = (props) => {
                 })
                 .catch(function (){
                     let myColor = { background: "#FF0000", text: "#FFFFFF"}
-                    notify.show("Conversation already exists. Please go to messages to contact your teacher.", "custom", 5000, myColor)
+                    notify.show("Conversation already exists. Please go to messages to contact your teacher.", "custom", 3000, myColor)
                 });
             }
         }

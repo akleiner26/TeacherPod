@@ -17,7 +17,7 @@ function PodTable(props) {
 
                 <Col xs="10" className="offset-1 mt-4 bottomMargCol">
                     <Card className="tableMargin text-center">
-                        <Table hover >
+                        <Table hover  >
                             <thead className="tableHead">
                                 <tr className="darkGrayText">
                                     <th onClick={props.sortByName}>Pod Name<i id="podNameDown" className="fa fa-caret-down aFirst caret" aria-hidden="true"></i><i id="podNameUp" className="fa fa-caret-up caret zFirst" aria-hidden="true"></i></th>

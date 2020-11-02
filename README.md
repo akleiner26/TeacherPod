@@ -47,7 +47,7 @@ With the implementation of TeachPod, the world will be ready to preemptively pre
 Enter NPM install in both the root and client folders. All dependencies will automatically install.
 
 ## Usage:
-Run npm start in both the root and client folder, and visit the local site at http://localhost:3000/, or visit the launched site at 
+Run npm start in both the root and client folder, and visit the local site at http://localhost:3000/, or visit the launched site at <a href="https://teachpod.herokuapp.com/">TeachPod</a>
 
 ## Contributors
 <a href="https://github.com/Gary-Bergman">Gary Bergman</a>\
